@@ -1,298 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sorry Trixie 💗</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+  <!-- This is the browser tab name -->
+  <title>I'm Sowwyy 🧸❤️</title>
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffd6e7, #ffeef5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #5b3b4d;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.hearts {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.heart {
-    position: absolute;
-    bottom: -50px;
-    font-size: 25px;
-    animation: floatUp 6s linear infinite;
-    opacity: 0.7;
-}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffe6ee, #fff5f7, #ffe0eb);
+      color: #633b47;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-@keyframes floatUp {
-    from {
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 22px;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
-    }
+      }
 
-    20% {
+      20% {
         opacity: 0.8;
-    }
+      }
 
-    to {
+      100% {
         transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
+      }
     }
-}
 
-.card {
-    width: min(90%, 500px);
-    padding: 35px 25px;
-    background: rgba(255,255,255,0.85);
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(130,70,100,0.18);
-    position: relative;
-    z-index: 2;
-}
-
-.cat {
-    font-size: 100px;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    50% {
-        transform: translateY(-8px);
+    .page {
+      position: relative;
+      z-index: 1;
     }
-}
 
-h1 {
-    font-size: 32px;
-    margin: 15px 0;
-}
-
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-.buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-button {
-    border: none;
-    border-radius: 30px;
-    padding: 14px 30px;
-    font-size: 17px;
-    cursor: pointer;
-}
-
-#yesBtn {
-    background: #ff8fbd;
-    color: white;
-}
-
-#noBtn {
-    background: #e8b7cb;
-    color: white;
-    position: relative;
-}
-
-.hidden {
-    display: none;
-}
-
-.big-heart {
-    font-size: 90px;
-    animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-    50% {
-        transform: scale(1.15);
+    section {
+      min-height: 100vh;
+      padding: 70px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-}
 
-.sorry {
-    font-size: 24px;
-    font-weight: bold;
-}
-</style>
+    .hero {
+      background: linear-gradient(180deg, #ffd9e5, #fff0f5);
+    }
+
+    .bear {
+      font-size: 120px;
+      animation: hug 2s ease-in-out infinite;
+    }
+
+    @keyframes hug {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    h1 {
+      font-size: clamp(45px, 8vw, 80px);
+      margin: 15px 0;
+      color: #d94f76;
+    }
+
+    h2 {
+      font-size: 40px;
+      color: #d94f76;
+    }
+
+    p {
+      max-width: 750px;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .subtitle {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.8);
+      padding: 40px;
+      border-radius: 30px;
+      max-width: 850px;
+      box-shadow: 0 15px 40px rgba(180, 80, 110, 0.15);
+      margin: 20px;
+    }
+
+    .hug-bears {
+      font-size: 80px;
+      margin: 20px;
+    }
+
+    .small-bear {
+      font-size: 65px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 50px;
+      padding: 16px 35px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background: #e85d88;
+      color: white;
+      box-shadow: 0 8px 20px rgba(232, 93, 136, 0.3);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: white;
+      color: #d94f76;
+      border: 2px solid #f2a1b9;
+      position: relative;
+    }
+
+    .message {
+      display: none;
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #d94f76;
+    }
+
+    .hug-box {
+      font-size: 25px;
+      background: #fff;
+      border-radius: 30px;
+      padding: 30px;
+      max-width: 700px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .signature {
+      font-size: 28px;
+      color: #c83f69;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    footer {
+      padding: 40px 20px;
+      background: #d94f76;
+      color: white;
+      font-size: 18px;
+    }
+
+    .scroll {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #9e536b;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="hearts">
+  <!-- Floating hearts -->
+  <div class="heart" style="left:5%; animation-delay:0s;">❤️</div>
+  <div class="heart" style="left:15%; animation-delay:2s;">💕</div>
+  <div class="heart" style="left:28%; animation-delay:4s;">💗</div>
+  <div class="heart" style="left:40%; animation-delay:1s;">💖</div>
+  <div class="heart" style="left:55%; animation-delay:3s;">❤️</div>
+  <div class="heart" style="left:70%; animation-delay:5s;">💕</div>
+  <div class="heart" style="left:85%; animation-delay:2s;">💗</div>
+  <div class="heart" style="left:95%; animation-delay:4s;">💖</div>
 
-    <span class="heart" style="left:10%; animation-delay:0s;">💗</span>
-    <span class="heart" style="left:25%; animation-delay:2s;">💕</span>
-    <span class="heart" style="left:45%; animation-delay:4s;">💖</span>
-    <span class="heart" style="left:65%; animation-delay:1s;">💗</span>
-    <span class="heart" style="left:85%; animation-delay:3s;">💞</span>
+  <div class="page">
 
-</div>
+    <!-- SECTION 1 -->
+    <section class="hero">
+
+      <div class="bear">🧸</div>
+
+      <h1>I'm Sowwyy 🥺❤️</h1>
+
+      <p class="subtitle">
+        Trixie, this little website is my way of saying...
+      </p>
+
+      <p>
+        I'm genuinely sorry.  
+        I know that sometimes simply saying "sorry" doesn't feel like enough,
+        so I wanted to make something a little more special.
+      </p>
+
+      <div class="scroll">
+        ↓ Keep scrolling ↓
+      </div>
+
+    </section>
 
 
-<!-- FIRST SCREEN -->
+    <!-- SECTION 2 -->
+    <section>
 
-<div class="card" id="mainCard">
+      <div class="card">
 
-    <div class="cat">🥺🐱</div>
+        <div class="hug-bears">
+          🧸🤗🧸
+        </div>
 
-    <h1>I'm sorry Trixie 💗</h1>
+        <h2>First... here's a hug 🫂</h2>
 
-    <p>
-        I know I messed up...
-        <br>
-        and I'm genuinely sorry, Trixie. 🥺
-        <br><br>
-        I never wanted to hurt you.
-        <br><br>
-        Will you forgive me? 💗
-    </p>
+        <p>
+          Imagine these two little bears walking over to you with their tiny
+          little arms open, ready to give you the biggest, warmest hug ever.
+        </p>
 
-    <div class="buttons">
+        <p>
+          No arguing. No excuses. No trying to make things complicated.
+          Just one giant bear hug. 🧸❤️
+        </p>
 
-        <button id="yesBtn" onclick="yesClicked()">
-            Yes 💗
-        </button>
+        <p>
+          🤗🤗🤗🤗🤗🤗🤗🤗🤗
+        </p>
 
-        <button id="noBtn">
+      </div>
+
+    </section>
+
+
+    <!-- SECTION 3 -->
+    <section>
+
+      <div class="card">
+
+        <div class="small-bear">🧸💗</div>
+
+        <h2>I really am sorry</h2>
+
+        <p>
+          I know I may have messed up, and I know that saying sorry can't
+          magically erase what happened.
+        </p>
+
+        <p>
+          But I want you to know that I do care about your feelings.
+          I don't want you to feel ignored, hurt, or unappreciated.
+        </p>
+
+        <p>
+          You deserve honesty, kindness, patience, and someone who actually
+          listens when you say something is wrong.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SECTION 4 -->
+    <section>
+
+      <div class="hug-box">
+
+        <div style="font-size:100px;">
+          🧸
+        </div>
+
+        <h2>Bear with me for a second...</h2>
+
+        <p>
+          If I could send you a real hug through this screen,
+          I would probably send about 500 of them.
+        </p>
+
+        <p>
+          One for every time I made you upset.
+        </p>
+
+        <p>
+          One for every moment I should have listened better.
+        </p>
+
+        <p>
+          And about 498 extra ones just because you deserve them. 🫂❤️
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SECTION 5 -->
+    <section>
+
+      <div class="card">
+
+        <h2>Okay... serious bear meeting 🧸</h2>
+
+        <div style="font-size:70px;">
+          🧸 🧸 🧸
+        </div>
+
+        <p>
+          The bears have discussed the situation.
+        </p>
+
+        <p>
+          Their official conclusion is:
+        </p>
+
+        <h2>
+          "Please forgive this idiot." 😭
+        </h2>
+
+        <p>
+          They also voted unanimously for more hugs.
+        </p>
+
+        <div style="font-size:60px;">
+          🤗 ❤️ 🤗 ❤️ 🤗
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SECTION 6 -->
+    <section>
+
+      <div class="card">
+
+        <h2>One last thing...</h2>
+
+        <p>
+          I don't expect a website to fix everything.
+        </p>
+
+        <p>
+          I just wanted to put some effort into saying something that I
+          probably should have said properly in the first place:
+        </p>
+
+        <h1 style="font-size:55px;">
+          I'm sowwyy, Trixie 🥺❤️
+        </h1>
+
+        <p>
+          Can we make peace? 🧸🫂
+        </p>
+
+        <div class="buttons">
+
+          <button id="yesBtn" onclick="forgive()">
+            Yes 🥺❤️
+          </button>
+
+          <button id="noBtn" onclick="moveNo()">
             No 😭
-        </button>
+          </button>
 
-    </div>
+        </div>
 
-</div>
+        <div id="message" class="message">
+          YAYYYYY 😭❤️🧸<br><br>
+          BIGGEST HUG INCOMING 🫂🫂🫂
+          <br><br>
+          🧸❤️🧸❤️🧸❤️🧸
+        </div>
 
+      </div>
 
-<!-- FINAL SCREEN -->
-
-<div class="card hidden" id="finalCard">
-
-    <div class="big-heart">💗</div>
-
-    <h1>Thank you Trixie 🥺💕</h1>
-
-    <p class="sorry">
-        I'm really, really sorry.
-    </p>
-
-    <p>
-        You mean so much to me, Trixie.
-        <br><br>
-        I promise I'll try my best
-        to make things right.
-        <br><br>
-        Please don't stay mad at me. 🥺
-    </p>
-
-    <div style="font-size:45px;">
-        🫂💗🫂
-    </div>
-
-</div>
+    </section>
 
 
-<script>
+    <!-- FINAL -->
+    <section>
 
-const noBtn = document.getElementById("noBtn");
+      <div class="card">
 
+        <div style="font-size:100px;">
+          🧸🫂🧸
+        </div>
 
-function moveNoButton() {
+        <h1 style="font-size:55px;">
+          Thank you ❤️
+        </h1>
 
-    const buttonWidth = noBtn.offsetWidth;
-    const buttonHeight = noBtn.offsetHeight;
+        <p>
+          Whatever happens, I hope you know that this apology comes from
+          the heart.
+        </p>
 
-    const maxX = window.innerWidth - buttonWidth - 20;
-    const maxY = window.innerHeight - buttonHeight - 20;
+        <p>
+          I'm sorry for hurting you.
+        </p>
 
-    const randomX = Math.max(10, Math.random() * maxX);
-    const randomY = Math.max(10, Math.random() * maxY);
+        <p>
+          Sending you one final giant bear hug...
+        </p>
 
-    noBtn.style.position = "fixed";
+        <div style="font-size:70px;">
+          🧸🤗❤️🤗🧸
+        </div>
 
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
-}
+        <div class="signature">
+          I'm sowwyy, Trixie ❤️
+        </div>
 
+      </div>
 
-/* NO button runs away 😂 */
-
-noBtn.addEventListener("mouseenter", moveNoButton);
-
-noBtn.addEventListener("click", function() {
-    moveNoButton();
-});
-
-
-/* Phone support */
-
-noBtn.addEventListener("touchstart", function(event) {
-
-    event.preventDefault();
-
-    moveNoButton();
-
-});
+    </section>
 
 
-/* YES button */
+    <footer>
+      Made with apologies, hugs & way too many bears 🧸❤️
+    </footer>
 
-function yesClicked() {
-
-    document.getElementById("mainCard")
-        .classList.add("hidden");
-
-    document.getElementById("finalCard")
-        .classList.remove("hidden");
-
-    createExtraHearts();
-
-}
+  </div>
 
 
-/* Extra hearts */
+  <script>
 
-function createExtraHearts() {
+    function moveNo() {
 
-    for (let i = 0; i < 20; i++) {
+      const button = document.getElementById("noBtn");
 
-        const heart = document.createElement("span");
+      const maxX = window.innerWidth - button.offsetWidth - 30;
+      const maxY = window.innerHeight - button.offsetHeight - 30;
 
-        heart.innerHTML = "💗";
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
-        heart.className = "heart";
-
-        heart.style.left =
-            Math.random() * 100 + "%";
-
-        heart.style.animationDuration =
-            (3 + Math.random() * 4) + "s";
-
-        heart.style.animationDelay =
-            Math.random() * 2 + "s";
-
-        document.querySelector(".hearts")
-            .appendChild(heart);
+      button.style.position = "fixed";
+      button.style.left = x + "px";
+      button.style.top = y + "px";
     }
 
-}
 
-</script>
+    function forgive() {
+
+      document.getElementById("message").style.display = "block";
+
+      for (let i = 0; i < 20; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration =
+          (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>
