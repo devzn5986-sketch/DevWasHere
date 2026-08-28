@@ -3,1358 +3,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I'm Sowwyy, Trixie 💛</title>
-
+<title>I'm Sowwyy, Maevy 💛</title>
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:#06152f;
+  color:#fff4d6;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+/* Animated Starry-Night style background */
+.scene{
+  position:fixed;inset:0;overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 17%,#ffd95c 0 2.5%,transparent 3.5%),
+    radial-gradient(circle at 25% 28%,#f7c84b 0 1.2%,transparent 2%),
+    radial-gradient(circle at 55% 12%,#ffe38a 0 1%,transparent 1.8%),
+    linear-gradient(#061b3b 0%,#0a2850 52%,#06142c 100%);
+}
+.scene:before{
+  content:"";position:absolute;inset:-20%;
+  background:
+    repeating-radial-gradient(ellipse at 20% 30%,transparent 0 35px,
+      rgba(48,104,175,.25) 40px 50px,transparent 55px 90px),
+    repeating-radial-gradient(ellipse at 70% 20%,transparent 0 28px,
+      rgba(42,91,163,.24) 34px 44px,transparent 50px 80px);
+  transform:rotate(-8deg);
+  animation:sky 18s linear infinite;
+}
+@keyframes sky{to{transform:rotate(-8deg) translate3d(3%,2%,0)}}
+
+.stars,.stars2{position:absolute;inset:0}
+.star{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:#ffe99b;box-shadow:0 0 9px #ffe99b;
+  animation:twinkle 2s ease-in-out infinite alternate;
+}
+@keyframes twinkle{to{opacity:.25;transform:scale(.55)}}
+
+.moon{
+  position:absolute;width:105px;height:105px;border-radius:50%;
+  right:9%;top:7%;
+  background:#ffd95c;box-shadow:0 0 35px rgba(255,217,92,.7);
+}
+.moon:after{
+  content:"";position:absolute;width:95px;height:95px;border-radius:50%;
+  left:-15px;top:-7px;background:#09214a;
 }
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #061634;
-    color: #ffeeb0;
+.hills{
+  position:absolute;left:-5%;right:-5%;bottom:-2%;
+  height:25%;background:#031027;
+  clip-path:polygon(0 65%,8% 48%,16% 61%,25% 35%,34% 58%,45% 31%,
+  54% 53%,65% 38%,76% 57%,86% 30%,100% 51%,100% 100%,0 100%);
+}
+.water{
+  position:absolute;left:0;right:0;bottom:0;height:23%;
+  background:linear-gradient(transparent,rgba(16,67,116,.65));
+}
+.water:after{
+  content:"";position:absolute;left:15%;right:15%;top:25%;
+  height:3px;background:rgba(255,214,92,.45);
+  box-shadow:0 18px 0 rgba(255,214,92,.25),0 38px 0 rgba(255,214,92,.2),
+             0 58px 0 rgba(255,214,92,.16);
 }
 
-/* =====================================================
-   STARry NIGHT BACKGROUND
-===================================================== */
-
-#sky {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    z-index: 0;
-
-    background:
-        radial-gradient(
-            circle at 78% 17%,
-            rgba(255,220,86,.9) 0 3%,
-            transparent 3.8%
-        ),
-        linear-gradient(
-            180deg,
-            #06245a 0%,
-            #073675 42%,
-            #09265a 68%,
-            #041329 100%
-        );
+/* App */
+#app{position:relative;z-index:5;width:100%;height:100%}
+.page{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:24px;opacity:0;pointer-events:none;transform:translateX(35px) scale(.98);
+  transition:opacity .45s ease,transform .45s ease;
 }
-
-/* Large swirling brush strokes */
-
-.swirl {
-    position: absolute;
-    border-radius: 50%;
-    border-style: solid;
-    pointer-events: none;
-    opacity: .65;
-    transform: rotate(-18deg);
+.page.active{opacity:1;pointer-events:auto;transform:none}
+.card{
+  width:min(900px,94vw);max-height:90vh;overflow:auto;
+  padding:34px 30px;border:1px solid rgba(255,220,130,.38);
+  border-radius:28px;
+  background:rgba(3,18,45,.72);
+  box-shadow:0 20px 80px rgba(0,0,0,.45),inset 0 0 40px rgba(255,215,100,.04);
+  backdrop-filter:blur(8px);
+  text-align:center;
 }
-
-.swirl.one {
-    width: 125vw;
-    height: 70vh;
-    left: -40vw;
-    top: -8vh;
-    border-width: 28px;
-    border-color: #195aa0 transparent #2b72b0 transparent;
-    animation: swirlMove1 14s ease-in-out infinite alternate;
+.card::-webkit-scrollbar{width:6px}.card::-webkit-scrollbar-thumb{background:#d9aa4a;border-radius:10px}
+.banner{
+  display:inline-block;padding:14px 28px;margin-bottom:20px;
+  border-radius:20px;background:rgba(204,151,54,.25);
+  border:1px solid rgba(255,218,127,.65);
+  color:#ffe59a;font-size:clamp(28px,5vw,54px);
+  text-shadow:0 0 15px rgba(255,214,95,.6);
 }
+h1{font-size:clamp(34px,6vw,65px);margin:8px 0 15px;color:#fff0b5}
+h2{font-size:clamp(26px,4vw,42px);margin-bottom:16px;color:#ffe29a}
+p,li{font-size:clamp(17px,2vw,21px);line-height:1.65;color:#f8e8bd}
+.lead{font-size:22px}
+ul{list-style:none;text-align:left;max-width:650px;margin:15px auto}
+li{margin:10px 0;padding-left:28px;position:relative}
+li:before{content:"✦";position:absolute;left:0;color:#ffd45e}
+.small{font-size:15px;opacity:.75;margin-top:15px}
 
-.swirl.two {
-    width: 110vw;
-    height: 58vh;
-    right: -35vw;
-    top: 5vh;
-    border-width: 22px;
-    border-color: transparent #154b92 transparent #3177b3;
-    animation: swirlMove2 12s ease-in-out infinite alternate;
+/* Bears */
+.bears{display:flex;justify-content:center;gap:45px;margin:10px 0 18px}
+.bear{font-size:74px;filter:drop-shadow(0 8px 8px rgba(0,0,0,.35));animation:bob 2.4s ease-in-out infinite}
+.bear:nth-child(2){animation-delay:.6s}
+.bear:nth-child(3){animation-delay:1.1s}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+
+/* Buttons */
+.buttons{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:25px}
+button{
+  border:1px solid rgba(255,224,145,.65);border-radius:15px;
+  padding:14px 30px;font:600 19px Georgia,serif;cursor:pointer;
+  color:#fff2bd;background:rgba(10,39,76,.9);
+  transition:transform .2s,box-shadow .2s,background .2s;
 }
+button:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(255,210,80,.2)}
+.yes{background:linear-gradient(135deg,#b57b35,#e2b650);color:#1b1730}
+.next{background:rgba(32,76,125,.9)}
+#noBtn{position:relative}
 
-.swirl.three {
-    width: 90vw;
-    height: 42vh;
-    left: -5vw;
-    top: 22vh;
-    border-width: 18px;
-    border-color: #16498b transparent #2466a8 transparent;
-    animation: swirlMove3 11s ease-in-out infinite alternate;
+/* Final hug page */
+.hug{
+  font-size:clamp(35px,7vw,75px);font-weight:bold;color:#ffd966;
+  text-shadow:0 0 18px rgba(255,214,90,.7);
+  margin:15px 0;
 }
+.heart{font-size:55px;animation:heart 1s ease-in-out infinite alternate}
+@keyframes heart{to{transform:scale(1.12)}}
+.sparkles{font-size:28px;letter-spacing:10px;margin:12px}
+.footer{margin-top:25px;color:#d8c18a}
 
-.swirl.four {
-    width: 75vw;
-    height: 35vh;
-    right: -15vw;
-    top: 32vh;
-    border-width: 15px;
-    border-color: transparent #1d5799 transparent #367bb0;
-    animation: swirlMove4 15s ease-in-out infinite alternate;
+/* floating particles */
+.particle{
+  position:fixed;z-index:2;bottom:-20px;font-size:18px;
+  animation:floatUp linear forwards;pointer-events:none;
 }
-
-@keyframes swirlMove1 {
-    from {
-        transform: rotate(-18deg) translate(-2%,0);
-    }
-
-    to {
-        transform: rotate(-10deg) translate(3%,2%);
-    }
-}
-
-@keyframes swirlMove2 {
-    from {
-        transform: rotate(10deg) translate(0,0);
-    }
-
-    to {
-        transform: rotate(18deg) translate(-3%,2%);
-    }
-}
-
-@keyframes swirlMove3 {
-    from {
-        transform: rotate(-8deg) scale(1);
-    }
-
-    to {
-        transform: rotate(-2deg) scale(1.05);
-    }
-}
-
-@keyframes swirlMove4 {
-    from {
-        transform: rotate(8deg);
-    }
-
-    to {
-        transform: rotate(15deg) translate(-2%,0);
-    }
-}
-
-/* Curved yellow brush strokes */
-
-.yellowStroke {
-    position: absolute;
-    border-radius: 50%;
-    border: 8px solid transparent;
-    border-top-color: #e7b943;
-    filter: drop-shadow(0 0 5px rgba(255,210,75,.4));
-    pointer-events: none;
-}
-
-.yellowStroke.a {
-    width: 170px;
-    height: 80px;
-    right: 8%;
-    top: 8%;
-    transform: rotate(-20deg);
-}
-
-.yellowStroke.b {
-    width: 130px;
-    height: 55px;
-    left: 20%;
-    top: 22%;
-    transform: rotate(18deg);
-}
-
-.yellowStroke.c {
-    width: 210px;
-    height: 80px;
-    left: 5%;
-    top: 47%;
-    transform: rotate(-12deg);
-}
-
-.yellowStroke.d {
-    width: 160px;
-    height: 60px;
-    right: 18%;
-    top: 45%;
-    transform: rotate(14deg);
-}
-
-/* Stars */
-
-#stars {
-    position: absolute;
-    inset: 0;
-}
-
-.star {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #ffe58a;
-
-    box-shadow:
-        0 0 5px #ffe58a,
-        0 0 15px rgba(255,220,100,.8);
-
-    animation:
-        starPulse 2s ease-in-out infinite alternate;
-}
-
-.star.big {
-    width: 10px;
-    height: 10px;
-
-    box-shadow:
-        0 0 8px #ffe58a,
-        0 0 25px #ffd85b;
-}
-
-@keyframes starPulse {
-    from {
-        opacity: .35;
-        transform: scale(.7);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1.3);
-    }
-}
-
-/* Moon */
-
-.moon {
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    right: 9%;
-    top: 9%;
-
-    border-radius: 50%;
-
-    background: #ffd84d;
-
-    box-shadow:
-        0 0 20px #ffd84d,
-        0 0 50px rgba(255,216,77,.45);
-}
-
-.moon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 82px;
-    height: 82px;
-
-    border-radius: 50%;
-
-    background: #07316c;
-
-    left: -18px;
-    top: -5px;
-}
-
-/* Village */
-
-.village {
-    position: absolute;
-
-    bottom: 12%;
-    left: 0;
-
-    width: 100%;
-    height: 20%;
-
-    background: #071426;
-
-    clip-path:
-        polygon(
-            0 70%,
-            5% 64%,
-            9% 72%,
-            14% 55%,
-            18% 67%,
-            23% 48%,
-            28% 65%,
-            34% 58%,
-            39% 69%,
-            45% 51%,
-            50% 64%,
-            57% 46%,
-            62% 67%,
-            69% 53%,
-            74% 65%,
-            81% 44%,
-            87% 63%,
-            93% 49%,
-            100% 63%,
-            100% 100%,
-            0 100%
-        );
-}
-
-/* Cypress */
-
-.cypress {
-    position: absolute;
-
-    left: 4%;
-    bottom: 5%;
-
-    width: 85px;
-    height: 55%;
-
-    background: #020b19;
-
-    clip-path:
-        polygon(
-            50% 0,
-            65% 12%,
-            56% 18%,
-            75% 28%,
-            60% 35%,
-            82% 45%,
-            62% 51%,
-            88% 65%,
-            66% 65%,
-            76% 78%,
-            58% 75%,
-            63% 100%,
-            37% 100%,
-            42% 75%,
-            23% 80%,
-            34% 65%,
-            12% 66%,
-            37% 50%,
-            18% 45%,
-            39% 35%,
-            25% 28%,
-            44% 18%,
-            36% 12%
-        );
-}
-
-/* =====================================================
-   WEBSITE
-===================================================== */
-
-#website {
-    position: relative;
-    z-index: 10;
-
-    width: 100%;
-    height: 100%;
-}
-
-/* Every page */
-
-.page {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 18px;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-        translateX(50px)
-        scale(.96);
-
-    transition:
-        opacity .55s ease,
-        transform .55s ease,
-        visibility .55s;
-}
-
-.page.active {
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translateX(0)
-        scale(1);
-}
-
-/* Glass card */
-
-.card {
-    width: min(850px, 94vw);
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding:
-        clamp(22px,5vw,45px);
-
-    text-align: center;
-
-    border-radius: 30px;
-
-    border:
-        1px solid
-        rgba(255,218,117,.45);
-
-    background:
-        rgba(2,18,43,.78);
-
-    box-shadow:
-        0 20px 80px rgba(0,0,0,.55),
-        inset 0 0 50px rgba(255,210,80,.035);
-
-    backdrop-filter: blur(10px);
-}
-
-.card::-webkit-scrollbar {
-    width: 5px;
-}
-
-.card::-webkit-scrollbar-thumb {
-    background: #d8ad4d;
-    border-radius: 10px;
-}
-
-/* Banner */
-
-.banner {
-    display: inline-block;
-
-    padding:
-        12px 25px;
-
-    margin-bottom: 20px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(210,157,47,.2);
-
-    border:
-        1px solid
-        rgba(255,222,126,.65);
-
-    color: #ffe596;
-
-    font-size:
-        clamp(27px,6vw,55px);
-
-    text-shadow:
-        0 0 15px
-        rgba(255,211,91,.65);
-}
-
-/* Text */
-
-h1 {
-    color: #fff0ae;
-
-    font-size:
-        clamp(35px,7vw,68px);
-
-    margin-bottom: 15px;
-}
-
-h2 {
-    color: #ffe19a;
-
-    font-size:
-        clamp(25px,5vw,43px);
-
-    margin-bottom: 18px;
-}
-
-p {
-    color: #f8e9bf;
-
-    font-size:
-        clamp(16px,2.4vw,21px);
-
-    line-height: 1.65;
-
-    margin: 9px auto;
-
-    max-width: 700px;
-}
-
-/* =====================================================
-   BEARS
-===================================================== */
-
-.bears {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 25px;
-
-    margin:
-        5px 0 18px;
-}
-
-.bear {
-    font-size:
-        clamp(48px,9vw,78px);
-
-    animation:
-        bearFloat 2.8s
-        ease-in-out
-        infinite;
-}
-
-.bear:nth-child(2) {
-    animation-delay: .7s;
-}
-
-.bear:nth-child(3) {
-    animation-delay: 1.3s;
-}
-
-@keyframes bearFloat {
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            translateY(-9px)
-            rotate(3deg);
-    }
-}
-
-/* =====================================================
-   PROMISE LIST
-===================================================== */
-
-.promiseList {
-    list-style: none;
-
-    max-width: 690px;
-
-    margin:
-        20px auto;
-
-    text-align: left;
-}
-
-.promiseList li {
-    position: relative;
-
-    padding-left: 35px;
-
-    margin:
-        13px 0;
-
-    color: #f7e8bd;
-
-    font-size:
-        clamp(15px,2.2vw,20px);
-
-    line-height: 1.5;
-}
-
-.promiseList li::before {
-    content: "✦";
-
-    position: absolute;
-
-    left: 4px;
-
-    color: #ffd55b;
-
-    font-size: 20px;
-}
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.buttonRow {
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-
-    margin-top: 25px;
-}
-
-button {
-    appearance: none;
-
-    border: 1px solid
-        rgba(255,221,132,.65);
-
-    border-radius: 16px;
-
-    padding:
-        13px 27px;
-
-    font-family:
-        Georgia,
-        serif;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    color: #fff1ba;
-
-    background:
-        rgba(15,53,94,.95);
-
-    cursor: pointer;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
-
-button:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 8px 25px
-        rgba(255,210,75,.2);
-}
-
-button:active {
-    transform:
-        scale(.95);
-}
-
-.next {
-    background:
-        linear-gradient(
-            135deg,
-            #164d83,
-            #28699c
-        );
-}
-
-.yes {
-    background:
-        linear-gradient(
-            135deg,
-            #b47c32,
-            #e5b950
-        );
-
-    color: #17152b;
-}
-
-/* =====================================================
-   RUNAWAY NO
-===================================================== */
-
-#noBtn {
-    position: relative;
-
-    transition:
-        left .2s ease,
-        top .2s ease,
-        transform .2s ease;
-}
-
-/* =====================================================
-   FINAL HUG
-===================================================== */
-
-.hugText {
-    margin:
-        15px auto;
-
-    color: #ffd966;
-
-    font-size:
-        clamp(32px,7vw,70px);
-
-    font-weight: bold;
-
-    text-shadow:
-        0 0 15px
-        rgba(255,214,91,.75);
-
-    animation:
-        hugGlow 1.4s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes hugGlow {
-    from {
-        transform: scale(.98);
-
-        text-shadow:
-            0 0 12px
-            rgba(255,214,91,.5);
-    }
-
-    to {
-        transform: scale(1.03);
-
-        text-shadow:
-            0 0 30px
-            rgba(255,214,91,.9);
-    }
-}
-
-.bigHeart {
-    font-size:
-        clamp(45px,10vw,85px);
-
-    animation:
-        heartBeat 1.2s
-        infinite;
-}
-
-@keyframes heartBeat {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.13);
-    }
-}
-
-/* =====================================================
-   FLOATING PARTICLES
-===================================================== */
-
-.particle {
-    position: fixed;
-
-    z-index: 100;
-
-    pointer-events: none;
-
-    bottom: -30px;
-
-    animation:
-        floatParticle
-        linear
-        forwards;
-}
-
-@keyframes floatParticle {
-    0% {
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    100% {
-        transform:
-            translateY(-110vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
-}
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:600px) {
-
-    .page {
-        padding: 10px;
-    }
-
-    .card {
-        width: 95vw;
-
-        max-height: 91vh;
-
-        padding:
-            23px 17px;
-    }
-
-    .bears {
-        gap: 12px;
-    }
-
-    .moon {
-        width: 65px;
-        height: 65px;
-    }
-
-    .moon::after {
-        width: 59px;
-        height: 59px;
-    }
-
-    .cypress {
-        width: 55px;
-    }
-
-    .promiseList li {
-        padding-left: 27px;
-    }
-
-    button {
-        padding:
-            12px 21px;
-
-        font-size: 16px;
-    }
+@keyframes floatUp{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
 }
 </style>
 </head>
 
-
 <body>
-
-<!-- =====================================================
-     BACKGROUND
-===================================================== -->
-
-<div id="sky">
-
-    <div
-        class="swirl one">
-    </div>
-
-    <div
-        class="swirl two">
-    </div>
-
-    <div
-        class="swirl three">
-    </div>
-
-    <div
-        class="swirl four">
-    </div>
-
-
-    <div
-        class="yellowStroke a">
-    </div>
-
-    <div
-        class="yellowStroke b">
-    </div>
-
-    <div
-        class="yellowStroke c">
-    </div>
-
-    <div
-        class="yellowStroke d">
-    </div>
-
-
-    <div id="stars"></div>
-
-
-    <div class="moon"></div>
-
-
-    <div class="village"></div>
-
-
-    <div class="cypress"></div>
-
+<div class="scene">
+  <div class="stars" id="stars"></div>
+  <div class="stars2" id="stars2"></div>
+  <div class="moon"></div>
+  <div class="water"></div>
+  <div class="hills"></div>
 </div>
 
+<div id="app">
 
-<!-- =====================================================
-     WEBSITE
-===================================================== -->
-
-<div id="website">
-
-
-<!-- =====================================================
-     PAGE 1
-===================================================== -->
-
-<section
-    class="page active"
-    id="page1">
-
+  <!-- PAGE 1 -->
+  <section class="page active" id="p1">
     <div class="card">
-
-
-        <div class="bears">
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-        </div>
-
-
-        <div class="banner">
-
-            I'm sowwyy, Trixie 💛
-
-        </div>
-
-
-        <h1>
-
-            Hey Trixie...
-
-        </h1>
-
-
-        <p>
-
-            I made this little website
-            because simply typing
-            "sorry" didn't feel like enough.
-
-        </p>
-
-
-        <p>
-
-            So I decided to make an
-            unnecessarily dramatic
-            apology under a whole
-            Starry Night sky. 🌙
-
-        </p>
-
-
-        <div class="buttonRow">
-
-            <button
-                class="next"
-                onclick="nextPage()">
-
-                Tap to continue ✨
-
-            </button>
-
-        </div>
-
+      <div class="bears"><span class="bear">🧸</span><span class="bear">🧸</span><span class="bear">🧸</span></div>
+      <div class="banner">I'm sowwyy, Maevy 💛</div>
+      <h1>Hey Maevy...</h1>
+      <p class="lead">I made this little corner of the universe just to say something I should have said properly.</p>
+      <p>I'm really, really sorry. I know an apology doesn't magically fix everything, but I want you to know that I mean it.</p>
+      <div class="buttons"><button class="next" id="continueBtn">Tap to continue ✨</button></div>
+      <p class="small">No scrolling needed — each button takes you to the next part.</p>
     </div>
+  </section>
 
-</section>
-
-
-
-<!-- =====================================================
-     PAGE 2
-===================================================== -->
-
-<section
-    class="page"
-    id="page2">
-
+  <!-- PAGE 2 -->
+  <section class="page" id="p2">
     <div class="card">
-
-
-        <div class="banner">
-
-            I'm sowwyyy 💛
-
-        </div>
-
-
-        <h2>
-
-            I really mean it.
-
-        </h2>
-
-
-        <p>
-
-            I'm sorry for the things
-            I did or said that hurt you.
-
-        </p>
-
-
-        <p>
-
-            I know that saying
-            "I didn't mean it"
-            doesn't automatically
-            make everything okay.
-
-        </p>
-
-
-        <p>
-
-            What matters is how
-            my actions made you feel,
-            and I'm genuinely sorry
-            for that.
-
-        </p>
-
-
-        <div class="bears">
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-        </div>
-
-
-        <div class="buttonRow">
-
-            <button
-                class="next"
-                onclick="nextPage()">
-
-                Next 🌙
-
-            </button>
-
-        </div>
-
+      <div class="banner">I'm sowwyyy 💛</div>
+      <h2>I know I messed up.</h2>
+      <p>I'm not going to make excuses or pretend it didn't matter. If something I did or said hurt you, your feelings are valid.</p>
+      <p>I care about you, and that's exactly why I'm taking this seriously.</p>
+      <div class="buttons"><button class="next" onclick="go(3)">Next 🌙</button></div>
     </div>
+  </section>
 
-</section>
-
-
-
-<!-- =====================================================
-     PAGE 3
-===================================================== -->
-
-<section
-    class="page"
-    id="page3">
-
+  <!-- PAGE 3 -->
+  <section class="page" id="p3">
     <div class="card">
-
-
-        <div class="bears">
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-        </div>
-
-
-        <h2>
-
-            What I promise
-
-        </h2>
-
-
-        <ul class="promiseList">
-
-            <li>
-
-                I won't repeat mistakes
-                I've already promised
-                to work on.
-
-            </li>
-
-
-            <li>
-
-                I'll think before I act
-                instead of being careless.
-
-            </li>
-
-
-            <li>
-
-                I'll listen to you properly
-                instead of getting defensive.
-
-            </li>
-
-
-            <li>
-
-                I'll communicate instead
-                of letting things become
-                bigger problems.
-
-            </li>
-
-
-            <li>
-
-                I'll respect your feelings,
-                even when I don't completely
-                understand them.
-
-            </li>
-
-
-            <li>
-
-                I'll take responsibility
-                when I mess up.
-
-            </li>
-
-
-            <li>
-
-                Most importantly,
-                I'll actually try to improve
-                instead of just saying
-                "I'll do better."
-
-            </li>
-
-        </ul>
-
-
-        <div class="buttonRow">
-
-            <button
-                class="next"
-                onclick="nextPage()">
-
-                Keep going 🥺
-
-            </button>
-
-        </div>
-
+      <div class="bears"><span class="bear">🧸</span><span class="bear">🧸</span></div>
+      <h2>Things I promise to work on</h2>
+      <ul>
+        <li>I will think before I act instead of acting carelessly.</li>
+        <li>I will listen to you instead of immediately getting defensive.</li>
+        <li>I will communicate better when something is bothering me.</li>
+        <li>I will respect your feelings, even when I see things differently.</li>
+        <li>I will try not to repeat the same mistakes.</li>
+        <li>I will actually work on these things instead of only saying sorry.</li>
+        <li>I know I'm not perfect, but I genuinely want to do better.</li>
+      </ul>
+      <div class="buttons"><button class="next" onclick="go(4)">Keep going 🥺</button></div>
     </div>
+  </section>
 
-</section>
-
-
-
-<!-- =====================================================
-     PAGE 4
-===================================================== -->
-
-<section
-    class="page"
-    id="page4">
-
+  <!-- PAGE 4 -->
+  <section class="page" id="p4">
     <div class="card">
-
-
-        <div class="banner">
-
-            A little reminder 🌟
-
-        </div>
-
-
-        <p>
-
-            You matter to me.
-
-        </p>
-
-
-        <p>
-
-            Your feelings matter to me.
-
-        </p>
-
-
-        <p>
-
-            And I don't want one stupid
-            mistake to make you think
-            that I don't care.
-
-        </p>
-
-
-        <p>
-
-            I appreciate you more than
-            I probably say out loud.
-
-        </p>
-
-
-        <div class="bears">
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-        </div>
-
-
-        <div class="buttonRow">
-
-            <button
-                class="next"
-                onclick="nextPage()">
-
-                Next ✨
-
-            </button>
-
-        </div>
-
+      <div class="banner">A little reminder 🌟</div>
+      <p>You deserve patience, kindness, honesty and understanding.</p>
+      <p>You deserve to feel heard and respected.</p>
+      <p>And I don't want one bad moment to make you forget how much I appreciate you.</p>
+      <div class="bears"><span class="bear">🧸</span><span class="bear">🧸</span><span class="bear">🧸</span></div>
+      <div class="buttons"><button class="next" onclick="go(5)">One more ✨</button></div>
     </div>
+  </section>
 
-</section>
-
-
-
-<!-- =====================================================
-     PAGE 5
-===================================================== -->
-
-<section
-    class="page"
-    id="page5">
-
+  <!-- PAGE 5 -->
+  <section class="page" id="p5">
     <div class="card">
-
-
-        <h2>
-
-            Thank you, Trixie 💛
-
-        </h2>
-
-
-        <p>
-
-            Thank you for the laughs,
-            conversations, memories
-            and all the little moments.
-
-        </p>
-
-
-        <p>
-
-            Thank you for putting up
-            with my stupidity sometimes. 😭
-
-        </p>
-
-
-        <p>
-
-            I know I'm not perfect.
-
-        </p>
-
-
-        <p>
-
-            But I genuinely want to
-            be someone who learns from
-            their mistakes.
-
-        </p>
-
-
-        <div class="bears">
-
-            <span class="bear">
-                🧸
-            </span>
-
-            <span class="bear">
-                💛
-            </span>
-
-            <span class="bear">
-                🧸
-            </span>
-
-        </div>
-
-
-        <div class="buttonRow">
-
-            <button
-                class="next"
-                onclick="nextPage()">
-
-                One last question...
-
-            </button>
-
-        </div>
-
+      <h2>Thank you, Maevy 💛</h2>
+      <p>Thank you for being there. Thank you for the laughs, the conversations, the little moments and all the memories.</p>
+      <p>Even when I don't say it perfectly, I appreciate having you in my life.</p>
+      <p>I'm sorry for the moments where I made things harder than they needed to be.</p>
+      <div class="buttons"><button class="next" onclick="go(6)">Last question...</button></div>
     </div>
+  </section>
 
-</section>
+  <!-- PAGE 6 -->
+  <section class="page" id="p6">
+    <div class="card">
+      <div class="bears"><span class="bear">🧸</span><span class="bear">🧸</span></div>
+      <h2>Can you forgive me? 🥺</h2>
+      <p>I know I can't force an answer. Take your time. I just wanted you to know that I'm genuinely sorry.</p>
+      <div class="buttons">
+        <button class="yes" onclick="go(7)">YES 💛</button>
+        <button id="noBtn">NO 😭</button>
+      </div>
+      <p class="small">The little NO button is shy 😭</p>
+    </div>
+  </section>
 
+  <!-- PAGE 7 -->
+  <section class="page" id="p7">
+    <div class="card">
+      <div class="sparkles">✦ ✨ ✦ ✨ ✦</div>
+      <div class="heart">💛</div>
+      <div class="hug">COME AND GIVE ME A HUG</div>
+      <div class="bears">
+        <span class="bear">🧸</span>
+        <span class="bear">🧸</span>
+        <span class="bear">🧸</span>
+      </div>
+      <p>Okay... now I'm officially requesting a hug. 🥺</p>
+      <p>And yes, the bears are here for moral support.</p>
+      <div class="buttons"><button class="next" onclick="go(8)">One final thing 🌙</button></div>
+    </div>
+  </section>
 
+  <!-- PAGE 8 -->
+  <section class="page" id="p8">
+    <div class="card">
+      <div class="banner">I'm sowwyy, Maevy 💛</div>
+      <h2>That's all I wanted to say.</h2>
+      <p>I don't expect a perfect response. I just wanted to put my apology into words and remind you that I care.</p>
+      <p>I'll keep trying to be better, communicate better and not repeat the mistakes I've promised to work on.</p>
+      <div class="bears"><span class="bear">🧸</span><span class="bear">🧸</span></div>
+      <div class="heart">💛</div>
+      <p class="footer">Made with all the stars in the universe ✨</p>
+    </div>
+  </section>
+</div>
 
-<!-- =====================================================
-     PAGE 6
-===========================
+<script>
+/* Make lots of glowing stars */
+const stars = document.getElementById("stars");
+const stars2 = document.getElementById("stars2");
+
+for(let i=0;i<115;i++){
+  const s=document.createElement("span");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*78+"%";
+  s.style.animationDelay=(Math.random()*3)+"s";
+  s.style.animationDuration=(1.3+Math.random()*2.8)+"s";
+  s.style.opacity=.35+Math.random()*.65;
+  stars.appendChild(s);
+}
+
+/* Small shooting stars */
+setInterval(()=>{
+  const s=document.createElement("span");
+  s.className="star";
+  s.style.width="45px";
+  s.style.height="2px";
+  s.style.borderRadius="0";
+  s.style.left=Math.random()*80+"%";
+  s.style.top=Math.random()*45+"%";
+  s.style.transform="rotate(25deg)";
+  s.style.transition="all 1.2s linear";
+  stars2.appendChild(s);
+  requestAnimationFrame(()=>{s.style.left=(parseFloat(s.style.left)+12)+"%";s.style.opacity="0"});
+  setTimeout(()=>s.remove(),1300);
+},3500);
+
+/* Page navigation */
+function go(n){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  const target=document.getElementById("p"+n);
+  if(target){ target.classList.add("active"); burst(); }
+}
+
+/* Reliable touch/click navigation for mobile */
+document.addEventListener("DOMContentLoaded",()=>{
+  const btn=document.getElementById("continueBtn");
+  if(btn){
+    btn.addEventListener("click",()=>go(2));
+    btn.addEventListener("touchend",e=>{e.preventDefault();go(2);},{passive:false});
+  }
+});
+
+/* Floating hearts/stars */
+function burst(){
+  const symbols=["💛","✨","⭐","🌟","🧸"];
+  for(let i=0;i<8;i++){
+    const x=document.createElement("div");
+    x.className="particle";
+    x.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    x.style.left=(10+Math.random()*80)+"%";
+    x.style.animationDuration=(2.5+Math.random()*2)+"s";
+    document.body.appendChild(x);
+    setTimeout(()=>x.remove(),5000);
+  }
+}
+
+/* The NO button moves away when clicked */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("click",()=>{
+  const card=noBtn.closest(".card").getBoundingClientRect();
+  const maxX=Math.max(20,card.width-150);
+  const maxY=Math.max(20,card.height-100);
+  noBtn.style.position="absolute";
+  noBtn.style.left=(card.left+20+Math.random()*maxX)+"px";
+  noBtn.style.top=(card.top+20+Math.random()*maxY)+"px";
+});
+
+/* Also dodge when the mouse gets close */
+noBtn.addEventListener("mouseenter",()=>{
+  if(Math.random()>.35){
+    noBtn.style.transform=`translate(${(Math.random()*180)-90}px, ${(Math.random()*100)-50}px)`;
+  }
+});
+</script>
+</body>
+</html>
