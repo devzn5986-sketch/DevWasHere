@@ -1,503 +1,1093 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sowwyy Trixie 🧸💗</title>
 
-  <!-- This is the browser tab name -->
-  <title>I'm Sowwyy 🧸❤️</title>
+<style>
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #ffe7ef;
+    color: #633b49;
+}
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+.page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.04);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        visibility 0.7s;
+
+    background:
+        radial-gradient(circle at 20% 20%, #fff 0%, transparent 20%),
+        linear-gradient(135deg, #ffdbe7, #fff1f5);
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    z-index: 5;
+}
+
+.content {
+    width: min(850px, 94%);
+    max-height: 90vh;
+    padding: 35px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.76);
+    border-radius: 35px;
+
+    box-shadow:
+        0 20px 70px rgba(180,80,110,0.18);
+
+    backdrop-filter: blur(10px);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+h1 {
+    margin: 12px 0;
+    color: #d94f76;
+    font-size: clamp(42px, 9vw, 78px);
+}
+
+h2 {
+    margin: 12px 0;
+    color: #d94f76;
+    font-size: clamp(30px, 6vw, 48px);
+}
+
+p {
+    max-width: 720px;
+    margin: 12px auto;
+    font-size: clamp(17px, 4vw, 21px);
+    line-height: 1.75;
+}
+
+.tiny {
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+/* =========================
+   BEARS
+========================= */
+
+.bear {
+    font-size: clamp(80px, 18vw, 140px);
+    animation: bearBounce 2s ease-in-out infinite;
+}
+
+.bears {
+    font-size: clamp(55px, 13vw, 90px);
+    margin: 10px 0 20px;
+}
+
+@keyframes bearBounce {
+    0%, 100% {
+        transform: translateY(0);
     }
 
-    html {
-      scroll-behavior: smooth;
+    50% {
+        transform: translateY(-12px) rotate(-2deg);
     }
+}
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #ffe6ee, #fff5f7, #ffe0eb);
-      color: #633b47;
-      text-align: center;
-      overflow-x: hidden;
-    }
+/* =========================
+   HEARTS
+========================= */
 
-    .heart {
-      position: fixed;
-      bottom: -30px;
-      font-size: 22px;
-      animation: floatUp 7s linear infinite;
-      opacity: 0.7;
-      z-index: 0;
-      pointer-events: none;
-    }
+.heart {
+    position: fixed;
+    bottom: -50px;
+    z-index: 20;
+    pointer-events: none;
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(0deg);
+    font-size: 25px;
+
+    animation:
+        floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.8);
+
         opacity: 0;
-      }
+    }
 
-      20% {
+    15% {
         opacity: 0.8;
-      }
+    }
 
-      100% {
-        transform: translateY(-110vh) rotate(360deg);
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg)
+            scale(1.3);
+
         opacity: 0;
-      }
     }
+}
 
-    .page {
-      position: relative;
-      z-index: 1;
-    }
+/* =========================
+   KISS / HUG ANIMATION
+========================= */
 
-    section {
-      min-height: 100vh;
-      padding: 70px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+.hug {
+    font-size: clamp(65px, 15vw, 110px);
+    animation: hugPulse 1.8s infinite;
+}
 
-    .hero {
-      background: linear-gradient(180deg, #ffd9e5, #fff0f5);
-    }
-
-    .bear {
-      font-size: 120px;
-      animation: hug 2s ease-in-out infinite;
-    }
-
-    @keyframes hug {
-      0%, 100% {
+@keyframes hugPulse {
+    0%, 100% {
         transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.08);
-      }
     }
 
-    h1 {
-      font-size: clamp(45px, 8vw, 80px);
-      margin: 15px 0;
-      color: #d94f76;
+    50% {
+        transform: scale(1.12);
     }
+}
 
-    h2 {
-      font-size: 40px;
-      color: #d94f76;
-    }
+/* =========================
+   FINAL BUTTONS
+========================= */
 
-    p {
-      max-width: 750px;
-      font-size: 20px;
-      line-height: 1.8;
-    }
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
 
-    .subtitle {
-      font-size: 25px;
-      font-weight: bold;
-    }
+button {
+    border: none;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-    .card {
-      background: rgba(255,255,255,0.8);
-      padding: 40px;
-      border-radius: 30px;
-      max-width: 850px;
-      box-shadow: 0 15px 40px rgba(180, 80, 110, 0.15);
-      margin: 20px;
-    }
+#yesBtn {
+    background: #dc5a83;
+    color: white;
+    box-shadow: 0 8px 25px rgba(220,90,131,0.3);
+}
 
-    .hug-bears {
-      font-size: 80px;
-      margin: 20px;
-    }
+#yesBtn:active {
+    transform: scale(0.95);
+}
 
-    .small-bear {
-      font-size: 65px;
-    }
+#noBtn {
+    background: white;
+    color: #d94f76;
+    border: 2px solid #efa4b9;
+}
 
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+/* =========================
+   FINAL MESSAGE
+========================= */
 
-    button {
-      border: none;
-      border-radius: 50px;
-      padding: 16px 35px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+#forgiven {
+    display: none;
+}
 
-    #yesBtn {
-      background: #e85d88;
-      color: white;
-      box-shadow: 0 8px 20px rgba(232, 93, 136, 0.3);
-    }
+.big {
+    font-size: clamp(75px, 20vw, 150px);
+}
 
-    #yesBtn:hover {
-      transform: scale(1.1);
-    }
+.signature {
+    margin-top: 25px;
+    color: #d94f76;
+    font-size: 25px;
+    font-weight: bold;
+}
 
-    #noBtn {
-      background: white;
-      color: #d94f76;
-      border: 2px solid #f2a1b9;
-      position: relative;
-    }
+/* =========================
+   MUSIC INDICATOR
+========================= */
 
-    .message {
-      display: none;
-      margin-top: 30px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #d94f76;
-    }
+.music {
+    position: fixed;
+    top: 15px;
+    right: 15px;
 
-    .hug-box {
-      font-size: 25px;
-      background: #fff;
-      border-radius: 30px;
-      padding: 30px;
-      max-width: 700px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
+    z-index: 100;
 
-    .signature {
-      font-size: 28px;
-      color: #c83f69;
-      font-weight: bold;
-      margin-top: 30px;
-    }
+    padding: 8px 13px;
 
-    footer {
-      padding: 40px 20px;
-      background: #d94f76;
-      color: white;
-      font-size: 18px;
-    }
+    border-radius: 20px;
 
-    .scroll {
-      margin-top: 40px;
-      font-size: 18px;
-      color: #9e536b;
-    }
-  </style>
+    background: rgba(255,255,255,0.6);
+
+    font-size: 13px;
+
+    opacity: 0.7;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Floating hearts -->
-  <div class="heart" style="left:5%; animation-delay:0s;">❤️</div>
-  <div class="heart" style="left:15%; animation-delay:2s;">💕</div>
-  <div class="heart" style="left:28%; animation-delay:4s;">💗</div>
-  <div class="heart" style="left:40%; animation-delay:1s;">💖</div>
-  <div class="heart" style="left:55%; animation-delay:3s;">❤️</div>
-  <div class="heart" style="left:70%; animation-delay:5s;">💕</div>
-  <div class="heart" style="left:85%; animation-delay:2s;">💗</div>
-  <div class="heart" style="left:95%; animation-delay:4s;">💖</div>
 
-  <div class="page">
+<!-- MUSIC STATUS -->
 
-    <!-- SECTION 1 -->
-    <section class="hero">
-
-      <div class="bear">🧸</div>
-
-      <h1>I'm Sowwyy 🥺❤️</h1>
-
-      <p class="subtitle">
-        Trixie, this little website is my way of saying...
-      </p>
-
-      <p>
-        I'm genuinely sorry.  
-        I know that sometimes simply saying "sorry" doesn't feel like enough,
-        so I wanted to make something a little more special.
-      </p>
-
-      <div class="scroll">
-        ↓ Keep scrolling ↓
-      </div>
-
-    </section>
+<div class="music" id="musicStatus">
+🎵 tap to start
+</div>
 
 
-    <!-- SECTION 2 -->
-    <section>
+<!-- =====================================================
+     PAGE 1
+===================================================== -->
 
-      <div class="card">
+<div class="page active" onclick="nextPage()">
 
-        <div class="hug-bears">
-          🧸🤗🧸
+    <div class="content">
+
+        <div class="bear">
+            🧸
         </div>
 
-        <h2>First... here's a hug 🫂</h2>
-
-        <p>
-          Imagine these two little bears walking over to you with their tiny
-          little arms open, ready to give you the biggest, warmest hug ever.
-        </p>
-
-        <p>
-          No arguing. No excuses. No trying to make things complicated.
-          Just one giant bear hug. 🧸❤️
-        </p>
-
-        <p>
-          🤗🤗🤗🤗🤗🤗🤗🤗🤗
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 3 -->
-    <section>
-
-      <div class="card">
-
-        <div class="small-bear">🧸💗</div>
-
-        <h2>I really am sorry</h2>
-
-        <p>
-          I know I may have messed up, and I know that saying sorry can't
-          magically erase what happened.
-        </p>
-
-        <p>
-          But I want you to know that I do care about your feelings.
-          I don't want you to feel ignored, hurt, or unappreciated.
-        </p>
-
-        <p>
-          You deserve honesty, kindness, patience, and someone who actually
-          listens when you say something is wrong.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 4 -->
-    <section>
-
-      <div class="hug-box">
-
-        <div style="font-size:100px;">
-          🧸
-        </div>
-
-        <h2>Bear with me for a second...</h2>
-
-        <p>
-          If I could send you a real hug through this screen,
-          I would probably send about 500 of them.
-        </p>
-
-        <p>
-          One for every time I made you upset.
-        </p>
-
-        <p>
-          One for every moment I should have listened better.
-        </p>
-
-        <p>
-          And about 498 extra ones just because you deserve them. 🫂❤️
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 5 -->
-    <section>
-
-      <div class="card">
-
-        <h2>Okay... serious bear meeting 🧸</h2>
-
-        <div style="font-size:70px;">
-          🧸 🧸 🧸
-        </div>
-
-        <p>
-          The bears have discussed the situation.
-        </p>
-
-        <p>
-          Their official conclusion is:
-        </p>
-
-        <h2>
-          "Please forgive this idiot." 😭
-        </h2>
-
-        <p>
-          They also voted unanimously for more hugs.
-        </p>
-
-        <div style="font-size:60px;">
-          🤗 ❤️ 🤗 ❤️ 🤗
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SECTION 6 -->
-    <section>
-
-      <div class="card">
-
-        <h2>One last thing...</h2>
-
-        <p>
-          I don't expect a website to fix everything.
-        </p>
-
-        <p>
-          I just wanted to put some effort into saying something that I
-          probably should have said properly in the first place:
-        </p>
-
-        <h1 style="font-size:55px;">
-          I'm sowwyy, Trixie 🥺❤️
+        <h1>
+            Hey Trixie...
         </h1>
 
         <p>
-          Can we make peace? 🧸🫂
+            I made something for you.
+        </p>
+
+        <p>
+            It's probably a little stupid...
+            maybe a little cheesy...
+            definitely a little too much...
+        </p>
+
+        <p>
+            But I wanted to try.
+        </p>
+
+        <p class="tiny">
+            (tap anywhere)
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 2
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bear">
+            🥺🧸
+        </div>
+
+        <h2>
+            I'm sowwyy...
+        </h2>
+
+        <p>
+            Yes.
+        </p>
+
+        <p>
+            I know "sorry" is just one word.
+        </p>
+
+        <p>
+            But behind this one little word is a whole lot
+            of me wishing I had handled things differently.
+        </p>
+
+        <p>
+            So this isn't just me saying "sorry."
+        </p>
+
+        <p>
+            This is me actually trying to tell you
+            how sorry I am.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 3
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bears">
+            🧸💗🧸
+        </div>
+
+        <h2>
+            First...
+        </h2>
+
+        <p>
+            I want you to know that your feelings matter.
+        </p>
+
+        <p>
+            If something I did hurt you,
+            I'm sorry.
+        </p>
+
+        <p>
+            I don't want you sitting there wondering
+            whether I actually care.
+        </p>
+
+        <p>
+            Because I do.
+        </p>
+
+        <p>
+            A lot.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 4
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="hug">
+            🧸🤗🧸
+        </div>
+
+        <h2>
+            Emergency bear hug 🫂
+        </h2>
+
+        <p>
+            Please imagine these two extremely qualified
+            professional bears walking toward you.
+        </p>
+
+        <p>
+            They have one job.
+        </p>
+
+        <h2>
+            HUG YOU.
+        </h2>
+
+        <p>
+            🫂 🫂 🫂 🫂 🫂
+        </p>
+
+        <p>
+            They refuse to leave until the hug has been
+            properly delivered.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 5
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bear">
+            🧸
+        </div>
+
+        <h2>
+            Okay... serious talk.
+        </h2>
+
+        <p>
+            I know I can't just make everything disappear
+            with a cute website.
+        </p>
+
+        <p>
+            And I don't want to make excuses.
+        </p>
+
+        <p>
+            If I messed up,
+            I should own it.
+        </p>
+
+        <p>
+            I'm sorry for the moments where I could've
+            been more understanding.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 6
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bears">
+            🧸🧸🧸
+        </div>
+
+        <h2>
+            The bears had a meeting.
+        </h2>
+
+        <p>
+            It was extremely serious.
+        </p>
+
+        <p>
+            There were snacks.
+        </p>
+
+        <p>
+            There were arguments.
+        </p>
+
+        <p>
+            One bear almost left the meeting.
+        </p>
+
+        <p>
+            But eventually...
+        </p>
+
+        <h2>
+            They reached a conclusion.
+        </h2>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 7
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bears">
+            🧸❤️🧸❤️🧸
+        </div>
+
+        <h2>
+            Their official statement:
+        </h2>
+
+        <p>
+            "This idiot should probably apologize properly."
+        </p>
+
+        <p>
+            😭
+        </p>
+
+        <p>
+            And then they unanimously voted for
+            approximately 700 hugs.
+        </p>
+
+        <div class="hug">
+            🫂
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 8
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bear">
+            🧸💞
+        </div>
+
+        <h2>
+            So here's my promise.
+        </h2>
+
+        <p>
+            I'll try to listen better.
+        </p>
+
+        <p>
+            I'll try to understand instead of immediately
+            trying to defend myself.
+        </p>
+
+        <p>
+            I'll try to remember that little things can
+            sometimes matter a lot.
+        </p>
+
+        <p>
+            And most importantly...
+        </p>
+
+        <p>
+            I'll try to make sure you know that
+            you matter to me.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 9
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bears">
+            🧸🤗🧸
+        </div>
+
+        <h2>
+            Another hug.
+        </h2>
+
+        <p>
+            Because apparently one wasn't enough.
+        </p>
+
+        <p>
+            Or ten.
+        </p>
+
+        <p>
+            Or fifty.
+        </p>
+
+        <div class="hug">
+            🫂❤️🫂
+        </div>
+
+        <p>
+            This one is the premium deluxe
+            emotionally supportive bear hug.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 10
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bear">
+            🥺🧸
+        </div>
+
+        <h2>
+            Trixie...
+        </h2>
+
+        <p>
+            I don't want you to remember this as
+            "that stupid thing we fought about."
+        </p>
+
+        <p>
+            I want you to remember that I cared enough
+            to sit down and make an entire ridiculously
+            long website just to say...
+        </p>
+
+        <h1 style="font-size:52px;">
+            I'm sowwyy. ❤️
+        </h1>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 11
+===================================================== -->
+
+<div class="page" onclick="nextPage()">
+
+    <div class="content">
+
+        <div class="bears">
+            🧸💗🧸
+        </div>
+
+        <h2>
+            Almost there...
+        </h2>
+
+        <p>
+            We've gone through:
+        </p>
+
+        <p>
+            🧸 Bears
+            <br>
+            🫂 Hugs
+            <br>
+            💗 Hearts
+            <br>
+            😭 Me being dramatic
+            <br>
+            🥺 Me apologizing
+        </p>
+
+        <p>
+            And now there's only one thing left.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE 12 — FINAL
+===================================================== -->
+
+<div class="page">
+
+    <div class="content">
+
+        <div class="bears">
+            🧸🫂🧸
+        </div>
+
+        <h1 style="font-size:52px;">
+            I'm sowwyy, Trixie 🥺❤️
+        </h1>
+
+        <p>
+            Can you forgive me?
         </p>
 
         <div class="buttons">
 
-          <button id="yesBtn" onclick="forgive()">
-            Yes 🥺❤️
-          </button>
+            <button id="yesBtn" onclick="forgive(event)">
+                YES ❤️
+            </button>
 
-          <button id="noBtn" onclick="moveNo()">
-            No 😭
-          </button>
+            <button id="noBtn" onclick="runAway(event)">
+                NO 😭
+            </button>
 
         </div>
 
-        <div id="message" class="message">
-          YAYYYYY 😭❤️🧸<br><br>
-          BIGGEST HUG INCOMING 🫂🫂🫂
-          <br><br>
-          🧸❤️🧸❤️🧸❤️🧸
+        <div id="forgiven">
+
+            <div class="big">
+                🧸🫂❤️🫂🧸
+            </div>
+
+            <h2>
+                YAYYYYY 😭❤️
+            </h2>
+
+            <p>
+                COME HEREEEEE 🫂
+            </p>
+
+            <p>
+                You have officially received
+                the world's biggest virtual bear hug.
+            </p>
+
+            <p>
+                🧸🫂🧸🫂🧸🫂🧸
+            </p>
+
+            <div class="signature">
+                I'm sowwyy, Trixie ❤️
+            </div>
+
         </div>
 
-      </div>
+    </div>
 
-    </section>
-
-
-    <!-- FINAL -->
-    <section>
-
-      <div class="card">
-
-        <div style="font-size:100px;">
-          🧸🫂🧸
-        </div>
-
-        <h1 style="font-size:55px;">
-          Thank you ❤️
-        </h1>
-
-        <p>
-          Whatever happens, I hope you know that this apology comes from
-          the heart.
-        </p>
-
-        <p>
-          I'm sorry for hurting you.
-        </p>
-
-        <p>
-          Sending you one final giant bear hug...
-        </p>
-
-        <div style="font-size:70px;">
-          🧸🤗❤️🤗🧸
-        </div>
-
-        <div class="signature">
-          I'm sowwyy, Trixie ❤️
-        </div>
-
-      </div>
-
-    </section>
+</div>
 
 
-    <footer>
-      Made with apologies, hugs & way too many bears 🧸❤️
-    </footer>
+<script>
 
-  </div>
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
 
+let currentPage = 0;
 
-  <script>
+const pages = document.querySelectorAll(".page");
 
-    function moveNo() {
+function nextPage() {
 
-      const button = document.getElementById("noBtn");
-
-      const maxX = window.innerWidth - button.offsetWidth - 30;
-      const maxY = window.innerHeight - button.offsetHeight - 30;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      button.style.position = "fixed";
-      button.style.left = x + "px";
-      button.style.top = y + "px";
+    if (currentPage >= pages.length - 1) {
+        return;
     }
 
+    startMusic();
 
-    function forgive() {
+    pages[currentPage].classList.remove("active");
 
-      document.getElementById("message").style.display = "block";
+    currentPage++;
 
-      for (let i = 0; i < 20; i++) {
+    pages[currentPage].classList.add("active");
 
-        const heart = document.createElement("div");
+    createHearts(5);
+}
 
-        heart.innerHTML = "❤️";
-        heart.className = "heart";
 
-        heart.style.left = Math.random() * 100 + "%";
-        heart.style.animationDuration =
-          (3 + Math.random() * 4) + "s";
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
 
-        document.body.appendChild(heart);
+function createHeart() {
 
-      }
+    const heart = document.createElement("div");
+
+    const hearts = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💞",
+        "🩷"
+    ];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.className = "heart";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+
+function createHearts(amount) {
+
+    for (let i = 0; i < amount; i++) {
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 150);
+
+    }
+}
+
+
+/* =====================================================
+   FINAL YES
+===================================================== */
+
+function forgive(event) {
+
+    event.stopPropagation();
+
+    document.getElementById("forgiven").style.display = "block";
+
+    document.getElementById("yesBtn").style.display = "none";
+
+    document.getElementById("noBtn").style.display = "none";
+
+    createHearts(35);
+}
+
+
+/* =====================================================
+   RUNAWAY NO BUTTON
+===================================================== */
+
+function runAway(event) {
+
+    event.stopPropagation();
+
+    const button =
+        document.getElementById("noBtn");
+
+    button.style.position = "fixed";
+
+    const maxX =
+        window.innerWidth - button.offsetWidth - 20;
+
+    const maxY =
+        window.innerHeight - button.offsetHeight - 20;
+
+    const x =
+        Math.random() * Math.max(maxX, 20);
+
+    const y =
+        Math.random() * Math.max(maxY, 20);
+
+    button.style.left = x + "px";
+
+    button.style.top = y + "px";
+
+    createHearts(3);
+}
+
+
+/* =====================================================
+   LITTLE ORIGINAL BEAT
+===================================================== */
+
+let audioStarted = false;
+
+let audioContext;
+let masterGain;
+
+function startMusic() {
+
+    if (audioStarted) {
+        return;
+    }
+
+    audioStarted = true;
+
+    try {
+
+        audioContext =
+            new (window.AudioContext ||
+            window.webkitAudioContext)();
+
+        masterGain =
+            audioContext.createGain();
+
+        masterGain.gain.value = 0.035;
+
+        masterGain.connect(
+            audioContext.destination
+        );
+
+        playBeat();
+
+        document.getElementById("musicStatus")
+            .innerHTML = "🎵 playing";
+
+    } catch (error) {
+
+        console.log("Audio unavailable");
+
+    }
+}
+
+
+function playKick(time) {
+
+    const osc =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    osc.frequency.setValueAtTime(
+        100,
+        time
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+        45,
+        time + 0.12
+    );
+
+    gain.gain.setValueAtTime(
+        0.8,
+        time
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.01,
+        time + 0.15
+    );
+
+    osc.connect(gain);
+
+    gain.connect(masterGain);
+
+    osc.start(time);
+
+    osc.stop(time + 0.15);
+}
+
+
+function playHat(time) {
+
+    const osc =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    osc.type = "square";
+
+    osc.frequency.value = 8000;
+
+    gain.gain.setValueAtTime(
+        0.08,
+        time
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        time + 0.04
+    );
+
+    osc.connect(gain);
+
+    gain.connect(masterGain);
+
+    osc.start(time);
+
+    osc.stop(time + 0.04);
+}
+
+
+function playBeat() {
+
+    if (!audioContext) {
+        return;
+    }
+
+    const now =
+        audioContext.currentTime;
+
+    const beatLength = 0.5;
+
+    for (let i = 0; i < 16; i++) {
+
+        const time =
+            now + i * beatLength;
+
+        if (i % 4 === 0) {
+            playKick(time);
+        }
+
+        playHat(time + 0.25);
 
     }
 
-  </script>
+    setTimeout(
+        playBeat,
+        16 * beatLength * 1000 - 100
+    );
+}
+
+
+/* =====================================================
+   START HEARTS
+===================================================== */
+
+setInterval(() => {
+
+    createHeart();
+
+}, 1400);
+
+</script>
 
 </body>
 </html>
