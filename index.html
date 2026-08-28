@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry Trixie 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5b3b4d;
+}
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 25px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.card {
+    width: min(90%, 500px);
+    padding: 35px 25px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(130,70,100,0.18);
+    position: relative;
+    z-index: 2;
+}
+
+.cat {
+    font-size: 100px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+h1 {
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 14px 30px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: #ff8fbd;
+    color: white;
+}
+
+#noBtn {
+    background: #e8b7cb;
+    color: white;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.big-heart {
+    font-size: 90px;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.sorry {
+    font-size: 24px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+
+    <span class="heart" style="left:10%; animation-delay:0s;">💗</span>
+    <span class="heart" style="left:25%; animation-delay:2s;">💕</span>
+    <span class="heart" style="left:45%; animation-delay:4s;">💖</span>
+    <span class="heart" style="left:65%; animation-delay:1s;">💗</span>
+    <span class="heart" style="left:85%; animation-delay:3s;">💞</span>
+
+</div>
+
+
+<!-- FIRST SCREEN -->
+
+<div class="card" id="mainCard">
+
+    <div class="cat">🥺🐱</div>
+
+    <h1>I'm sorry Trixie 💗</h1>
+
+    <p>
+        I know I messed up...
+        <br>
+        and I'm genuinely sorry, Trixie. 🥺
+        <br><br>
+        I never wanted to hurt you.
+        <br><br>
+        Will you forgive me? 💗
+    </p>
+
+    <div class="buttons">
+
+        <button id="yesBtn" onclick="yesClicked()">
+            Yes 💗
+        </button>
+
+        <button id="noBtn">
+            No 😭
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FINAL SCREEN -->
+
+<div class="card hidden" id="finalCard">
+
+    <div class="big-heart">💗</div>
+
+    <h1>Thank you Trixie 🥺💕</h1>
+
+    <p class="sorry">
+        I'm really, really sorry.
+    </p>
+
+    <p>
+        You mean so much to me, Trixie.
+        <br><br>
+        I promise I'll try my best
+        to make things right.
+        <br><br>
+        Please don't stay mad at me. 🥺
+    </p>
+
+    <div style="font-size:45px;">
+        🫂💗🫂
+    </div>
+
+</div>
+
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+
+
+function moveNoButton() {
+
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth - 20;
+    const maxY = window.innerHeight - buttonHeight - 20;
+
+    const randomX = Math.max(10, Math.random() * maxX);
+    const randomY = Math.max(10, Math.random() * maxY);
+
+    noBtn.style.position = "fixed";
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+
+/* NO button runs away 😂 */
+
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+noBtn.addEventListener("click", function() {
+    moveNoButton();
+});
+
+
+/* Phone support */
+
+noBtn.addEventListener("touchstart", function(event) {
+
+    event.preventDefault();
+
+    moveNoButton();
+
+});
+
+
+/* YES button */
+
+function yesClicked() {
+
+    document.getElementById("mainCard")
+        .classList.add("hidden");
+
+    document.getElementById("finalCard")
+        .classList.remove("hidden");
+
+    createExtraHearts();
+
+}
+
+
+/* Extra hearts */
+
+function createExtraHearts() {
+
+    for (let i = 0; i < 20; i++) {
+
+        const heart = document.createElement("span");
+
+        heart.innerHTML = "💗";
+
+        heart.className = "heart";
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        heart.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.querySelector(".hearts")
+            .appendChild(heart);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
