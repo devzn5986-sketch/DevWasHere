@@ -486,6 +486,408 @@ body.date-planner-active #dateMailbox{top:72px;}
 }
 </style>
 
+
+<style id="DATE_PLANNER_CLEAR_TEXT_FINAL">
+/* Final date-planner visibility fix: reset the inner scroller and keep text crisp. */
+#datePlanPage .content{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scroll-behavior:auto!important;
+  transform:none!important;
+  filter:none!important;
+  -webkit-font-smoothing:antialiased!important;
+  text-rendering:optimizeLegibility!important;
+}
+#datePlanPage .date-plan-card{
+  transform:none!important;
+  filter:none!important;
+  opacity:1!important;
+  contain:layout style!important;
+}
+#datePlanPage .eyebrow,#datePlanPage h2,#datePlanPage p,#datePlanPage .planner-title,#datePlanPage .planner-copy,#datePlanPage #plannerHint,#datePlanPage .tiny-love-note,#datePlanPage .activity-btn,#datePlanPage #plannerConfirmation,#datePlanPage #addToCalendar,#datePlanPage #instagramSendBtn,#datePlanPage #instagramSendNote{
+  transform:none!important;
+  filter:none!important;
+  opacity:1!important;
+}
+</style>
+
+<style id="REALISTIC_FIREFLY_POLISH">
+.firefly{
+  width:10px!important;height:10px!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle, #fffbd0 0 16%, #f7df7b 32%, rgba(247,223,123,.35) 58%, transparent 72%)!important;
+  box-shadow:0 0 7px #fff4ad,0 0 16px rgba(247,223,123,.78),0 0 28px rgba(247,214,102,.38)!important;
+  filter:none!important;
+  animation:fireflyGlow 1.15s ease-in-out infinite alternate, fireflyTravel 2.9s cubic-bezier(.25,.72,.32,1) forwards!important;
+}
+.firefly::before,.firefly::after{
+  content:""!important;position:absolute!important;
+  width:9px!important;height:4px!important;top:3px!important;
+  border-radius:70% 30% 70% 30%!important;
+  background:rgba(255,248,204,.28)!important;
+  filter:blur(.6px)!important;
+}
+.firefly::before{right:7px!important;transform:rotate(-22deg)!important;transform-origin:right center!important;animation:wingL .18s ease-in-out infinite alternate!important}
+.firefly::after{left:7px!important;transform:scaleX(-1) rotate(-22deg)!important;transform-origin:left center!important;animation:wingR .18s ease-in-out infinite alternate!important}
+@keyframes fireflyGlow{
+  0%{opacity:.45;transform:scale(.72)}
+  45%{opacity:1;transform:scale(1)}
+  100%{opacity:.62;transform:scale(.82)}
+}
+@keyframes wingL{to{transform:rotate(16deg) scaleY(.72)}}
+@keyframes wingR{to{transform:scaleX(-1) rotate(16deg) scaleY(.72)}}
+@keyframes fireflyTravel{
+  0%{margin-left:0;margin-top:0}
+  28%{margin-left:55px;margin-top:-28px}
+  52%{margin-left:118px;margin-top:18px}
+  76%{margin-left:185px;margin-top:-42px}
+  100%{margin-left:255px;margin-top:-5px}
+}
+</style>
+
+
+<style id="TEXT_COLOR_EMOJI_POLISH">
+.eyebrow{color:#e8c58d!important}
+.planner-copy{color:#d9d0c8!important}
+.tiny-love-note{color:#d9a8b5!important}
+#plannerHint{color:#e8d9ca!important}
+.celebration-message{color:#f4e8dc!important}
+.date-plan-card h2{color:#f0dfcf!important}
+</style>
+
+
+<style id="REAL_BUTTERFLIES_FIREFLY_ONLY">
+/* --- Only butterfly + date-firefly visuals --- */
+#yesFinale .flying-butterfly{
+  width:34px!important;height:30px!important;
+  font-size:0!important;
+  background:none!important;
+  filter:drop-shadow(0 4px 5px rgba(0,0,0,.34))!important;
+  overflow:visible!important;
+}
+#yesFinale .flying-butterfly::before,
+#yesFinale .flying-butterfly::after{display:none!important}
+#yesFinale .flying-butterfly .butterfly-svg{
+  width:100%!important;height:100%!important;
+  display:block!important;
+  overflow:visible!important;
+}
+#yesFinale .butterfly-svg .wing{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:butterflyWingBeat .19s ease-in-out infinite alternate;
+}
+#yesFinale .butterfly-svg .wing.r{
+  animation-delay:-.055s;
+}
+#yesFinale .butterfly-svg .body{
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.5));
+}
+@keyframes butterflyWingBeat{
+  0%{transform:rotateY(0deg) rotateZ(-2deg)}
+  100%{transform:rotateY(58deg) rotateZ(4deg)}
+}
+
+/* A separate, unmistakable firefly used only on the date page. */
+#realDateFirefly{
+  position:fixed!important;
+  left:0!important;top:0!important;
+  width:18px!important;height:18px!important;
+  z-index:100002!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  transform:translate3d(-100px,-100px,0)!important;
+  filter:drop-shadow(0 0 4px rgba(255,246,181,.9))
+         drop-shadow(0 0 13px rgba(255,221,113,.72))
+         drop-shadow(0 0 28px rgba(255,201,72,.32))!important;
+}
+#realDateFirefly .firefly-core{
+  position:absolute!important;left:50%!important;top:50%!important;
+  width:8px!important;height:8px!important;
+  transform:translate(-50%,-50%)!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,#fffef0 0 18%,#ffe98b 34%,#f4c75b 63%,transparent 78%)!important;
+  box-shadow:0 0 7px 3px rgba(255,242,166,.9)!important;
+}
+#realDateFirefly .firefly-wing{
+  position:absolute!important;
+  top:4px!important;
+  width:9px!important;height:6px!important;
+  border-radius:85% 20% 80% 20%!important;
+  background:linear-gradient(145deg,rgba(235,245,255,.65),rgba(255,255,255,.08))!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  transform-origin:bottom center!important;
+  animation:fireflyWingBeat .16s ease-in-out infinite alternate!important;
+}
+#realDateFirefly .firefly-wing.left{right:8px!important;transform:rotate(22deg)}
+#realDateFirefly .firefly-wing.right{left:8px!important;transform:scaleX(-1) rotate(22deg);animation-delay:-.05s}
+@keyframes fireflyWingBeat{
+  from{transform:rotate(20deg) scaleY(1)}
+  to{transform:rotate(-10deg) scaleY(.42)}
+}
+#realDateFirefly .firefly-wing.right{
+  animation-name:fireflyWingBeatR;
+}
+@keyframes fireflyWingBeatR{
+  from{transform:scaleX(-1) rotate(20deg) scaleY(1)}
+  to{transform:scaleX(-1) rotate(-10deg) scaleY(.42)}
+}
+#realDateFirefly .firefly-glow{
+  position:absolute!important;inset:-14px!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,rgba(255,232,128,.23),transparent 68%)!important;
+  animation:fireflyPulse .9s ease-in-out infinite alternate!important;
+}
+@keyframes fireflyPulse{
+  from{transform:scale(.78);opacity:.45}
+  to{transform:scale(1.12);opacity:.9}
+}
+</style>
+
+<script id="REAL_BUTTERFLIES_FIREFLY_ONLY_SCRIPT">
+(function(){
+  'use strict';
+
+  function butterflySVG(){
+    return '<svg class="butterfly-svg" viewBox="0 0 100 82" aria-hidden="true">'+
+      '<defs>'+
+      '<linearGradient id="bwL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7dfbf"/><stop offset=".42" stop-color="#d79a91"/><stop offset="1" stop-color="#795665"/></linearGradient>'+
+      '<linearGradient id="bwR" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7dfbf"/><stop offset=".42" stop-color="#d79a91"/><stop offset="1" stop-color="#795665"/></linearGradient>'+
+      '</defs>'+
+      '<g class="wing l"><path d="M48 39C35 10 8 5 6 10c-6 16 9 38 37 40z" fill="url(#bwL)" stroke="rgba(255,245,230,.65)" stroke-width="1.3"/><path d="M43 43C24 35 9 39 14 56c6 14 26 16 35 2z" fill="url(#bwL)" stroke="rgba(255,245,230,.5)" stroke-width="1.1"/></g>'+
+      '<g class="wing r"><path d="M52 39C65 10 92 5 94 10c6 16-9 38-37 40z" fill="url(#bwR)" stroke="rgba(255,245,230,.65)" stroke-width="1.3"/><path d="M57 43C76 35 91 39 86 56c-6 14-26 16-35 2z" fill="url(#bwR)" stroke="rgba(255,245,230,.5)" stroke-width="1.1"/></g>'+
+      '<ellipse class="body" cx="50" cy="43" rx="3.5" ry="17" fill="#21161b"/>'+
+      '<path d="M49 26c-5-8-8-8-10-7M51 26c5-8 8-8 10-7" fill="none" stroke="#24181c" stroke-width="1.4" stroke-linecap="round"/>'+
+      '<circle cx="50" cy="26" r="2.4" fill="#120e12"/>'+
+      '</svg>';
+  }
+
+  function upgradeButterflies(){
+    var root=document.getElementById('yesFinale');
+    if(!root)return;
+    root.querySelectorAll('.flying-butterfly').forEach(function(b){
+      if(!b.dataset.realButterfly){
+        b.dataset.realButterfly='1';
+        b.textContent='';
+        b.insertAdjacentHTML('afterbegin',butterflySVG());
+      }
+    });
+  }
+
+  function makeFirefly(){
+    var old=document.getElementById('realDateFirefly');
+    if(old)old.remove();
+    var f=document.createElement('div');
+    f.id='realDateFirefly';
+    f.innerHTML='<div class="firefly-glow"></div><div class="firefly-wing left"></div><div class="firefly-wing right"></div><div class="firefly-core"></div>';
+    document.body.appendChild(f);
+    return f;
+  }
+
+  function flyFirefly(dateInput){
+    if(!dateInput || !dateInput.value)return;
+    var f=makeFirefly();
+    var r=dateInput.getBoundingClientRect();
+    var x0=r.left+r.width/2, y0=r.top+r.height/2;
+    var x2=Math.min(innerWidth-55, innerWidth*.91), y2=Math.max(55, innerHeight*.13);
+    var x1=(x0+x2)/2 + (Math.random()-.5)*100;
+    var y1=(y0+y2)/2 - 90 - Math.random()*55;
+    var start=performance.now(), duration=3000;
+
+    function frame(now){
+      var t=Math.min(1,(now-start)/duration);
+      var e=t<.08?t/0.08*.08:(t>.9?.9+(t-.9)/.1*.1:t);
+      var q=1-e;
+      var x=q*q*x0+2*q*e*x1+e*e*x2;
+      var y=q*q*y0+2*q*e*y1+e*e*y2;
+      var bob=Math.sin(t*Math.PI*5)*5*(1-t);
+      var scale=.72+.28*Math.sin(t*Math.PI);
+      var opacity=t<.08?t/.08:(t>.88?(1-t)/.12:1);
+      f.style.opacity=opacity;
+      f.style.transform='translate3d('+(x-9)+'px,'+(y-9+bob)+'px,0) scale('+scale+')';
+      if(t<1)requestAnimationFrame(frame);
+      else f.remove();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function setup(){
+    var date=document.getElementById('hangoutDate');
+    if(date && !date.dataset.realFlyReady){
+      date.dataset.realFlyReady='1';
+      date.addEventListener('change',function(){flyFirefly(date)});
+      date.addEventListener('input',function(){flyFirefly(date)});
+    }
+    upgradeButterflies();
+    var obs=new MutationObserver(function(){upgradeButterflies()});
+    obs.observe(document.body,{subtree:true,childList:true});
+  }
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+})();
+</script>
+
+
+<style id="DATE_PAGE_SHOOTING_STARS_ONLY">
+#datePageShootingStars{
+  position:fixed!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  pointer-events:none!important;
+  z-index:1!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  transition:opacity .35s ease!important;
+}
+#datePageShootingStars.active{
+  opacity:1!important;
+  visibility:visible!important;
+}
+#datePageShootingStars canvas{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+}
+</style>
+
+<script id="DATE_PAGE_SHOOTING_STARS_ONLY_SCRIPT">
+(function(){
+  'use strict';
+  function initDateStars(){
+    if(window.__datePageStarsOnly)return;
+    window.__datePageStarsOnly=true;
+
+    var layer=document.getElementById('datePageShootingStars');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='datePageShootingStars';
+      var canvas=document.createElement('canvas');
+      layer.appendChild(canvas);
+      document.body.appendChild(layer);
+    }
+    var canvas=layer.querySelector('canvas');
+    var ctx=canvas.getContext('2d');
+    var w=0,h=0,dpr=1,stars=[],running=false,raf=0,last=0;
+
+    function resize(){
+      w=innerWidth; h=innerHeight;
+      dpr=Math.min(devicePixelRatio||1,2);
+      canvas.width=Math.floor(w*dpr);
+      canvas.height=Math.floor(h*dpr);
+      canvas.style.width=w+'px';
+      canvas.style.height=h+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    function makeStar(initial){
+      /* Every new star begins in the TOP-RIGHT and travels diagonally
+         down-left, so the bright head is always in front of its trail. */
+      var speed=250+Math.random()*180;
+      var angle=Math.PI*0.69+(Math.random()-.5)*0.16;
+      return {
+        x: initial ? w*(0.72+Math.random()*0.34) : w+35+Math.random()*180,
+        y: initial ? -30-Math.random()*h*.45 : -45-Math.random()*180,
+        vx:-Math.cos(Math.PI-angle)*speed,
+        vy:Math.sin(angle)*speed,
+        length:65+Math.random()*110,
+        width:1.1+Math.random()*1.2,
+        alpha:.58+Math.random()*.38,
+        phase:Math.random()*Math.PI*2
+      };
+    }
+
+    function seed(){
+      stars=[];
+      for(var i=0;i<16;i++) stars.push(makeStar(true));
+    }
+
+    function drawStar(s){
+      var velocity=Math.hypot(s.vx,s.vy);
+      var ux=s.vx/velocity, uy=s.vy/velocity;
+      var tx=s.x-ux*s.length, ty=s.y-uy*s.length;
+
+      ctx.save();
+      ctx.globalAlpha=s.alpha*(.82+.18*Math.sin(s.phase));
+      ctx.lineCap='round';
+      var g=ctx.createLinearGradient(tx,ty,s.x,s.y);
+      g.addColorStop(0,'rgba(255,255,255,0)');
+      g.addColorStop(.56,'rgba(225,238,255,.18)');
+      g.addColorStop(.86,'rgba(240,247,255,.7)');
+      g.addColorStop(1,'rgba(255,255,255,1)');
+      ctx.strokeStyle=g;
+      ctx.lineWidth=s.width;
+      ctx.shadowColor='rgba(220,238,255,.9)';
+      ctx.shadowBlur=9;
+      ctx.beginPath();
+      ctx.moveTo(tx,ty);
+      ctx.lineTo(s.x,s.y);
+      ctx.stroke();
+
+      ctx.shadowBlur=14;
+      ctx.fillStyle='#fff';
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,1.7,0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function active(){
+      var p=document.getElementById('datePlanPage');
+      return !!(p && p.classList.contains('active'));
+    }
+
+    function sync(){
+      var on=active();
+      layer.classList.toggle('active',on);
+      if(on && !running){
+        running=true;
+        resize();
+        if(!stars.length)seed();
+        last=performance.now();
+        raf=requestAnimationFrame(frame);
+      }else if(!on && running){
+        running=false;
+        cancelAnimationFrame(raf);
+        raf=0;
+        ctx.clearRect(0,0,w,h);
+      }
+    }
+
+    function frame(now){
+      if(!running)return;
+      var dt=Math.min(.04,(now-last)/1000);
+      last=now;
+      ctx.clearRect(0,0,w,h);
+
+      for(var i=0;i<stars.length;i++){
+        var s=stars[i];
+        s.x+=s.vx*dt;
+        s.y+=s.vy*dt;
+        s.phase+=dt*4;
+        if(s.y>h+s.length || s.x<-s.length){
+          stars[i]=makeStar(false);
+        }
+        drawStar(stars[i]);
+      }
+      raf=requestAnimationFrame(frame);
+    }
+
+    addEventListener('resize',resize,{passive:true});
+    new MutationObserver(sync).observe(document.body,{
+      subtree:true,attributes:true,attributeFilter:['class']
+    });
+    resize();
+    sync();
+  }
+
+  if(document.readyState==='loading')
+    document.addEventListener('DOMContentLoaded',initDateStars,{once:true});
+  else initDateStars();
+})();
+</script>
+
 </head><body><div id="shootingStars" aria-hidden="true"></div>
 
 <div class="progress" id="progress"></div><div class="top"><div class="brand"><b>♡</b> For you, Dear Maevy</div><div class="counter" id="counter">01 / 20</div></div><div id="snow"></div><div id="stars"></div>
@@ -594,7 +996,7 @@ body.date-planner-active #dateMailbox{top:72px;}
 const screens=[...document.querySelectorAll('.screen')],music=document.getElementById('bgMusic'),musicBtn=document.getElementById('musicBtn'),seek=document.getElementById('seek'),time=document.getElementById('time'),counter=document.getElementById('counter'),pageNo=document.getElementById('pageNo'),progress=document.getElementById('progress');
 const TOTAL=screens.length;let i=0;
 function fmt(s){return Number.isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00'}
-function show(n){i=(n+TOTAL)%TOTAL;screens.forEach((s,k)=>s.classList.toggle('active',k===i));counter.textContent=String(i+1).padStart(2,'0')+' / '+String(TOTAL).padStart(2,'0');pageNo.textContent=(i+1)+' / '+TOTAL;progress.style.width=((i+1)/TOTAL*100)+'%';document.getElementById('back').style.visibility=i===0?'hidden':'visible';document.getElementById('next').style.visibility=i===TOTAL-1?'hidden':'visible';document.getElementById('stars').classList.toggle('stars-on',i===TOTAL-1);document.body.classList.toggle('date-planner-active',i===TOTAL-1);if(i===TOTAL-1){document.getElementById('datePlanPage').scrollTop=0}}
+function show(n){i=(n+TOTAL)%TOTAL;screens.forEach((s,k)=>s.classList.toggle('active',k===i));counter.textContent=String(i+1).padStart(2,'0')+' / '+String(TOTAL).padStart(2,'0');pageNo.textContent=(i+1)+' / '+TOTAL;progress.style.width=((i+1)/TOTAL*100)+'%';document.getElementById('back').style.visibility=i===0?'hidden':'visible';document.getElementById('next').style.visibility=i===TOTAL-1?'hidden':'visible';document.getElementById('stars').classList.toggle('stars-on',i===TOTAL-1);document.body.classList.toggle('date-planner-active',i===TOTAL-1);if(i===TOTAL-1){var dp=document.getElementById('datePlanPage');var dc=dp.querySelector('.content');dp.scrollTop=0;if(dc)dc.scrollTop=0;requestAnimationFrame(function(){if(dc)dc.scrollTop=0})}}
 function goNext(){show(i+1)}
 function goPrev(){show(i-1)}
 async function startMusic(){try{if(music.paused){music.volume=.45;await music.play()}}catch(e){}}function begin(){startMusic();show(1)}function toggleMusic(){if(music.paused)startMusic();else music.pause()}function next(){show(i+1)}function prev(){show(i-1)}
@@ -1531,6 +1933,119 @@ show=function(n){
 })();
 </script>
 
+
+<style id="ENVELOPE_TEXT_AND_DATE_FIREFLY">
+/* Keep the little sentence underneath every envelope visible when the envelope opens. */
+.screen:nth-of-type(9) .envelope + .accent,
+.screen:nth-of-type(13) .envelope + .accent,
+.screen:nth-of-type(15) .envelope + .accent,
+.screen:nth-of-type(18) .envelope + .accent{
+  position:relative!important;
+  z-index:40!important;
+  opacity:1!important;
+  visibility:visible!important;
+  display:block!important;
+  clear:both!important;
+  margin-top:10px!important;
+}
+/* Mailbox is revealed by the firefly sequence, not immediately on page load. */
+#dateMailbox{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .55s ease,visibility .55s ease!important;}
+#dateMailbox.firefly-revealed{opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+#dateMailbox.firefly-revealed.show{display:block!important;}
+#dateMailboxBtn{transition:transform .35s ease,box-shadow .35s ease!important;}
+#dateMailbox.firefly-revealed #dateMailboxBtn{animation:mailboxArrival .75s ease both;}
+@keyframes mailboxArrival{
+  0%{transform:scale(.55);opacity:0}
+  65%{transform:scale(1.08);opacity:1}
+  100%{transform:scale(1);opacity:1}
+}
+#dateFirefly{
+  position:fixed;
+  left:0;top:0;
+  width:12px;height:12px;
+  border-radius:50%;
+  background:#fff8c9;
+  box-shadow:0 0 7px 3px rgba(255,241,166,.9),0 0 22px 8px rgba(255,220,120,.35);
+  z-index:100001;
+  pointer-events:none;
+  opacity:0;
+  transform:translate3d(0,0,0) scale(.5);
+}
+#dateFirefly::before,#dateFirefly::after{
+  content:"";
+  position:absolute;
+  top:2px;
+  width:7px;height:5px;
+  border-radius:80% 20% 80% 20%;
+  background:rgba(255,248,220,.72);
+  filter:blur(.2px);
+}
+#dateFirefly::before{right:9px;transform:rotate(22deg)}
+#dateFirefly::after{left:9px;transform:rotate(-22deg)}
+#dateFirefly.fly{
+  opacity:1;
+  animation:fireflyJourney 2.15s cubic-bezier(.22,.72,.28,1) forwards;
+}
+@keyframes fireflyJourney{
+  0%{transform:translate3d(var(--x0),var(--y0),0) scale(.55);opacity:0}
+  8%{opacity:1}
+  24%{transform:translate3d(calc(var(--x0) + (var(--x1) - var(--x0))*.20),calc(var(--y0) + (var(--y1) - var(--y0))*.20 - 42px),0) scale(.8)}
+  45%{transform:translate3d(calc(var(--x0) + (var(--x1) - var(--x0))*.45),calc(var(--y0) + (var(--y1) - var(--y0))*.45 + 28px),0) scale(1)}
+  68%{transform:translate3d(calc(var(--x0) + (var(--x1) - var(--x0))*.70),calc(var(--y0) + (var(--y1) - var(--y0))*.70 - 35px),0) scale(.9)}
+  88%{opacity:1}
+  100%{transform:translate3d(var(--x1),var(--y1),0) scale(.65);opacity:0}
+}
+@media(max-width:600px){
+  #dateFirefly{width:10px;height:10px}
+}
+</style>
+<script id="DATE_FIREFLY_REVEAL_SCRIPT">
+(function(){
+  function setup(){
+    var date=document.getElementById('hangoutDate');
+    var mailbox=document.getElementById('dateMailbox');
+    if(!date||!mailbox||date.dataset.fireflyReady==='1') return;
+    date.dataset.fireflyReady='1';
+
+    var fly=document.createElement('div');
+    fly.id='dateFirefly';
+    document.body.appendChild(fly);
+
+    function reveal(){
+      if(!date.value) return;
+      var r=date.getBoundingClientRect();
+      var bx=Math.min(window.innerWidth-80, window.innerWidth*.90);
+      var by=Math.max(70, window.innerHeight*.14);
+      var x0=r.left+r.width*.5, y0=r.top+r.height*.5;
+      fly.style.setProperty('--x0',x0+'px');
+      fly.style.setProperty('--y0',y0+'px');
+      fly.style.setProperty('--x1',bx+'px');
+      fly.style.setProperty('--y1',by+'px');
+      fly.classList.remove('fly');
+      void fly.offsetWidth;
+      fly.classList.add('fly');
+
+      /* Let the firefly finish its little journey, then reveal the mailbox. */
+      setTimeout(function(){
+        mailbox.classList.add('firefly-revealed','show');
+        var savedText=document.getElementById('mailboxDate');
+        var activityText=document.getElementById('mailboxActivity');
+        if(savedText && (!activityText || !activityText.textContent.trim())){
+          savedText.textContent='A little day is waiting for us. ♡';
+        }
+        if(activityText && !activityText.textContent.trim()) activityText.textContent='Choose the date idea and time below. ❤️';
+      },2150);
+      setTimeout(function(){fly.classList.remove('fly')},2250);
+    }
+    date.addEventListener('change',reveal);
+    date.addEventListener('input',reveal);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+  window.addEventListener('load',setup,{once:true});
+})();
+</script>
+
 </body>
 
 <!-- PREMIUM INTERACTION LAYER: visual/interaction enhancements only; existing content is untouched. -->
@@ -1650,7 +2165,7 @@ show=function(n){
   if(typeof oldYes!=='function' || oldYes.__romanticCelebration) return;
   function make(){
     var o=document.createElement('div');o.id='yesCelebration';
-    o.innerHTML='<div class="flash"></div><div class="ring"></div><div class="message"><span class="big">the let me love you better</span></div>';
+    o.innerHTML='<div class="flash"></div><div class="ring"></div><div class="message"><span class="big">Then Let Me Love YOU Better</span></div>';
     document.body.appendChild(o);
     var symbols=['❤','♡','♥','✦','✧','·'];
     for(var i=0;i<46;i++){var p=document.createElement('span');p.className='yesParticle';p.textContent=symbols[i%symbols.length];var a=Math.random()*Math.PI*2,d=180+Math.random()*Math.max(innerWidth,innerHeight)*.62;p.style.setProperty('--dx',(Math.cos(a)*d)+'px');p.style.setProperty('--dy',(Math.sin(a)*d)+'px');p.style.setProperty('--rot',((Math.random()*100)-50)+'deg');p.style.animationDelay=(Math.random()*.5)+'s';o.appendChild(p)}
@@ -2005,7 +2520,7 @@ body.final-forward-stars #shootingStars #reliableMeteorCanvas{display:block!impo
   function finale(){
     var old=document.getElementById('yesFinale'); if(old) old.remove();
     var o=document.createElement('div');o.id='yesFinale';
-    o.innerHTML='<div class="vignette"></div><div class="core"></div><div class="ring"></div><div class="words"><span class="big">the let me love you better</span></div>'; var butterflies=['🦋','🦋','🦋','🦋','🦋','🦋','🦋','🦋','🦋','🦋']; butterflies.forEach(function(g){var b=document.createElement('span');b.className='flying-butterfly';b.textContent=g;b.style.setProperty('--sx',(-12-Math.random()*8)+'vw');b.style.setProperty('--sy',(8+Math.random()*78)+'vh');b.style.setProperty('--dur',(8+Math.random()*5)+'s');b.style.setProperty('--delay',(-Math.random()*10)+'s');o.appendChild(b);});
+    o.innerHTML='<div class="vignette"></div><div class="core"></div><div class="ring"></div><div class="words"><span class="big">Then Let Me Love YOU Better</span></div>'; var butterflies=['🦋','🦋','🦋','🦋','🦋','🦋','🦋','🦋','🦋','🦋']; butterflies.forEach(function(g){var b=document.createElement('span');b.className='flying-butterfly';b.textContent=g;b.style.setProperty('--sx',(-12-Math.random()*8)+'vw');b.style.setProperty('--sy',(8+Math.random()*78)+'vh');b.style.setProperty('--dur',(8+Math.random()*5)+'s');b.style.setProperty('--delay',(-Math.random()*10)+'s');o.appendChild(b);});
     var symbols=['❤','♡','♥','✦','✧'];
     for(var i=0;i<70;i++){
       var p=document.createElement('span');p.className='yf-heart';p.textContent=symbols[i%symbols.length];
