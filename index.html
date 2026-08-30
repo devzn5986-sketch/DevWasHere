@@ -1277,12 +1277,8 @@ body::before{
   inset:0;
   z-index:2;
   pointer-events:none;
-  opacity:.18;
-  background-image:
-    radial-gradient(circle at 20% 20%,rgba(255,255,255,.08) 0 1px,transparent 1.5px),
-    radial-gradient(circle at 80% 70%,rgba(255,220,180,.055) 0 1px,transparent 1.5px);
-  background-size:4px 4px,7px 7px;
-  mix-blend-mode:screen;
+  opacity:0;
+  background:none;
 }
 body::after{
   content:"";
@@ -1589,10 +1585,10 @@ body{overscroll-behavior:none;-webkit-text-size-adjust:100%;}
 <section class="screen"><div class="bg bg12"></div><div class="content"><div class="card"><div class="eyebrow">No pressure</div><h2>You don't have to forgive me immediately.</h2><p>You don't owe me an answer just because I made a website. If you need time, take it.</p><p>If you want space, I'll respect that. If you want to talk, I'll listen.</p><p class="accent">I want your choice to be yours. 🤍</p></div></div></section>
 <section class="screen"><div class="bg bg13"></div><div class="content"><div class="card"><div class="eyebrow">Open this little envelope</div><h2>A second letter.</h2><div class="envelope" role="button" tabindex="0" aria-label="Open letter"><span class="envelope-emoji">💌</span><div class="note">I don't expect everything to be fixed overnight. I just want to show you that I heard you, that I care, and that I'm willing to do the work. — Always ♡</div></div><p class="accent">There are some things that feel better written slowly.</p></div></div></section>
 <section class="screen"><div class="bg bg14"></div><div class="content"><div class="card"><div class="eyebrow">Reasons I’m grateful</div><h2>For you.</h2><div class="reasons"><div class="reason"><b>♡</b>You make me laugh</div><div class="reason"><b>✦</b>You accept me</div><div class="reason"><b>☼</b>You bring warmth</div><div class="reason"><b>∞</b>You make ordinary moments matter</div></div><p class="accent">Thank you for being part of my life, Maevy.</p></div></div></section>
-<section class="screen"><div class="bg bg15"></div><div class="content"><div class="card"><div class="eyebrow">A third little letter 💌</div><h2>What I want to do differently.</h2><p>There have been good days, difficult days, silly days, and moments we probably wish we could rewrite.</p><p>But I don't want to erase the story. I want to learn from it and make the next parts gentler.</p><div class="envelope" role="button" tabindex="0" aria-label="Open the third letter"><span class="envelope-emoji">💌</span><div class="note"><h3>My third little letter ❤️</h3><p>I want to slow down, listen, and let my actions show you I care. I’ll choose patience, honesty, and better communication.</p></div></div><p class="accent">The future is built one ordinary day at a time.</p></div></div></section>
+<section class="screen"><div class="bg bg15"></div><div class="content"><div class="card"><div class="eyebrow">A third little letter 💌</div><h2>What I want to do differently.</h2><p>There have been good days, difficult days, silly days, and moments we probably wish we could rewrite.</p><p>But I don't want to erase the story. I want to learn from it and make the next parts gentler.</p><div class="envelope" role="button" tabindex="0" aria-label="Open the third letter"><span class="envelope-emoji">💌</span><div class="note"><h3>My third little letter ❤️</h3><p>I’ll slow down, listen better, and let my actions show you how much I care. ❤️</p></div></div><p class="accent">The future is built one ordinary day at a time.</p></div></div></section>
 <section class="screen"><div class="bg bg16"></div><div class="content"><div class="card"><div class="eyebrow">I admire you because…</div><h2>You’re you.</h2><p>Your strength, your kindness, your way of caring, the things that make you laugh, and all the little details that make you unmistakably yourself.</p><p class="accent">I’m lucky to know you.</p></div></div></section>
 <section class="screen"><div class="bg bg17"></div><div class="content"><div class="card"><div class="eyebrow">One last thing</div><h2>I want you to be happy.</h2><p>More than getting the “right” answer from you, I want you to feel respected, heard, and cared for.</p><p>Whatever happens next, I hope you know that this was made with genuine thought and genuine gratitude.</p><p class="accent">Thank you for reading this far.</p></div></div></section>
-<section class="screen"><div class="bg bg18"></div><div class="content"><div class="card fourth-letter-card"><div class="eyebrow">A fourth little letter 💌</div><h2>Can we try again?</h2><p>I am not asking you to forget what happened. I just want one honest chance to show you that I can do better.</p><div class="envelope" role="button" tabindex="0" aria-label="Open the fourth letter"><span class="envelope-emoji">💌</span><div class="note"><h3>One last thing I want to ask ❤️</h3><p>If there is still a little hope for us, I would really love to ask you one simple question.</p><p><strong>Would you like to try again? ❤️</strong></p></div></div><p class="accent">Tap the envelope to reveal the secret letter.</p></div></div></section>
+<section class="screen"><div class="bg bg18"></div><div class="content"><div class="card fourth-letter-card"><div class="eyebrow">A fourth little letter 💌</div><h2>Can we try again?</h2><p>I just want one honest chance to do better.</p><div class="envelope" role="button" tabindex="0" aria-label="Open the fourth letter"><span class="envelope-emoji">💌</span><div class="note"><h3>One last thing ❤️</h3><p>Can we try again? I’d love to make things right. ❤️</p></div></div><p class="accent">Tap the envelope to reveal the secret letter.</p></div></div></section>
 <section class="screen"><div class="bg bg19"></div><div class="content"><div class="card yes-no-card"><div class="eyebrow">One last question</div><h2>Would you like to try again? ❤️</h2><p id="choiceMessage">I would be grateful for one honest chance. But whatever you choose, your answer is yours.</p><div class="actions choice-actions"><button class="btn yes-choice" onclick="yes()">Yes ❤️</button><button class="btn no-choice" onclick="noClick()">No 🥺</button></div><p class="choice-count" id="choiceCount">Choose when you're ready.</p></div></div></section>
 <section class="screen">
 <div class="bg bg20"></div>
@@ -3079,15 +3075,7 @@ show=function(n){
       fly.classList.add('fly');
 
       /* Let the firefly finish its little journey, then reveal the mailbox. */
-      setTimeout(function(){
-        mailbox.classList.add('firefly-revealed','show');
-        var savedText=document.getElementById('mailboxDate');
-        var activityText=document.getElementById('mailboxActivity');
-        if(savedText && (!activityText || !activityText.textContent.trim())){
-          savedText.textContent='A little day is waiting for us. ♡';
-        }
-        if(activityText && !activityText.textContent.trim()) activityText.textContent='Choose the date idea and time below. ❤️';
-      },2150);
+      /* Reveal is handled by the firefly's actual pop sequence. */
       setTimeout(function(){fly.classList.remove('fly')},2250);
     }
     date.addEventListener('change',reveal);
@@ -3507,6 +3495,232 @@ show=function(n){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 })();
 </script>
+
+<style id="FINAL_MAILBOX_POSITION_FIX">
+/* Only the requested visual cleanup: remove the dotted grain and place the mailbox left on the final page. */
+body.final-page-mailbox #dateMailbox{
+  left:18px!important;
+  right:auto!important;
+}
+@media(max-width:600px){
+  body.final-page-mailbox #dateMailbox{
+    left:12px!important;
+    right:auto!important;
+  }
+}
+</style>
+<script id="FINAL_MAILBOX_POSITION_FIX_SCRIPT">
+(function(){
+  function updateMailboxPosition(){
+    var ss=document.querySelectorAll('.screen');
+    var last=ss.length ? ss[ss.length-1] : null;
+    var isFinal=!!(last && last.classList.contains('active'));
+    document.body.classList.toggle('final-page-mailbox',isFinal);
+  }
+  function init(){
+    updateMailboxPosition();
+    var obs=new MutationObserver(updateMailboxPosition);
+    document.querySelectorAll('.screen').forEach(function(s){
+      obs.observe(s,{attributes:true,attributeFilter:['class']});
+    });
+    window.addEventListener('resize',updateMailboxPosition,{passive:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
+</script>
+
+<style id="FINAL_EXACT_FIX_NO_DOTS_LEFT_MAILBOX">
+/* FINAL REQUEST: remove the dotted overlay completely. */
+body::before{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+/* Keep the existing background/atmosphere; only remove the dotted texture overlay. */
+/* Page 21 mailbox: move the mailbox and its panel to the left. */
+#dateMailbox{
+  left:18px !important;
+  right:auto !important;
+  top:18px !important;
+}
+#dateMailboxPanel{
+  left:0 !important;
+  right:auto !important;
+}
+@media(max-width:600px){
+  #dateMailbox{
+    left:12px !important;
+    right:auto !important;
+    top:12px !important;
+  }
+}
+</style>
+<script id="FINAL_EXACT_FIX_FIREFLY_RIGHT">
+(function(){
+  function patchFirefly(){
+    var date=document.getElementById('hangoutDate');
+    if(!date || date.dataset.leftFireflyPatched==='1') return;
+    date.dataset.leftFireflyPatched='1';
+    date.addEventListener('change',function(){setTimeout(setRightTarget,0)},true);
+    date.addEventListener('input',function(){setTimeout(setRightTarget,0)},true);
+    function setRightTarget(){
+      var fly=document.getElementById('dateFirefly');
+      if(!fly || !date.value) return;
+      var mailbox=document.getElementById('dateMailboxBtn');
+      if(mailbox){
+        var r=mailbox.getBoundingClientRect();
+        fly.style.setProperty('--x1',(r.left+r.width/2)+'px');
+        fly.style.setProperty('--y1',(r.top+r.height/2)+'px');
+      }else{
+        var bx=Math.min(window.innerWidth-55, window.innerWidth * .91);
+        var by=Math.max(70, window.innerHeight * .14);
+        fly.style.setProperty('--x1',bx+'px');
+        fly.style.setProperty('--y1',by+'px');
+      }
+    }
+    window.addEventListener('resize',setRightTarget,{passive:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',patchFirefly,{once:true});
+  else patchFirefly();
+  window.addEventListener('load',patchFirefly,{once:true});
+})();
+</script>
+
+<!-- FINAL 4TH LETTER + RIGHT-SIDE FIREFLY FIX -->
+<style id="FINAL_4TH_LETTER_RIGHT_SIDE_FIX">
+  /* The mailbox belongs on the right side; no other layout is changed. */
+  #dateMailbox{
+    left:auto!important;
+    right:18px!important;
+  }
+  #dateMailboxPanel{
+    left:auto!important;
+    right:0!important;
+  }
+  @media(max-width:600px){
+    #dateMailbox{
+      left:auto!important;
+      right:12px!important;
+    }
+  }
+  /* Keep the firefly's entire journey on the right side before it reaches the mailbox. */
+  #dateFirefly{
+    z-index:100001!important;
+  }
+</style>
+<script id="FINAL_RIGHT_SIDE_FIREFLY_ENFORCER">
+(function(){
+  function enforceRightPath(){
+    var date=document.getElementById('hangoutDate');
+    var fly=document.getElementById('dateFirefly');
+    var mailbox=document.getElementById('dateMailboxBtn');
+    if(!date || !fly || !date.value) return;
+    var r=date.getBoundingClientRect();
+    var m=mailbox ? mailbox.getBoundingClientRect() : null;
+    var x0=r.left+r.width*.5, y0=r.top+r.height*.5;
+    var x1=m ? (m.left+m.width*.5) : Math.min(innerWidth-55,innerWidth*.91);
+    var y1=m ? (m.top+m.height*.5) : Math.max(70,innerHeight*.14);
+    /* Start from the date picker, then bend immediately toward the right. */
+    fly.style.setProperty('--x0',x0+'px');
+    fly.style.setProperty('--y0',y0+'px');
+    fly.style.setProperty('--x1',x1+'px');
+    fly.style.setProperty('--y1',y1+'px');
+  }
+  function setup(){
+    var date=document.getElementById('hangoutDate');
+    if(!date) return;
+    ['input','change'].forEach(function(ev){date.addEventListener(ev,function(){setTimeout(enforceRightPath,20);},true);});
+    window.addEventListener('resize',function(){setTimeout(enforceRightPath,20);},{passive:true});
+    setTimeout(enforceRightPath,100);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+})();
+</script>
+
+
+
+<!-- FINAL REQUEST PATCH: keep final-page controls bottom-left and force firefly to right mailbox. -->
+<style id="FINAL_BOTTOM_LEFT_AND_RIGHT_FIREFLY_PATCH">
+/* Final page: Back + page counter live in a dedicated bottom-left safe zone. */
+body.final-page-mailbox .controls{
+  left:14px!important;
+  right:auto!important;
+  bottom:14px!important;
+  transform:none!important;
+  margin:0!important;
+  z-index:95!important;
+}
+body.final-page-mailbox .controls .btn#back{
+  min-width:105px!important;
+}
+body.final-page-mailbox .controls #next{
+  display:none!important;
+}
+body.final-page-mailbox .controls .pageNo{
+  min-width:58px!important;
+}
+/* Final page: Extras and mailbox remain on the right, vertically separated. */
+body.final-page-mailbox #mxBow{
+  right:17px!important;left:auto!important;top:48px!important;
+}
+body.final-page-mailbox #dateMailbox{
+  right:17px!important;left:auto!important;top:112px!important;
+}
+@media(max-width:700px){
+  body.final-page-mailbox .controls{
+    left:10px!important;
+    bottom:calc(76px + env(safe-area-inset-bottom))!important;
+  }
+  body.final-page-mailbox #mxBow{right:10px!important;top:42px!important;}
+  body.final-page-mailbox #dateMailbox{right:10px!important;top:98px!important;}
+}
+</style>
+<script id="FINAL_FORCE_RIGHT_MAILBOX_FIREFLY_PATCH">
+(function(){
+  'use strict';
+  function isFinal(){
+    var ss=document.querySelectorAll('.screen');
+    return !!(ss.length && ss[ss.length-1].classList.contains('active'));
+  }
+  function force(){
+    if(!isFinal()) return;
+    var fly=document.getElementById('dateFirefly');
+    var mailbox=document.getElementById('dateMailboxBtn');
+    if(!fly||!mailbox)return;
+    var r=mailbox.getBoundingClientRect();
+    var x1=r.left+r.width/2, y1=r.top+r.height/2;
+    fly.style.setProperty('--x1',x1+'px');
+    fly.style.setProperty('--y1',y1+'px');
+  }
+  function restartRight(){
+    if(!isFinal()) return;
+    var fly=document.getElementById('dateFirefly');
+    if(!fly)return;
+    force();
+    if(fly.classList.contains('fly')){
+      fly.classList.remove('fly');
+      void fly.offsetWidth;
+      force();
+      fly.classList.add('fly');
+    }
+  }
+  function init(){
+    force();
+    setTimeout(force,30);
+    setTimeout(force,150);
+    setTimeout(force,500);
+    document.addEventListener('change',function(){setTimeout(restartRight,0)},true);
+    document.addEventListener('input',function(){setTimeout(restartRight,0)},true);
+    window.addEventListener('resize',function(){setTimeout(force,30)}, {passive:true});
+    setInterval(force,250);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
+</script>
 </body>
 
 <!-- PREMIUM INTERACTION LAYER: visual/interaction enhancements only; existing content is untouched. -->
@@ -3714,6 +3928,95 @@ show=function(n){
   function wrappedYes(){celebrate();return oldYes.apply(this,arguments)}
   wrappedYes.__romanticCelebration=true;
   window.yes=wrappedYes;
+})();
+</script>
+
+
+<!-- FINAL VISIBLE FIREFLY PATCH: final page only, always travels toward the right mailbox. -->
+<style id="FINAL_VISIBLE_RIGHT_FIREFLY">
+#finalVisibleFirefly{
+  position:fixed!important;
+  left:0!important;top:0!important;
+  width:14px!important;height:14px!important;
+  margin:0!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,#fffef0 0 16%,#ffe98b 35%,#f4c75b 62%,transparent 78%)!important;
+  box-shadow:0 0 8px 3px rgba(255,242,166,.95),0 0 20px 7px rgba(255,220,120,.42),0 0 34px 12px rgba(255,201,72,.18)!important;
+  z-index:100004!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  transform:translate3d(-50px,-50px,0) scale(.55)!important;
+}
+#finalVisibleFirefly::before,#finalVisibleFirefly::after{
+  content:""!important;
+  position:absolute!important;
+  top:3px!important;
+  width:9px!important;height:5px!important;
+  border-radius:85% 20% 80% 20%!important;
+  background:rgba(255,248,220,.7)!important;
+  filter:blur(.25px)!important;
+}
+#finalVisibleFirefly::before{right:8px!important;transform:rotate(22deg)!important}
+#finalVisibleFirefly::after{left:8px!important;transform:rotate(-22deg) scaleX(-1)!important}
+@media(max-width:600px){#finalVisibleFirefly{width:11px!important;height:11px!important}}
+</style>
+<script id="FINAL_VISIBLE_RIGHT_FIREFLY_SCRIPT">
+(function(){
+  'use strict';
+  var timer=null, active=false;
+  function screens(){return document.querySelectorAll('.screen')}
+  function isFinal(){var s=screens();return !!(s.length && s[s.length-1].classList.contains('active'))}
+  function getFly(){
+    var f=document.getElementById('finalVisibleFirefly');
+    if(!f){f=document.createElement('div');f.id='finalVisibleFirefly';document.body.appendChild(f)}
+    return f;
+  }
+  function flyOnce(){
+    if(!isFinal()) return;
+    var mailbox=document.getElementById('dateMailboxBtn');
+    var f=getFly();
+    var mr=mailbox ? mailbox.getBoundingClientRect() : null;
+    /* Start in the open space to the left of the right-side mailbox. */
+    var targetX=mr ? mr.left+mr.width/2 : innerWidth*.91;
+    var targetY=mr ? mr.top+mr.height/2 : innerHeight*.16;
+    var startX=Math.min(targetX-150, innerWidth*.60);
+    startX=Math.max(30,startX);
+    var startY=Math.min(innerHeight-130, Math.max(innerHeight*.56, targetY+250));
+    var dx=targetX-startX;
+    if(dx<90){startX=Math.max(25,targetX-190);dx=targetX-startX}
+    var pts=[
+      [startX,startY],
+      [startX+dx*.20,startY-48],
+      [startX+dx*.42,startY+18],
+      [startX+dx*.64,startY-42],
+      [startX+dx*.82,targetY+22],
+      [targetX,targetY]
+    ];
+    f.getAnimations().forEach(function(a){a.cancel()});
+    f.style.opacity='1';
+    f.style.transform='translate3d('+(startX-7)+'px,'+(startY-7)+'px,0) scale(.55)';
+    var frames=pts.map(function(p,i){
+      return {transform:'translate3d('+(p[0]-7)+'px,'+(p[1]-7)+'px,0) scale('+(i===pts.length-1?.68:(i===0?.55:1))+')',opacity:i===0?0:(i===pts.length-1?0:1)};
+    });
+    frames[1].opacity=1;
+    var a=f.animate(frames,{duration:2800,easing:'cubic-bezier(.22,.72,.28,1)',fill:'forwards'});
+    a.onfinish=function(){f.style.opacity='0'};
+  }
+  function start(){
+    if(!isFinal()){if(timer){clearInterval(timer);timer=null}active=false;var f=document.getElementById('finalVisibleFirefly');if(f)f.style.opacity='0';return}
+    if(active)return;
+    active=true;
+    flyOnce();
+    timer=setInterval(function(){if(isFinal())flyOnce();else start()},4800);
+  }
+  function check(){if(isFinal())start();else{active=false;if(timer){clearInterval(timer);timer=null}var f=document.getElementById('finalVisibleFirefly');if(f)f.style.opacity='0'}}
+  function init(){
+    check();
+    document.querySelectorAll('.screen').forEach(function(s){new MutationObserver(check).observe(s,{attributes:true,attributeFilter:['class']})});
+    window.addEventListener('resize',function(){if(isFinal()){active=false;if(timer){clearInterval(timer);timer=null}setTimeout(start,80)}},{passive:true});
+    setInterval(check,700);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
 </html>
@@ -4264,3 +4567,1222 @@ body.final-forward-stars #shootingStars #reliableMeteorCanvas{display:block!impo
   });
 })();
 </script>
+
+<!-- MAEVY UNIVERSAL DEVICE + MINI-GAME UPGRADE: additive only; original story/content preserved. -->
+<style id="MAEVY_UNIVERSAL_MOBILE_V5">
+/* ---------- universal sizing / safe areas ---------- */
+html,body{width:100%;min-width:0;max-width:100%;}
+body{overscroll-behavior:none;-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;}
+button,input,select,textarea{font:inherit;max-width:100%;}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+
+/* Let the story itself scroll on every short/tall/narrow device instead of clipping. */
+.screen{overflow:hidden!important;min-width:0;}
+.screen .content{
+  overflow-y:auto!important;overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:none!important;
+  align-items:center!important;
+  min-width:0!important;
+}
+.screen .content::-webkit-scrollbar{display:none!important}
+.screen .card{min-width:0!important;overflow:visible!important;max-width:calc(100vw - 36px)!important;}
+.screen .card *{max-width:100%;}
+.screen .card p,.screen .card h1,.screen .card h2,.screen .card h3{overflow-wrap:anywhere;word-break:normal;}
+
+/* Never let decorative navigation sit on top of story copy. */
+@media (max-width:900px){
+  .top{top:max(8px,env(safe-area-inset-top));padding-inline:12px!important;min-height:38px;}
+  .brand{font-size:clamp(17px,5vw,21px)!important;max-width:58vw;overflow:hidden;text-overflow:ellipsis;}
+  .counter{right:12px!important;font-size:9px!important;}
+  .mx-bow{left:10px!important;right:auto!important;top:max(50px,calc(env(safe-area-inset-top) + 42px))!important;width:40px!important;height:40px!important;z-index:91!important;}
+  #mxPanel{left:10px!important;right:10px!important;top:max(98px,calc(env(safe-area-inset-top) + 90px))!important;width:auto!important;max-width:420px;margin:auto;max-height:calc(100dvh - 120px);overflow:auto!important;}
+  #mxDots{bottom:calc(env(safe-area-inset-bottom) + 119px)!important;max-width:70vw!important;overflow:hidden!important;}
+  #mxDots .mx-dot{flex:0 0 auto;}
+
+  /* Bottom controls occupy their own lanes. */
+  .controls{
+    left:50%!important;bottom:calc(env(safe-area-inset-bottom) + 61px)!important;
+    width:max-content;max-width:calc(100vw - 92px);gap:7px!important;
+    padding:5px 7px!important;z-index:80!important;
+  }
+  .controls .btn{min-width:0!important;width:auto!important;padding:9px 13px!important;font-size:13px!important;white-space:nowrap;}
+  .pageNo{min-width:46px!important;font-size:9px!important;}
+
+  /* Arrow controls live beside the bottom lane, never over the text. */
+  #mxNav{top:auto!important;bottom:calc(env(safe-area-inset-bottom) + 61px)!important;height:44px!important;padding:0 7px!important;align-items:center!important;z-index:79!important;}
+  .mx-arrow{width:40px!important;height:40px!important;border-radius:50%!important;background:rgba(3,7,17,.72)!important;}
+  .mx-arrow span{font-size:26px!important;}
+
+  #musicBar{
+    bottom:env(safe-area-inset-bottom)!important;
+    width:calc(100vw - 16px)!important;max-width:690px!important;
+    min-height:46px!important;padding:5px 7px!important;gap:7px!important;
+    z-index:100!important;
+  }
+  #musicBtn{width:36px!important;height:36px!important;}
+  #musicBar .track{min-width:0!important;width:74px;overflow:hidden;text-overflow:ellipsis;font-size:9px!important;}
+  #musicBar .time{min-width:54px!important;font-size:8px!important;}
+  #musicBar .seek{min-width:0!important;width:auto!important;}
+
+  /* Give the story a protected bottom runway for the controls. */
+  .screen .content{
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
+    padding:92px 18px calc(env(safe-area-inset-bottom) + 184px)!important;
+  }
+  .screen .card{
+    width:100%!important;margin:auto!important;
+    max-height:none!important;
+    padding:20px 16px!important;
+    border-radius:20px!important;
+  }
+  .screen .card p{font-size:clamp(16px,4.55vw,20px)!important;line-height:1.42!important;}
+  .screen .card h1{font-size:clamp(38px,11vw,64px)!important;line-height:.94!important;}
+  .screen .card h2{font-size:clamp(32px,9vw,52px)!important;line-height:.98!important;}
+  .screen .actions{gap:9px!important;}
+  .screen .btn{min-height:44px!important;max-width:100%!important;}
+  .screen .reasons{grid-template-columns:1fr!important;}
+  .screen .promise{font-size:15px!important;}
+  .screen .envelope{max-width:140px!important;}
+  .screen img{height:auto;}
+}
+
+/* Very narrow phones: everything remains inside the viewport. */
+@media (max-width:390px){
+  .brand{max-width:54vw!important;font-size:16px!important;}
+  .counter{font-size:8px!important;right:8px!important;}
+  .mx-bow{left:8px!important;width:38px!important;height:38px!important;}
+  #mxDots{max-width:62vw!important;bottom:calc(env(safe-area-inset-bottom) + 116px)!important;}
+  .controls{max-width:calc(100vw - 82px)!important;}
+  .controls .btn{padding:8px 10px!important;font-size:12px!important;}
+  .pageNo{min-width:38px!important;font-size:8px!important;}
+  #mxNav{padding:0 5px!important;}
+  .mx-arrow{width:36px!important;height:36px!important;}
+  #musicBar{width:calc(100vw - 10px)!important;}
+  #musicBar .track{display:none!important;}
+  #musicBar .time{min-width:48px!important;}
+  .screen .content{padding-left:11px!important;padding-right:11px!important;padding-bottom:calc(env(safe-area-inset-bottom) + 176px)!important;}
+  .screen .card{max-width:100%!important;padding:18px 13px!important;border-radius:18px!important;}
+  .screen .card p{font-size:16px!important;line-height:1.38!important;}
+  .screen .actions .btn{width:100%!important;}
+  .screen .actions{display:grid!important;grid-template-columns:1fr!important;}
+}
+
+/* Landscape phones / short screens: make the page scroll, not squash. */
+@media (max-width:900px) and (orientation:landscape){
+  .screen .content{padding-top:72px!important;padding-bottom:calc(env(safe-area-inset-bottom) + 150px)!important;}
+  .screen .card{padding:15px 18px!important;}
+  .screen .card p{font-size:15px!important;line-height:1.34!important;}
+  .screen .card h1{font-size:38px!important;}.screen .card h2{font-size:32px!important;}
+  #mxPanel{max-height:calc(100dvh - 105px)!important;}
+}
+
+/* If a device is extremely short, prioritize readable content and scrolling. */
+@media (max-height:560px){
+  .screen .content{align-items:flex-start!important;padding-top:68px!important;padding-bottom:calc(env(safe-area-inset-bottom) + 154px)!important;}
+  .screen .card{margin-top:0!important;}
+  .screen .card h1{font-size:36px!important;}.screen .card h2{font-size:30px!important;}
+  .screen .card p{font-size:15px!important;}
+}
+
+/* ---------- little games launcher ---------- */
+#maevyGameLauncher{
+  position:fixed;z-index:96;right:10px;bottom:calc(env(safe-area-inset-bottom) + 118px);
+  width:43px;height:43px;border:1px solid rgba(232,193,139,.48);border-radius:50%;
+  background:rgba(3,7,17,.76);backdrop-filter:blur(9px);color:#f2d8b5;
+  display:grid;place-items:center;cursor:pointer;box-shadow:0 9px 26px rgba(0,0,0,.32);
+  transition:.25s ease;
+}
+#maevyGameLauncher:hover{transform:translateY(-2px) rotate(-4deg);background:rgba(232,193,139,.13);}
+#maevyGameLauncher .gameBow{font-size:22px;line-height:1;transform:rotate(-18deg);display:block;}
+#maevyGameLauncher:focus-visible,#maevyGameClose:focus-visible,#maevyGamePanel button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+#maevyGamePanel{
+  position:fixed;z-index:120;inset:0;display:none;align-items:center;justify-content:center;
+  padding:18px;background:rgba(0,2,8,.72);backdrop-filter:blur(10px);overflow:auto;
+}
+#maevyGamePanel.open{display:flex;}
+.maevyGameCard{
+  width:min(500px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;
+  border:1px solid rgba(232,193,139,.35);border-radius:24px;background:rgba(5,9,20,.96);
+  box-shadow:0 30px 100px rgba(0,0,0,.65);padding:18px;
+  color:var(--cream);position:relative;
+}
+.maevyGameHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.maevyGameHead h3{margin:0;font:500 30px 'Cormorant Garamond',Georgia,serif;color:#f2ddd1;}
+#maevyGameClose{width:40px;height:40px;border-radius:50%;border:1px solid rgba(232,193,139,.35);background:rgba(255,255,255,.04);color:#f6d9b3;cursor:pointer;font-size:24px;}
+.maevyGameTabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 14px;}
+.maevyGameTabs button{min-height:44px;border:1px solid rgba(232,193,139,.25);border-radius:13px;background:rgba(255,255,255,.035);color:#ead8c6;cursor:pointer;}
+.maevyGameTabs button.active{border-color:var(--gold);background:rgba(232,193,139,.10);color:var(--gold);}
+.maevyGame{display:none;}.maevyGame.active{display:block;}
+.maevyGame p{font:15px/1.45 Inter,system-ui,sans-serif;color:#d9d8de;margin:7px 0 12px;}
+#heartTargetGame{position:relative;height:280px;border:1px solid rgba(232,193,139,.20);border-radius:18px;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(39,58,82,.35),rgba(1,5,13,.88));touch-action:none;}
+.heartTarget{position:absolute;width:48px;height:48px;border:0;background:transparent;color:#f0a0ae;font-size:34px;line-height:48px;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,170,190,.35));}
+.heartTarget:active{transform:scale(.82);}
+.maevyGameBar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.maevyScore{font:600 13px Inter;color:var(--gold);letter-spacing:.08em;}
+.maevyGameBtn{min-height:44px;padding:9px 14px;border:1px solid var(--gold);border-radius:14px;background:rgba(232,193,139,.09);color:#f6d9b3;cursor:pointer;}
+#arrowRange{position:relative;height:280px;border:1px solid rgba(232,193,139,.20);border-radius:18px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(39,58,82,.3),rgba(1,5,13,.9));touch-action:none;}
+.arrowTarget{position:absolute;width:82px;height:82px;border-radius:50%;border:2px solid rgba(232,193,139,.72);background:radial-gradient(circle,#e99a9a 0 17%,#f6e9dc 18% 31%,#e8c18b 32% 45%,#1a2230 46% 100%);box-shadow:0 0 28px rgba(232,193,139,.15);cursor:pointer;}
+.arrowTarget:after{content:'♡';position:absolute;inset:0;display:grid;place-items:center;color:#151a24;font-size:30px;}
+.arrowShot{position:absolute;font-size:22px;pointer-events:none;transform-origin:center;animation:maevyArrowFly .55s ease-out forwards;}
+@keyframes maevyArrowFly{from{opacity:1;transform:translate(0,0) rotate(var(--rot))}to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot))}}
+.maevyGameHint{font:11px Inter;color:rgba(246,233,220,.58);text-align:center;margin-top:9px;}
+@media(max-width:520px){
+  #maevyGameLauncher{right:8px;bottom:calc(env(safe-area-inset-bottom) + 116px);width:40px;height:40px;}
+  #maevyGamePanel{padding:8px;}
+  .maevyGameCard{width:100%;max-height:calc(100dvh - 16px);padding:14px;border-radius:20px;}
+  .maevyGameHead h3{font-size:27px;}
+  #heartTargetGame,#arrowRange{height:min(48vh,260px);min-height:220px;}
+}
+@media(prefers-reduced-motion:reduce){
+  #maevyGameLauncher,.arrowShot{transition:none!important;animation:none!important;}
+}
+</style>
+
+<button id="maevyGameLauncher" type="button" aria-label="Open little games"><span class="gameBow" aria-hidden="true">🏹</span></button>
+
+<div id="maevyGamePanel" aria-hidden="true">
+  <section class="maevyGameCard" role="dialog" aria-modal="true" aria-label="Little games">
+    <div class="maevyGameHead">
+      <h3>Little games ♡</h3>
+      <button id="maevyGameClose" type="button" aria-label="Close games">×</button>
+    </div>
+    <div class="maevyGameTabs" role="tablist" aria-label="Choose a game">
+      <button type="button" class="active" data-game-tab="heart" role="tab" aria-selected="true">Catch Hearts</button>
+      <button type="button" data-game-tab="arrow" role="tab" aria-selected="false">Bow &amp; Arrow</button>
+    </div>
+
+    <div class="maevyGame active" data-game="heart">
+      <p>Catch as many hearts as you can before the timer runs out. ♡</p>
+      <div id="heartTargetGame" aria-label="Heart catching game"></div>
+      <div class="maevyGameBar"><span class="maevyScore" id="heartScore">SCORE 0 · 20s</span><button class="maevyGameBtn" id="heartStart" type="button">Start</button></div>
+    </div>
+
+    <div class="maevyGame" data-game="arrow">
+      <p>Tap the moving heart target. Every hit sends an arrow flying. 🏹</p>
+      <div id="arrowRange" aria-label="Bow and arrow target game"><button class="arrowTarget" id="arrowTarget" type="button" aria-label="Hit the heart target"></button></div>
+      <div class="maevyGameBar"><span class="maevyScore" id="arrowScore">HITS 0</span><button class="maevyGameBtn" id="arrowStart" type="button">Start</button></div>
+    </div>
+    <div class="maevyGameHint">Just for fun — the story and its original pages stay untouched.</div>
+  </section>
+</div>
+
+<script id="MAEVY_UNIVERSAL_GAMES_V5">
+(function(){
+  'use strict';
+  function ready(fn){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fn,{once:true});else fn();}
+  ready(function(){
+    var launcher=document.getElementById('maevyGameLauncher');
+    var panel=document.getElementById('maevyGamePanel');
+    var close=document.getElementById('maevyGameClose');
+    if(!launcher||!panel||!close)return;
+    var tabs=[].slice.call(document.querySelectorAll('[data-game-tab]'));
+    var games=[].slice.call(document.querySelectorAll('.maevyGame'));
+    var heartBox=document.getElementById('heartTargetGame'),heartStart=document.getElementById('heartStart'),heartScore=document.getElementById('heartScore');
+    var arrowBox=document.getElementById('arrowRange'),arrowStart=document.getElementById('arrowStart'),arrowTarget=document.getElementById('arrowTarget'),arrowScore=document.getElementById('arrowScore');
+    var heartTimer=null,heartEnd=0,heartRunning=false,heartPoints=0,arrowRunning=false,arrowPoints=0;
+
+    function openGames(){panel.classList.add('open');panel.setAttribute('aria-hidden','false');launcher.setAttribute('aria-expanded','true');setTimeout(function(){close.focus();},20);}
+    function closeGames(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');launcher.setAttribute('aria-expanded','false');stopHeart();arrowRunning=false;}
+    launcher.addEventListener('click',openGames);close.addEventListener('click',closeGames);
+    panel.addEventListener('click',function(e){if(e.target===panel)closeGames();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panel.classList.contains('open'))closeGames();});
+
+    tabs.forEach(function(tab){tab.addEventListener('click',function(){
+      var name=tab.getAttribute('data-game-tab');
+      tabs.forEach(function(t){var on=t===tab;t.classList.toggle('active',on);t.setAttribute('aria-selected',String(on));});
+      games.forEach(function(g){g.classList.toggle('active',g.getAttribute('data-game')===name);});
+      if(name!=='heart')stopHeart();
+    });});
+
+    function moveHeart(){
+      if(!heartRunning)return;
+      var w=Math.max(48,heartBox.clientWidth-54),h=Math.max(48,heartBox.clientHeight-54);
+      var x=8+Math.random()*Math.max(0,w-16),y=8+Math.random()*Math.max(0,h-16);
+      var heart=document.createElement('button');heart.type='button';heart.className='heartTarget';heart.textContent='♥';heart.setAttribute('aria-label','Catch heart');heart.style.left=x+'px';heart.style.top=y+'px';
+      heart.addEventListener('click',function(){heartPoints++;updateHeartScore();heart.remove();moveHeart();});
+      heartBox.appendChild(heart);
+      setTimeout(function(){if(heart.parentNode){heart.remove();if(heartRunning)moveHeart();}},900);
+    }
+    function updateHeartScore(){var remain=Math.max(0,Math.ceil((heartEnd-Date.now())/1000));heartScore.textContent='SCORE '+heartPoints+' · '+remain+'s';}
+    function stopHeart(){heartRunning=false;if(heartTimer){clearInterval(heartTimer);heartTimer=null;}if(heartBox)heartBox.innerHTML='';}
+    function startHeart(){
+      stopHeart();heartRunning=true;heartPoints=0;heartEnd=Date.now()+20000;updateHeartScore();moveHeart();
+      heartTimer=setInterval(function(){updateHeartScore();if(Date.now()>=heartEnd){stopHeart();heartScore.textContent='SCORE '+heartPoints+' · DONE';}},250);
+    }
+    heartStart.addEventListener('click',startHeart);
+
+    function placeArrowTarget(){
+      var maxX=Math.max(4,arrowBox.clientWidth-90),maxY=Math.max(4,arrowBox.clientHeight-90);
+      arrowTarget.style.left=(4+Math.random()*Math.max(0,maxX-8))+'px';arrowTarget.style.top=(4+Math.random()*Math.max(0,maxY-8))+'px';
+    }
+    function shootArrow(){
+      var a=document.createElement('span');a.className='arrowShot';a.textContent='➶';
+      var br=arrowTarget.getBoundingClientRect(),rr=arrowBox.getBoundingClientRect();
+      var sx=rr.width*.08,sy=rr.height*.88,tx=br.left+br.width/2-rr.left,ty=br.top+br.height/2-rr.top;
+      var dx=tx-sx,dy=ty-sy;var rot=Math.atan2(dy,dx)*180/Math.PI;
+      a.style.left=sx+'px';a.style.top=sy+'px';a.style.setProperty('--dx',dx+'px');a.style.setProperty('--dy',dy+'px');a.style.setProperty('--rot',rot+'deg');
+      arrowBox.appendChild(a);setTimeout(function(){if(a.parentNode)a.remove();},650);
+    }
+    arrowTarget.addEventListener('click',function(){if(!arrowRunning)return;arrowPoints++;arrowScore.textContent='HITS '+arrowPoints;shootArrow();setTimeout(placeArrowTarget,130);});
+    arrowStart.addEventListener('click',function(){arrowRunning=!arrowRunning;arrowPoints=0;arrowScore.textContent='HITS 0';arrowStart.textContent=arrowRunning?'Stop':'Start';placeArrowTarget();});
+    window.addEventListener('resize',function(){if(arrowRunning)placeArrowTarget();},{passive:true});
+    placeArrowTarget();
+  });
+})();
+</script>
+<!-- END MAEVY UNIVERSAL DEVICE + MINI-GAME UPGRADE -->
+
+<!-- FINAL USER REQUEST FIX: remove bottom page dots and keep the mailbox/firefly on the left. -->
+<style id="FINAL_USER_REQUEST_CLEANUP_V3">
+/* Remove ONLY the bottom page-progression dots/pill. */
+#mxDots{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Keep the mailbox on the left, but below the header so it never covers
+   "For you, Dear Maevy". */
+#dateMailbox{
+  left:18px!important;
+  right:auto!important;
+  top:74px!important;
+  z-index:99999!important;
+}
+#dateMailboxPanel{
+  left:0!important;
+  right:auto!important;
+}
+@media(max-width:600px){
+  #dateMailbox{
+    left:12px!important;
+    right:auto!important;
+    top:64px!important;
+  }
+}
+</style>
+<script id="FINAL_USER_REQUEST_FIREFLY_MAILBOX_TARGET_V3">
+(function(){
+  'use strict';
+  function targetFireflyToMailbox(){
+    var fly=document.getElementById('dateFirefly');
+    var mailbox=document.getElementById('dateMailboxBtn');
+    if(!fly||!mailbox)return;
+    var r=mailbox.getBoundingClientRect();
+    fly.style.setProperty('--x1',(r.left+r.width/2)+'px');
+    fly.style.setProperty('--y1',(r.top+r.height/2)+'px');
+  }
+  function setup(){
+    var date=document.getElementById('hangoutDate');
+    if(date && !date.dataset.finalMailboxFireflyV3){
+      date.dataset.finalMailboxFireflyV3='1';
+      ['input','change'].forEach(function(evt){
+        date.addEventListener(evt,function(){
+          /* Run after the existing firefly handlers so the final destination
+             is the actual left-side mailbox, not a hard-coded right-side point. */
+          setTimeout(targetFireflyToMailbox,0);
+        },true);
+      });
+    }
+    targetFireflyToMailbox();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+  window.addEventListener('load',setup,{once:true});
+  window.addEventListener('resize',targetFireflyToMailbox,{passive:true});
+})();
+</script>
+<!-- END FINAL USER REQUEST CLEANUP V3 -->
+
+
+<style id="FINAL_USER_REQUEST_RIGHT_SIDE_ALIGNMENT_V5">
+/* Final page only: Extras and mailbox share the same right-side vertical lane. */
+body.final-page-mailbox #mxBow{
+  right:17px!important;
+  left:auto!important;
+  top:48px!important;
+}
+body.final-page-mailbox #dateMailbox{
+  right:17px!important;
+  left:auto!important;
+  top:110px!important;
+  z-index:99999!important;
+}
+body.final-page-mailbox #dateMailboxPanel{
+  right:0!important;
+  left:auto!important;
+}
+/* Remove the page-progression dots/pill completely. */
+#mxDots,
+#mxDots *{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+@media(max-width:700px){
+  body.final-page-mailbox #mxBow{
+    right:11px!important;
+    left:auto!important;
+    top:42px!important;
+  }
+  body.final-page-mailbox #dateMailbox{
+    right:11px!important;
+    left:auto!important;
+    top:96px!important;
+  }
+  body.final-page-mailbox #dateMailboxPanel{
+    right:0!important;
+    left:auto!important;
+  }
+}
+</style>
+
+
+
+<!-- FINAL USER REQUEST: short 3rd/4th letters + firefly travels to the right mailbox. -->
+<style id="FINAL_SHORT_LETTERS_RIGHT_FIREFLY">
+  /* Keep the letter reveals compact and in the same understated romantic tone. */
+  .screen:nth-of-type(15) .note p,
+  .screen:nth-of-type(18) .note p{margin:4px 0!important;line-height:1.28!important;}
+</style>
+<script id="FINAL_RIGHT_FIREFLY_GUARD">
+(function(){
+  'use strict';
+  function forceRightTarget(){
+    var fly=document.getElementById('dateFirefly');
+    var mailbox=document.getElementById('dateMailboxBtn');
+    if(!fly || !mailbox) return;
+    var r=mailbox.getBoundingClientRect();
+    fly.style.setProperty('--x1',(r.left+r.width/2)+'px');
+    fly.style.setProperty('--y1',(r.top+r.height/2)+'px');
+  }
+  function setup(){
+    var date=document.getElementById('hangoutDate');
+    if(date && !date.dataset.finalRightFireflyGuard){
+      date.dataset.finalRightFireflyGuard='1';
+      ['input','change'].forEach(function(evt){
+        date.addEventListener(evt,function(){setTimeout(forceRightTarget,0);},false);
+      });
+    }
+    forceRightTarget();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+  window.addEventListener('load',setup,{once:true});
+  window.addEventListener('resize',forceRightTarget,{passive:true});
+})();
+</script>
+
+
+<!-- FINAL FIREFLY DIRECTION PATCH: explicit rightward flight path -->
+<style id="FINAL_EXPLICIT_RIGHTWARD_FIREFLY">
+  /* Disable the older CSS journey whose calc() interpolation can fall back unpredictably. */
+  #dateFirefly.fly{animation:none!important;}
+</style>
+<script id="FINAL_EXPLICIT_RIGHTWARD_FIREFLY_SCRIPT">
+(function(){
+  'use strict';
+  var duration=2150;
+  function runRightwardFirefly(){
+    var date=document.getElementById('hangoutDate');
+    var fly=document.getElementById('dateFirefly');
+    var mailbox=document.getElementById('dateMailboxBtn');
+    if(!date || !fly || !mailbox || !date.value) return;
+
+    var d=date.getBoundingClientRect();
+    var m=mailbox.getBoundingClientRect();
+    var x1=m.left+m.width/2;
+    var y1=m.top+m.height/2;
+
+    /* Always make the flight travel LEFT -> RIGHT. If the date control happens
+       to be too far right, start from a safe point to its left instead. */
+    var x0=Math.min(d.left+d.width/2, x1-120);
+    var y0=d.top+d.height/2;
+    var dx=x1-x0;
+    if(dx<40){ x0=Math.max(20, x1-180); dx=x1-x0; }
+
+    var pts=[
+      [x0,y0],
+      [x0+dx*.18,y0-34],
+      [x0+dx*.40,y0+22],
+      [x0+dx*.63,y0-30],
+      [x0+dx*.82,y1-12],
+      [x1,y1]
+    ];
+
+    fly.getAnimations().forEach(function(a){a.cancel();});
+    fly.classList.remove('fly');
+    fly.style.opacity='1';
+    fly.style.transform='translate3d('+x0+'px,'+y0+'px,0) scale(.55)';
+
+    var frames=pts.map(function(pt,i){
+      return {transform:'translate3d('+pt[0]+'px,'+pt[1]+'px,0) scale('+(i===pts.length-1?.65:(i===0?.55:.9))+')',opacity:(i===0?0:(i===pts.length-1?0:1))};
+    });
+    frames[1].opacity=1;
+
+    var anim=fly.animate(frames,{duration:duration,easing:'cubic-bezier(.22,.72,.28,1)',fill:'forwards'});
+    anim.onfinish=function(){
+      fly.style.opacity='0';
+      fly.style.transform='translate3d('+x1+'px,'+y1+'px,0) scale(.65)';
+      fly.classList.remove('fly');
+    };
+  }
+
+  function setup(){
+    var date=document.getElementById('hangoutDate');
+    if(!date || date.dataset.explicitRightwardFirefly==='1') return;
+    date.dataset.explicitRightwardFirefly='1';
+    ['change','input'].forEach(function(ev){
+      date.addEventListener(ev,function(){setTimeout(runRightwardFirefly,5);},false);
+    });
+    window.addEventListener('resize',function(){
+      if(date.value) setTimeout(runRightwardFirefly,30);
+    },{passive:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+  window.addEventListener('load',setup,{once:true});
+})();
+</script>
+
+<!-- FINAL FIREFLY VISIBILITY REPAIR: independent final-page firefly, right-side path. -->
+<style id="FINAL_INDEPENDENT_FIREFLY_RIGHT">
+#maevyRightFirefly{
+  position:fixed!important;
+  left:0!important;top:0!important;
+  width:13px!important;height:13px!important;
+  margin:0!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,#fff 0 18%,#fff2a5 38%,#ffd45f 62%,transparent 80%)!important;
+  box-shadow:0 0 9px 4px rgba(255,241,166,.98),0 0 22px 9px rgba(255,220,120,.55),0 0 40px 15px rgba(255,201,72,.22)!important;
+  pointer-events:none!important;
+  z-index:2147483646!important;
+  opacity:0!important;
+  transform:translate3d(-100px,-100px,0)!important;
+}
+#maevyRightFirefly:before,#maevyRightFirefly:after{
+  content:""!important;position:absolute!important;top:3px!important;
+  width:9px!important;height:5px!important;border-radius:90% 20% 80% 20%!important;
+  background:rgba(255,250,225,.82)!important;filter:blur(.2px)!important;
+}
+#maevyRightFirefly:before{right:8px!important;transform:rotate(22deg)!important}
+#maevyRightFirefly:after{left:8px!important;transform:rotate(-22deg) scaleX(-1)!important}
+</style>
+<script id="FINAL_INDEPENDENT_FIREFLY_RIGHT_SCRIPT">
+(function(){
+  'use strict';
+  var timer=null, anim=null;
+  function finalScreen(){
+    var s=document.querySelectorAll('.screen');
+    return s.length ? s[s.length-1] : null;
+  }
+  function isFinal(){var s=finalScreen();return !!(s && s.classList.contains('active'));}
+  function getFly(){
+    var f=document.getElementById('maevyRightFirefly');
+    if(!f){f=document.createElement('div');f.id='maevyRightFirefly';document.body.appendChild(f)}
+    return f;
+  }
+  function fly(){
+    if(!isFinal()) return;
+    var f=getFly(), box=document.getElementById('dateMailboxBtn');
+    var m=box && box.getBoundingClientRect();
+    var targetX=m && m.width ? m.left+m.width/2 : innerWidth*.91;
+    var targetY=m && m.height ? m.top+m.height/2 : innerHeight*.22;
+    /* Keep the whole journey on the right half of the screen and always LEFT -> RIGHT. */
+    var startX=Math.max(innerWidth*.48, targetX-Math.min(260,innerWidth*.25));
+    if(startX>=targetX-45) startX=Math.max(24,targetX-180);
+    var startY=Math.min(innerHeight-110,Math.max(innerHeight*.62,targetY+260));
+    var dx=targetX-startX;
+    if(dx<45){startX=Math.max(24,targetX-160);dx=targetX-startX;}
+    var pts=[
+      [startX,startY],
+      [startX+dx*.18,startY-42],
+      [startX+dx*.38,startY+18],
+      [startX+dx*.60,startY-46],
+      [startX+dx*.80,targetY+28],
+      [targetX,targetY]
+    ];
+    if(anim)try{anim.cancel()}catch(e){}
+    f.style.opacity='1';
+    f.style.transform='translate3d('+(pts[0][0]-6)+'px,'+(pts[0][1]-6)+'px,0) scale(.55)';
+    var frames=pts.map(function(p,i){
+      return {transform:'translate3d('+(p[0]-6)+'px,'+(p[1]-6)+'px,0) scale('+(i===0?.55:(i===pts.length-1?.72:1))+')',opacity:i===0?0:(i===pts.length-1?.95:1)};
+    });
+    frames[1].opacity=1;
+    anim=f.animate(frames,{duration:3000,easing:'cubic-bezier(.22,.72,.28,1)',fill:'forwards'});
+    anim.onfinish=function(){
+      f.style.opacity='0';
+      f.style.transform='translate3d('+(targetX-6)+'px,'+(targetY-6)+'px,0) scale(.72)';
+    };
+  }
+  function stop(){
+    if(timer){clearInterval(timer);timer=null}
+    if(anim)try{anim.cancel()}catch(e){}
+    var f=document.getElementById('maevyRightFirefly');if(f)f.style.opacity='0';
+  }
+  function start(){
+    if(!isFinal()){stop();return}
+    if(timer)return;
+    fly();
+    timer=setInterval(function(){if(isFinal())fly();else stop()},3800);
+  }
+  function init(){
+    start();
+    document.querySelectorAll('.screen').forEach(function(s){
+      new MutationObserver(function(){if(isFinal())start();else stop()}).observe(s,{attributes:true,attributeFilter:['class']});
+    });
+    window.addEventListener('resize',function(){if(isFinal()){stop();setTimeout(start,120)}},{passive:true});
+    setInterval(function(){if(isFinal())start();},900);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+
+
+<!-- FINAL FIREFLY REBUILD: guaranteed visible, LEFT -> RIGHT, then mailbox reveal -->
+<style id="MAEVY_GUARANTEED_FIREFLY_POP">
+#maevyGuaranteedFirefly{
+  position:fixed!important;
+  left:0!important; top:0!important;
+  width:18px!important; height:18px!important;
+  margin:0!important;
+  border-radius:50%!important;
+  background:#fffbd7!important;
+  box-shadow:0 0 8px 3px #fff5a0,0 0 20px 8px rgba(255,221,100,.9),0 0 44px 18px rgba(255,195,55,.42)!important;
+  z-index:2147483647!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  transform:translate3d(-100px,-100px,0)!important;
+  will-change:transform,opacity!important;
+}
+#maevyGuaranteedFirefly::before,#maevyGuaranteedFirefly::after{
+  content:""!important;
+  position:absolute!important;
+  top:3px!important;
+  width:14px!important; height:9px!important;
+  background:rgba(255,250,214,.92)!important;
+  border-radius:90% 20% 80% 20%!important;
+  box-shadow:0 0 6px rgba(255,239,159,.9)!important;
+}
+#maevyGuaranteedFirefly::before{right:11px!important;transform:rotate(25deg)!important;}
+#maevyGuaranteedFirefly::after{left:11px!important;transform:rotate(-25deg) scaleX(-1)!important;}
+#maevyFireflyTrail{
+  position:fixed!important; left:0!important; top:0!important;
+  width:7px!important; height:7px!important; border-radius:50%!important;
+  background:#ffe98a!important;
+  box-shadow:0 0 9px 3px rgba(255,228,112,.9)!important;
+  z-index:2147483646!important; pointer-events:none!important; opacity:0!important;
+}
+.maevy-firefly-burst{
+  position:fixed!important; width:7px!important;height:7px!important;border-radius:50%!important;
+  background:#fff6b0!important; box-shadow:0 0 12px 4px #ffd95c!important;
+  z-index:2147483647!important; pointer-events:none!important;
+  animation:maevyBurst .65s ease-out forwards!important;
+}
+@keyframes maevyBurst{
+  from{opacity:1;transform:translate3d(0,0,0) scale(1)}
+  to{opacity:0;transform:translate3d(var(--bx),var(--by),0) scale(.15)}
+}
+@media(max-width:600px){
+ #maevyGuaranteedFirefly{width:14px!important;height:14px!important}
+ #maevyGuaranteedFirefly::before,#maevyGuaranteedFirefly::after{width:11px!important;height:7px!important}
+}
+/* The mailbox appears only after the firefly reaches it and pops. */
+body.maevy-firefly-flight #dateMailbox{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}
+body.maevy-firefly-revealed #dateMailbox{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transition:opacity .45s ease,transform .45s ease!important;}
+</style>
+<script id="MAEVY_GUARANTEED_FIREFLY_POP_SCRIPT">
+(function(){
+  'use strict';
+  var running=false, timer=null;
+  function finalActive(){
+    var ss=document.querySelectorAll('.screen');
+    var last=ss.length?ss[ss.length-1]:null;
+    return !!(last&&last.classList.contains('active')) || document.body.classList.contains('final-page-mailbox');
+  }
+  function el(id,tag){var x=document.getElementById(id);if(!x){x=document.createElement(tag||'div');x.id=id;document.body.appendChild(x)}return x;}
+  function pop(x,y){
+    for(var i=0;i<18;i++){
+      var p=document.createElement('span');p.className='maevy-firefly-burst';
+      p.style.left=x+'px';p.style.top=y+'px';
+      var a=Math.PI*2*i/18, d=28+Math.random()*48;
+      p.style.setProperty('--bx',(Math.cos(a)*d)+'px');p.style.setProperty('--by',(Math.sin(a)*d)+'px');
+      document.body.appendChild(p);setTimeout(function(q){return function(){q.remove()}}(p),700);
+    }
+  }
+  function flight(){
+    if(!finalActive()||running)return;
+    running=true;
+    var f=el('maevyGuaranteedFirefly'), t=el('maevyFireflyTrail'), box=document.getElementById('dateMailboxBtn');
+    document.body.classList.add('maevy-firefly-flight');
+    var r=box?box.getBoundingClientRect():null;
+    var tx=r&&r.width?r.left+r.width*.35:innerWidth*.91;
+    var ty=r&&r.height?r.top+r.height*.42:innerHeight*.27;
+    /* Always start left of the target and travel RIGHT. */
+    var sx=Math.max(30,Math.min(innerWidth*.48,tx-260));
+    if(sx>tx-140)sx=Math.max(20,tx-200);
+    var sy=Math.min(innerHeight-120,Math.max(innerHeight*.58,ty+260));
+    var duration=3000, start=performance.now();
+    f.style.opacity='1';t.style.opacity='.8';
+    function frame(now){
+      if(!finalActive()){f.style.opacity='0';t.style.opacity='0';document.body.classList.remove('maevy-firefly-flight');running=false;return;}
+      var p=Math.min(1,(now-start)/duration);
+      var e=p*p*(3-2*p);
+      /* Smooth rising arc, always increasing X. */
+      var x=sx+(tx-sx)*e;
+      var y=sy+(ty-sy)*e-Math.sin(Math.PI*p)*95;
+      f.style.transform='translate3d('+(x-9)+'px,'+(y-9)+'px,0)';
+      t.style.transform='translate3d('+(x-3)+'px,'+(y-3)+'px,0)';
+      t.style.opacity=(p>.04&&p<.96)?'.7':'0';
+      if(p<1){requestAnimationFrame(frame);return;}
+      pop(tx,ty);
+      f.style.opacity='0';t.style.opacity='0';
+      document.body.classList.remove('maevy-firefly-flight');
+      document.body.classList.add('maevy-firefly-revealed');
+      if(box){box.style.animation='maevyMailboxReveal .55s ease-out both';}
+      running=false;
+    }
+    requestAnimationFrame(frame);
+  }
+  var style=document.createElement('style');style.textContent='@keyframes maevyMailboxReveal{from{opacity:0;transform:scale(.82) translateY(10px)}to{opacity:1;transform:none}}';document.head.appendChild(style);
+  function check(){
+    if(finalActive()){
+      if(!running){flight();}
+    }else{
+      running=false;
+      document.body.classList.remove('maevy-firefly-flight','maevy-firefly-revealed');
+      var f=document.getElementById('maevyGuaranteedFirefly'),t=document.getElementById('maevyFireflyTrail');
+      if(f)f.style.opacity='0';if(t)t.style.opacity='0';
+    }
+  }
+  function init(){
+    check();
+    document.querySelectorAll('.screen').forEach(function(s){new MutationObserver(check).observe(s,{attributes:true,attributeFilter:['class']});});
+    window.addEventListener('resize',function(){if(finalActive()&&!running){setTimeout(flight,100)}},{passive:true});
+    timer=setInterval(function(){if(finalActive()&&!running){flight();}},900);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<!-- END GUARANTEED FIREFLY POP -->
+
+<!-- FINAL FIREFLY DEFINITIVE FIX: runs on the actual THANK-YOU page (screen 20), not the date-planner page. -->
+<style id="MAEVY_REALISTIC_FIREFLY_FINAL_FIX">
+#maevyRealFirefly{position:fixed;left:0;top:0;width:18px;height:18px;z-index:2147483647;pointer-events:none;opacity:0;transform:translate3d(-100px,-100px,0);will-change:transform,opacity;}
+#maevyRealFirefly .body{position:absolute;left:6px;top:5px;width:7px;height:12px;border-radius:60% 60% 48% 48%;background:radial-gradient(circle at 50% 28%,#fffbdc 0 18%,#ffe878 32%,#e4a92c 66%,#6d4310 100%);box-shadow:0 0 7px 3px rgba(255,239,133,.95),0 0 18px 8px rgba(255,213,72,.62),0 0 36px 14px rgba(255,190,45,.25);}
+#maevyRealFirefly .wing{position:absolute;top:3px;width:11px;height:7px;border:1px solid rgba(255,250,220,.75);background:radial-gradient(ellipse at center,rgba(255,255,235,.7),rgba(255,245,190,.08) 72%,transparent);filter:blur(.15px);}
+#maevyRealFirefly .w1{left:-3px;transform:rotate(-28deg) skewX(-12deg);border-radius:85% 15% 80% 20%;}
+#maevyRealFirefly .w2{right:-3px;transform:rotate(28deg) skewX(12deg);border-radius:15% 85% 20% 80%;}
+#maevyRealFirefly .glow{position:absolute;left:1px;top:0;width:16px;height:16px;border-radius:50%;background:rgba(255,232,103,.18);filter:blur(4px);animation:realFireflyPulse .8s ease-in-out infinite alternate;}
+@keyframes realFireflyPulse{from{opacity:.45;transform:scale(.8)}to{opacity:1;transform:scale(1.3)}}
+#maevyRealFireflyTrail{position:fixed;left:0;top:0;width:6px;height:6px;border-radius:50%;z-index:2147483646;pointer-events:none;opacity:0;background:#ffe875;box-shadow:0 0 9px 3px rgba(255,226,105,.9);}
+body.maevy-real-flight #dateMailbox{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}
+body.maevy-real-revealed #dateMailbox{opacity:1!important;visibility:visible!important;pointer-events:auto!important;display:block!important;}
+@media(max-width:600px){#maevyRealFirefly{width:15px;height:15px}#maevyRealFirefly .body{left:5px;top:4px;transform:scale(.85);transform-origin:center}#maevyRealFirefly .wing{transform:scale(.85)} }
+</style>
+<script id="MAEVY_REALISTIC_FIREFLY_FINAL_FIX_SCRIPT">
+(function(){
+  'use strict';
+  var active=false, running=false, raf=0, interval=0;
+  function screens(){return document.querySelectorAll('.screen')}
+  function isThankYou(){var ss=screens();return !!(ss[19]&&ss[19].classList.contains('active'));}
+  function ensure(){
+    var f=document.getElementById('maevyRealFirefly');
+    if(!f){f=document.createElement('div');f.id='maevyRealFirefly';f.innerHTML='<span class="glow"></span><span class="wing w1"></span><span class="wing w2"></span><span class="body"></span>';document.body.appendChild(f)}
+    var t=document.getElementById('maevyRealFireflyTrail');
+    if(!t){t=document.createElement('div');t.id='maevyRealFireflyTrail';document.body.appendChild(t)}
+    return [f,t];
+  }
+  function mailbox(){return document.getElementById('dateMailbox');}
+  function fly(){
+    if(!isThankYou()||running)return;
+    running=true;
+    var pair=ensure(),f=pair[0],trail=pair[1],box=mailbox(),r=box?box.getBoundingClientRect():null;
+    /* The mailbox is on the RIGHT. Start clearly to its LEFT and below, then arc upward/right. */
+    var tx=r&&r.width ? r.left+r.width*.5 : innerWidth-55;
+    var ty=r&&r.height ? r.top+r.height*.5 : 125;
+    var sx=Math.max(70,Math.min(innerWidth*.42,tx-260));
+    var sy=Math.min(innerHeight-130,Math.max(innerHeight*.62,ty+250));
+    if(sx>=tx-120)sx=Math.max(25,tx-240);
+    var start=performance.now(),duration=3600;
+    f.style.opacity='1';trail.style.opacity='.7';
+    document.body.classList.add('maevy-real-flight');
+    function frame(now){
+      if(!isThankYou()){stop();return;}
+      var p=Math.min(1,(now-start)/duration),e=p*p*(3-2*p);
+      var x=sx+(tx-sx)*e;
+      var y=sy+(ty-sy)*e-Math.sin(Math.PI*p)*115;
+      f.style.transform='translate3d('+(x-9)+'px,'+(y-9)+'px,0)';
+      trail.style.transform='translate3d('+(x-3)+'px,'+(y-3)+'px,0)';
+      trail.style.opacity=p>.03&&p<.96?'.72':'0';
+      if(p<1){raf=requestAnimationFrame(frame);return;}
+      /* Tiny luminous pop at the mailbox. */
+      var burst=document.createElement('div');burst.style.cssText='position:fixed;left:'+(tx-4)+'px;top:'+(ty-4)+'px;width:8px;height:8px;border-radius:50%;z-index:2147483647;pointer-events:none;background:#fff9b8;box-shadow:0 0 12px 5px #ffe66d,0 0 34px 14px rgba(255,207,61,.75);animation:maevyRealPop .7s ease-out forwards';document.body.appendChild(burst);setTimeout(function(){burst.remove()},750);
+      f.style.opacity='0';trail.style.opacity='0';document.body.classList.remove('maevy-real-flight');document.body.classList.add('maevy-real-revealed');
+      running=false;
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  function stop(){if(raf)cancelAnimationFrame(raf);raf=0;running=false;var f=document.getElementById('maevyRealFirefly'),t=document.getElementById('maevyRealFireflyTrail');if(f)f.style.opacity='0';if(t)t.style.opacity='0';document.body.classList.remove('maevy-real-flight');}
+  function check(){if(isThankYou()){if(!active){active=true;document.body.classList.remove('maevy-real-revealed');setTimeout(fly,180)}}else{active=false;stop();document.body.classList.remove('maevy-real-revealed');}}
+  function init(){
+    var st=document.createElement('style');st.textContent='@keyframes maevyRealPop{0%{opacity:1;transform:scale(.4)}45%{opacity:1;transform:scale(2.4)}100%{opacity:0;transform:scale(5)} }';document.head.appendChild(st);
+    check();
+    document.querySelectorAll('.screen').forEach(function(s){new MutationObserver(check).observe(s,{attributes:true,attributeFilter:['class']})});
+    window.addEventListener('resize',function(){if(isThankYou()&&!running){active=false;check()}},{passive:true});
+    interval=setInterval(function(){if(isThankYou()&&!running)fly()},5200);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<!-- END DEFINITIVE FIREFLY FIX -->
+
+<!-- FINAL REALISTIC FIREFLY OVERRIDE: last page only; no other page content changed. -->
+<style id="FINAL_REALISTIC_FIREFLY_LAST_PAGE_ONLY">
+  #finalRealisticFirefly{
+    position:fixed!important;
+    left:0!important;top:0!important;
+    width:20px!important;height:20px!important;
+    z-index:2147483647!important;
+    pointer-events:none!important;
+    opacity:0!important;
+    transform:translate3d(-100px,-100px,0)!important;
+    will-change:transform,opacity!important;
+  }
+  #finalRealisticFirefly .frf-glow{
+    position:absolute!important;inset:-15px!important;border-radius:50%!important;
+    background:radial-gradient(circle,rgba(255,232,117,.34) 0,rgba(255,220,92,.14) 38%,transparent 72%)!important;
+    animation:frfGlow .72s ease-in-out infinite alternate!important;
+  }
+  #finalRealisticFirefly .frf-body{
+    position:absolute!important;left:50%!important;top:50%!important;
+    width:7px!important;height:13px!important;transform:translate(-50%,-50%) rotate(16deg)!important;
+    border-radius:55% 55% 45% 45%!important;
+    background:linear-gradient(90deg,#5b3920 0 24%,#9a6733 25% 47%,#4d2e1c 48% 72%,#25170f 73%)!important;
+    box-shadow:0 1px 2px rgba(0,0,0,.75)!important;
+  }
+  #finalRealisticFirefly .frf-light{
+    position:absolute!important;left:50%!important;bottom:-2px!important;
+    width:7px!important;height:7px!important;transform:translateX(-50%)!important;border-radius:50%!important;
+    background:radial-gradient(circle,#fffde5 0 22%,#ffe978 40%,#f7c83f 68%,transparent 78%)!important;
+    box-shadow:0 0 5px 2px #fff0a0,0 0 13px 5px rgba(255,221,88,.72),0 0 25px 8px rgba(255,199,54,.3)!important;
+  }
+  #finalRealisticFirefly .frf-wing{
+    position:absolute!important;top:2px!important;width:10px!important;height:6px!important;
+    border-radius:90% 20% 80% 25%!important;
+    background:linear-gradient(145deg,rgba(245,251,255,.72),rgba(190,215,225,.16))!important;
+    border:1px solid rgba(255,255,255,.25)!important;filter:blur(.2px)!important;
+    transform-origin:bottom center!important;
+    animation:frfWing .12s ease-in-out infinite alternate!important;
+  }
+  #finalRealisticFirefly .frf-wing.left{right:7px!important;transform:rotate(24deg)!important}
+  #finalRealisticFirefly .frf-wing.right{left:7px!important;transform:scaleX(-1) rotate(24deg)!important;animation-delay:-.06s!important}
+  @keyframes frfGlow{from{opacity:.55;transform:scale(.76)}to{opacity:1;transform:scale(1.08)}}
+  @keyframes frfWing{from{transform:rotate(22deg) scaleY(1)}to{transform:rotate(-12deg) scaleY(.35)}}
+  @keyframes frfWingR{from{transform:scaleX(-1) rotate(22deg) scaleY(1)}to{transform:scaleX(-1) rotate(-12deg) scaleY(.35)}}
+  #finalRealisticFirefly .frf-wing.right{animation-name:frfWingR!important}
+  .frf-pop-spark{
+    position:fixed!important;width:5px!important;height:5px!important;border-radius:50%!important;
+    background:#fff7b8!important;box-shadow:0 0 10px 3px #ffd95b!important;
+    z-index:2147483646!important;pointer-events:none!important;will-change:transform,opacity!important;
+  }
+  @keyframes frfPop{from{opacity:1;transform:translate3d(0,0,0) scale(1)}to{opacity:0;transform:translate3d(var(--dx),var(--dy),0) scale(.12)}}
+  body.final-frf-flight #dateMailbox,
+  body.final-frf-waiting #dateMailbox{
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  }
+  body.final-frf-revealed #dateMailbox{
+    opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+  }
+</style>
+<script id="FINAL_REALISTIC_FIREFLY_LAST_PAGE_SCRIPT">
+(function(){
+  'use strict';
+  var running=false, played=false, raf=0;
+  function lastPageActive(){
+    var ss=document.querySelectorAll('.screen');
+    return !!(ss.length && ss[ss.length-1].classList.contains('active'));
+  }
+  function makeFirefly(){
+    var f=document.getElementById('finalRealisticFirefly');
+    if(f)return f;
+    f=document.createElement('div'); f.id='finalRealisticFirefly';
+    f.innerHTML='<span class="frf-glow"></span><span class="frf-wing left"></span><span class="frf-wing right"></span><span class="frf-body"><span class="frf-light"></span></span>';
+    document.body.appendChild(f); return f;
+  }
+  function pop(x,y){
+    for(var i=0;i<24;i++){
+      var p=document.createElement('span'); p.className='frf-pop-spark';
+      p.style.left=x+'px'; p.style.top=y+'px';
+      var a=(Math.PI*2*i/24)+(Math.random()-.5)*.22, d=24+Math.random()*55;
+      p.style.setProperty('--dx',(Math.cos(a)*d)+'px'); p.style.setProperty('--dy',(Math.sin(a)*d)+'px');
+      p.style.animation='frfPop '+(.48+Math.random()*.24)+'s ease-out forwards';
+      document.body.appendChild(p); setTimeout(function(q){return function(){q.remove();};}(p),800);
+    }
+  }
+  function revealMailbox(box){
+    pop(window.innerWidth*.88, window.innerHeight*.20);
+    var f=document.getElementById('finalRealisticFirefly');
+    if(f)f.style.opacity='0';
+    document.body.classList.remove('final-frf-flight','final-frf-waiting');
+    document.body.classList.add('final-frf-revealed');
+    if(box){box.classList.add('show'); box.style.animation='none'; void box.offsetWidth; box.style.animation='frfMailboxReveal .42s ease-out both';}
+  }
+  function fly(){
+    if(running || played || !lastPageActive())return;
+    var box=document.getElementById('dateMailbox');
+    var f=makeFirefly(); if(!box)return;
+    running=true; played=true;
+    document.body.classList.remove('final-frf-revealed');
+    document.body.classList.add('final-frf-flight');
+    box.classList.remove('show');
+    var br=box.getBoundingClientRect();
+    var tx=Math.min(window.innerWidth-45, br.left+Math.min(br.width/2,24));
+    var ty=br.top+Math.min(br.height/2,24);
+    var sx=Math.max(28,tx-270), sy=Math.min(window.innerHeight-90,ty+230);
+    var start=performance.now(), duration=3100;
+    function frame(now){
+      if(!lastPageActive()){f.style.opacity='0';running=false;played=false;document.body.classList.remove('final-frf-flight','final-frf-waiting');return;}
+      var p=Math.min(1,(now-start)/duration), e=p*p*(3-2*p);
+      var x=sx+(tx-sx)*e;
+      var y=sy+(ty-sy)*e-Math.sin(Math.PI*p)*105;
+      f.style.opacity='1';
+      f.style.transform='translate3d('+(x-10)+'px,'+(y-10)+'px,0)';
+      if(p<1){raf=requestAnimationFrame(frame);return;}
+      document.body.classList.add('final-frf-waiting');
+      revealMailbox(box); running=false;
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  function watch(){
+    var ss=document.querySelectorAll('.screen');
+    function check(){
+      if(lastPageActive()){
+        if(!played) setTimeout(fly,180);
+      }else{
+        played=false; running=false; cancelAnimationFrame(raf);
+        document.body.classList.remove('final-frf-flight','final-frf-waiting','final-frf-revealed');
+        var f=document.getElementById('finalRealisticFirefly'); if(f)f.style.opacity='0';
+      }
+    }
+    ss.forEach(function(s){new MutationObserver(check).observe(s,{attributes:true,attributeFilter:['class']});});
+    check();
+  }
+  var st=document.createElement('style'); st.textContent='@keyframes frfMailboxReveal{from{opacity:0;transform:scale(.84) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}'; document.head.appendChild(st);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',watch,{once:true}); else watch();
+})();
+</script>
+<!-- END FINAL REALISTIC FIREFLY OVERRIDE -->
+
+<!-- ABSOLUTE FINAL GATE: PAGE 21 + COMPLETE DATE/TIME/ACTIVITY PLANNER ONLY -->
+<style id="ABSOLUTE_PAGE21_PLANNER_GATE">
+  /* Nothing from the date-firefly/mailbox sequence may be visible before the gate. */
+  #dateMailbox,
+  #dateFirefly,
+  #realDateFirefly,
+  #finalVisibleFirefly,
+  #maevyRealFirefly,
+  #maevyGuaranteedFirefly,
+  #finalRealisticFirefly,
+  #maevyFireflyTrail,
+  #maevyRealFireflyTrail {
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+
+  /* The ONLY allowed visible state is explicitly unlocked by the script below. */
+  body.page21-date-sequence-unlocked #finalRealisticFirefly {
+    opacity:1 !important;
+    visibility:visible !important;
+  }
+  body.page21-mailbox-unlocked #dateMailbox {
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+</style>
+<script id="ABSOLUTE_PAGE21_PLANNER_GATE_SCRIPT">
+(function(){
+  'use strict';
+  var raf=0, fireflyRunning=false, mailboxRevealed=false;
+
+  function screens(){return document.querySelectorAll('.screen');}
+  function isPage21(){
+    var ss=screens();
+    return !!(ss.length && ss.length===21 && ss[20].classList.contains('active'));
+  }
+  function plannerComplete(){
+    var date=document.getElementById('hangoutDate');
+    var time=document.getElementById('hangoutTime');
+    var selected=document.querySelector('#activityChoices .activity-btn.selected');
+    /* Complete means DATE + ACTIVITY + TIME have all been chosen. */
+    return !!(date && date.value && time && time.value && selected);
+  }
+  function resetVisuals(){
+    document.body.classList.remove('page21-date-sequence-unlocked','page21-mailbox-unlocked');
+    mailboxRevealed=false;
+    var box=document.getElementById('dateMailbox');
+    if(box){box.classList.remove('show');box.style.animation='none';}
+    ['realDateFirefly','dateFirefly','finalVisibleFirefly','maevyRealFirefly','maevyGuaranteedFirefly','finalRealisticFirefly'].forEach(function(id){
+      var f=document.getElementById(id); if(f){f.style.opacity='0';f.style.visibility='hidden';}
+    });
+  }
+  function pop(x,y){
+    for(var i=0;i<28;i++){
+      var p=document.createElement('span');
+      p.style.cssText='position:fixed;width:5px;height:5px;border-radius:50%;z-index:2147483646;pointer-events:none;background:#fff7b8;box-shadow:0 0 10px 3px #ffd95b;left:'+x+'px;top:'+y+'px;';
+      var a=Math.PI*2*i/28+(Math.random()-.5)*.2,d=25+Math.random()*60;
+      p.style.setProperty('--dx',Math.cos(a)*d+'px');
+      p.style.setProperty('--dy',Math.sin(a)*d+'px');
+      p.animate([
+        {opacity:1,transform:'translate3d(0,0,0) scale(1)'},
+        {opacity:0,transform:'translate3d(var(--dx),var(--dy),0) scale(.1)'}
+      ],{duration:520+Math.random()*220,easing:'ease-out',fill:'forwards'});
+      document.body.appendChild(p);
+      setTimeout(function(q){return function(){q.remove();};}(p),850);
+    }
+  }
+  function getFirefly(){
+    var f=document.getElementById('finalRealisticFirefly');
+    if(!f){
+      f=document.createElement('div');f.id='finalRealisticFirefly';
+      f.innerHTML='<span class="frf-glow"></span><span class="frf-wing left"></span><span class="frf-wing right"></span><span class="frf-body"><span class="frf-light"></span></span>';
+      document.body.appendChild(f);
+    }
+    return f;
+  }
+  function revealMailbox(box,x,y){
+    if(mailboxRevealed)return;
+    mailboxRevealed=true;
+    var f=document.getElementById('finalRealisticFirefly');
+    if(f)f.style.opacity='0';
+    pop(x,y);
+    document.body.classList.add('page21-mailbox-unlocked');
+    if(box){
+      box.classList.add('show');
+      box.style.animation='none';
+      void box.offsetWidth;
+      box.style.animation='frfMailboxReveal .42s ease-out both';
+    }
+  }
+  function startSequence(){
+    if(fireflyRunning || mailboxRevealed || !isPage21() || !plannerComplete())return;
+    var box=document.getElementById('dateMailbox');
+    var f=getFirefly();
+    if(!box||!f)return;
+
+    fireflyRunning=true;
+    document.body.classList.add('page21-date-sequence-unlocked');
+    document.body.classList.remove('page21-mailbox-unlocked');
+    box.classList.remove('show');
+
+    var br=box.getBoundingClientRect();
+    var tx=br.left+br.width/2, ty=br.top+br.height/2;
+    var sx=Math.max(30,tx-270), sy=Math.min(window.innerHeight-100,ty+230);
+    var start=performance.now(), duration=3000;
+
+    function frame(now){
+      if(!isPage21() || !plannerComplete()){
+        fireflyRunning=false;cancelAnimationFrame(raf);resetVisuals();return;
+      }
+      var p=Math.min(1,(now-start)/duration), e=p*p*(3-2*p);
+      var x=sx+(tx-sx)*e;
+      var y=sy+(ty-sy)*e-Math.sin(Math.PI*p)*105;
+      f.style.opacity='1';f.style.visibility='visible';
+      f.style.transform='translate3d('+(x-10)+'px,'+(y-10)+'px,0)';
+      if(p<1){raf=requestAnimationFrame(frame);return;}
+      /* The mailbox is unlocked ONLY after the firefly reaches it and pops. */
+      pop(tx,ty);
+      setTimeout(function(){revealMailbox(box,tx,ty);},120);
+      fireflyRunning=false;
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  function evaluate(){
+    if(!isPage21()){
+      cancelAnimationFrame(raf);fireflyRunning=false;resetVisuals();return;
+    }
+    if(!plannerComplete()){
+      cancelAnimationFrame(raf);fireflyRunning=false;resetVisuals();return;
+    }
+    if(!mailboxRevealed && !fireflyRunning)setTimeout(startSequence,40);
+  }
+  function init(){
+    resetVisuals();
+    var date=document.getElementById('hangoutDate');
+    var time=document.getElementById('hangoutTime');
+    var choices=document.getElementById('activityChoices');
+    ['change','input'].forEach(function(ev){
+      if(date)date.addEventListener(ev,function(){evaluate();},true);
+      if(time)time.addEventListener(ev,function(){evaluate();},true);
+    });
+    if(choices)choices.addEventListener('click',function(){setTimeout(evaluate,50);},true);
+    screens().forEach(function(s){new MutationObserver(evaluate).observe(s,{attributes:true,attributeFilter:['class']});});
+    window.addEventListener('resize',function(){if(isPage21() && !mailboxRevealed){cancelAnimationFrame(raf);fireflyRunning=false;evaluate();}},{passive:true});
+    setInterval(evaluate,500);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<!-- END ABSOLUTE PAGE21 PLANNER GATE -->
+
+<style id="MAEVY_GAMES_UPGRADE_V1">
+#maevyGamePanel{display:none!important}
+#maevyGamePanel2{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;padding:14px;box-sizing:border-box;background:rgba(2,5,12,.76);backdrop-filter:none;-webkit-backdrop-filter:none}
+#maevyGamePanel2.open{display:flex!important}
+#maevyGamePanel2 .gameShell{width:min(760px,96vw);max-height:min(88dvh,760px);overflow:auto;border:1px solid rgba(232,193,139,.28);border-radius:28px;background:linear-gradient(145deg,rgba(17,20,31,.98),rgba(7,10,18,.98));box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 50px rgba(232,193,139,.08);padding:18px;box-sizing:border-box;color:#eee}
+#maevyGamePanel2 *{box-sizing:border-box}
+.g2Head{display:flex;align-items:center;justify-content:space-between;gap:12px}.g2Head h3{margin:0;font:600 clamp(25px,5vw,36px) 'Cormorant Garamond',Georgia,serif;color:#f2ddd1}.g2Close{width:42px;height:42px;border-radius:50%;border:1px solid rgba(232,193,139,.35);background:rgba(255,255,255,.05);color:#f6d9b3;font-size:24px;cursor:pointer}
+.g2Tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.g2Tab{min-height:46px;border:1px solid rgba(232,193,139,.22);border-radius:14px;background:rgba(255,255,255,.035);color:#ead8c6;font-weight:700;cursor:pointer}.g2Tab.active{border-color:#e8c58d;background:rgba(232,193,139,.12);color:#ffdca6}
+.g2Game{display:none}.g2Game.active{display:block}.g2Intro{color:#cfcbd0;font:14px/1.45 Inter,system-ui,sans-serif;margin:5px 0 12px}.g2Stats{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:10px 0;color:#f3dfc4;font:700 13px Inter,system-ui,sans-serif}.g2Btn{min-height:44px;padding:10px 16px;border-radius:14px;border:1px solid #e8c58d;background:rgba(232,193,139,.10);color:#ffe1b4;font-weight:800;cursor:pointer}.g2Btn:active,.g2Tab:active{transform:scale(.97)}
+#heartRush2{height:min(52vh,390px);min-height:250px;position:relative;overflow:hidden;border-radius:20px;border:1px solid rgba(232,193,139,.2);background:radial-gradient(circle at 50% 45%,rgba(74,47,73,.34),rgba(3,7,15,.96));touch-action:none}.rushHeart{position:absolute;width:44px;height:44px;border:0;background:transparent;font-size:34px;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,170,190,.7));animation:heartBob .8s ease-in-out infinite alternate}.rushHeart.hit{animation:rushHit .25s ease-out forwards!important}@keyframes heartBob{to{transform:translateY(-7px) rotate(5deg)}}@keyframes rushHit{to{transform:scale(2);opacity:0}}
+#memoryBoard2{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px;margin:12px auto}.memCard{aspect-ratio:1;border:1px solid rgba(232,193,139,.25);border-radius:16px;background:linear-gradient(145deg,#1a1e2c,#0c101b);color:transparent;font-size:clamp(25px,7vw,40px);cursor:pointer;transition:transform .18s,background .18s,color .18s;box-shadow:inset 0 1px rgba(255,255,255,.05)}.memCard.flipped,.memCard.matched{color:#ffe3b5;background:rgba(232,193,139,.12);transform:rotateY(180deg)}.memCard.matched{border-color:#e8c58d;box-shadow:0 0 20px rgba(232,193,139,.16)}
+#starDash2{height:min(52vh,390px);min-height:250px;position:relative;overflow:hidden;border-radius:20px;border:1px solid rgba(232,193,139,.2);background:radial-gradient(circle at 50% 50%,rgba(38,53,77,.34),rgba(2,6,14,.97));touch-action:none}.dashStar{position:absolute;border:0;background:transparent;font-size:30px;cursor:pointer;filter:drop-shadow(0 0 12px rgba(255,225,135,.85));animation:starPulse .7s ease-in-out infinite alternate}.dashStar.hit{animation:starHit .3s ease-out forwards!important}@keyframes starPulse{to{transform:scale(1.18)}}@keyframes starHit{to{transform:scale(2.5);opacity:0}}
+.g2Bottom{display:flex;justify-content:center;margin-top:12px}.g2Msg{text-align:center;color:#cfc8c4;font:12px/1.4 Inter,system-ui,sans-serif;min-height:17px;margin-top:8px}
+@media(max-width:600px){#maevyGamePanel2{padding:8px}#maevyGamePanel2 .gameShell{width:100%;max-height:94dvh;border-radius:22px;padding:13px}.g2Tabs{gap:6px}.g2Tab{font-size:12px;min-height:44px}.g2Head h3{font-size:27px}#memoryBoard2{gap:7px}.memCard{border-radius:12px}}
+@media(prefers-reduced-motion:reduce){.rushHeart,.dashStar,.memCard{animation:none!important;transition:none!important}}
+</style>
+<div id="maevyGamePanel2" aria-hidden="true">
+ <section class="gameShell" role="dialog" aria-modal="true" aria-label="Maevy's little games">
+  <div class="g2Head"><h3>Little games ♡</h3><button class="g2Close" id="g2Close" aria-label="Close games">×</button></div>
+  <div class="g2Tabs" role="tablist">
+   <button class="g2Tab active" data-g2="rush" role="tab" aria-selected="true">♡ Heart Rush</button>
+   <button class="g2Tab" data-g2="memory" role="tab" aria-selected="false">✦ Memory</button>
+   <button class="g2Tab" data-g2="stars" role="tab" aria-selected="false">✧ Star Dash</button>
+  </div>
+  <div class="g2Game active" data-g2game="rush"><p class="g2Intro">Catch the hearts before they vanish. Combos give bonus points. 25 seconds.</p><div class="g2Stats"><span id="rushStats">SCORE 0 · COMBO 0</span><span id="rushTime">25s</span></div><div id="heartRush2"></div><div class="g2Bottom"><button class="g2Btn" id="rushStart">Start Heart Rush</button></div><div class="g2Msg" id="rushMsg">Beat your best score.</div></div>
+  <div class="g2Game" data-g2game="memory"><p class="g2Intro">Match all eight pairs as quickly as you can. Wrong flips reset after a moment.</p><div class="g2Stats"><span id="memStats">MOVES 0 · MATCHES 0/8</span><span id="memTime">0s</span></div><div id="memoryBoard2"></div><div class="g2Bottom"><button class="g2Btn" id="memStart">Shuffle &amp; Start</button></div><div class="g2Msg" id="memMsg">Find all the matching pairs.</div></div>
+  <div class="g2Game" data-g2game="stars"><p class="g2Intro">A tiny constellation is falling apart. Tap every star before it disappears.</p><div class="g2Stats"><span id="starStats">STARS 0 · COMBO 0</span><span id="starTime">30s</span></div><div id="starDash2"></div><div class="g2Bottom"><button class="g2Btn" id="starStart">Start Star Dash</button></div><div class="g2Msg" id="starMsg">Fast taps build your combo.</div></div>
+ </section>
+</div>
+<script id="MAEVY_GAMES_UPGRADE_SCRIPT">
+(function(){
+'use strict';
+function ready(fn){document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fn,{once:true}):fn()}
+ready(function(){
+ const panel=document.getElementById('maevyGamePanel2'), close=document.getElementById('g2Close'), launcher=document.getElementById('maevyGameLauncher');
+ if(!panel||!close||!launcher)return;
+ function open(){const old=document.getElementById('maevyGamePanel');if(old)old.classList.remove('open');panel.classList.add('open');panel.setAttribute('aria-hidden','false');close.focus()}
+ function shut(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');stopRush();stopStars();stopMemory()}
+ launcher.addEventListener('click',open,true); close.addEventListener('click',shut); panel.addEventListener('click',e=>{if(e.target===panel)shut()}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))shut()});
+ const tabs=[...panel.querySelectorAll('.g2Tab')], games=[...panel.querySelectorAll('.g2Game')];
+ tabs.forEach(t=>t.addEventListener('click',()=>{const n=t.dataset.g2;tabs.forEach(x=>{const on=x===t;x.classList.toggle('active',on);x.setAttribute('aria-selected',on)});games.forEach(g=>g.classList.toggle('active',g.dataset.g2game===n));stopRush();stopStars();stopMemory()}));
+ let rushTimer=0,rushRunning=false,rushScore=0,rushCombo=0,rushEnd=0,rushBest=Number(localStorage.getItem('maevyRushBest')||0);
+ const rushBox=document.getElementById('heartRush2'),rushStats=document.getElementById('rushStats'),rushTime=document.getElementById('rushTime'),rushMsg=document.getElementById('rushMsg');
+ function stopRush(){clearInterval(rushTimer);rushRunning=false;document.querySelectorAll('.rushHeart').forEach(x=>x.remove())}
+ function spawnRush(){if(!rushRunning)return;const h=document.createElement('button');h.className='rushHeart';h.textContent=Math.random()<.5?'♡':'♥';h.setAttribute('aria-label','Catch heart');const r=rushBox.getBoundingClientRect(),size=46;h.style.left=Math.max(2,Math.random()*(r.width-size-4))+'px';h.style.top=Math.max(2,Math.random()*(r.height-size-4))+'px';h.addEventListener('click',()=>{if(!rushRunning)return;rushCombo++;rushScore+=10+Math.min(40,rushCombo*2);rushStats.textContent='SCORE '+rushScore+' · COMBO '+rushCombo;h.classList.add('hit');setTimeout(()=>h.remove(),220);setTimeout(spawnRush,100)});rushBox.appendChild(h);setTimeout(()=>{if(h.isConnected){h.remove();if(rushRunning){rushCombo=0;rushStats.textContent='SCORE '+rushScore+' · COMBO 0';spawnRush()}}},1100)}
+ function startRush(){stopRush();rushScore=0;rushCombo=0;rushEnd=Date.now()+25000;rushRunning=true;rushStats.textContent='SCORE 0 · COMBO 0';rushMsg.textContent='GO! Catch them fast.';spawnRush();rushTimer=setInterval(()=>{const s=Math.max(0,Math.ceil((rushEnd-Date.now())/1000));rushTime.textContent=s+'s';if(s<=0){stopRush();rushTime.textContent='0s';if(rushScore>rushBest){rushBest=rushScore;localStorage.setItem('maevyRushBest',rushBest);rushMsg.textContent='NEW BEST: '+rushBest+' ♡'}else rushMsg.textContent='Finished! Best: '+rushBest}},100)}
+ document.getElementById('rushStart').addEventListener('click',startRush);
+ let memTimer=0,memRunning=false,memFirst=null,memLock=false,memMoves=0,memMatches=0,memStartAt=0;const vals=['♡','✦','☾','∞','❀','☆','♧','✧'];
+ function stopMemory(){clearInterval(memTimer);memRunning=false;memFirst=null;memLock=false}
+ function startMemory(){stopMemory();memMoves=0;memMatches=0;memRunning=true;memStartAt=Date.now();const deck=[...vals,...vals].sort(()=>Math.random()-.5),board=document.getElementById('memoryBoard2');board.innerHTML='';document.getElementById('memMsg').textContent='';deck.forEach((v)=>{const b=document.createElement('button');b.className='memCard';b.textContent=v;b.dataset.v=v;b.addEventListener('click',()=>{if(!memRunning||memLock||b.classList.contains('flipped')||b.classList.contains('matched'))return;b.classList.add('flipped');if(!memFirst){memFirst=b;return}memMoves++;const a=memFirst;memFirst=null;if(a.dataset.v===b.dataset.v){a.classList.add('matched');b.classList.add('matched');memMatches++;document.getElementById('memStats').textContent='MOVES '+memMoves+' · MATCHES '+memMatches+'/8';if(memMatches===8){stopMemory();document.getElementById('memMsg').textContent='Perfect match! ✦ '+Math.ceil((Date.now()-memStartAt)/1000)+'s'}}else{memLock=true;setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');memLock=false},650)}document.getElementById('memStats').textContent='MOVES '+memMoves+' · MATCHES '+memMatches+'/8'});board.appendChild(b)});document.getElementById('memStats').textContent='MOVES 0 · MATCHES 0/8';memTimer=setInterval(()=>document.getElementById('memTime').textContent=Math.floor((Date.now()-memStartAt)/1000)+'s',250)}
+ document.getElementById('memStart').addEventListener('click',startMemory);startMemory();
+ let starTimer=0,starRunning=false,starScore=0,starCombo=0,starEnd=0;const starBox=document.getElementById('starDash2');
+ function stopStars(){clearInterval(starTimer);starRunning=false;starBox.querySelectorAll('.dashStar').forEach(x=>x.remove())}
+ function spawnStar(){if(!starRunning)return;const s=document.createElement('button');s.className='dashStar';s.textContent=['✦','✧','★','☆'][Math.floor(Math.random()*4)];const r=starBox.getBoundingClientRect();s.style.left=Math.max(2,Math.random()*(r.width-40))+'px';s.style.top=Math.max(2,Math.random()*(r.height-40))+'px';s.addEventListener('click',()=>{if(!starRunning)return;starCombo++;starScore+=5+Math.min(25,starCombo);document.getElementById('starStats').textContent='STARS '+starScore+' · COMBO '+starCombo;s.classList.add('hit');setTimeout(()=>s.remove(),260);setTimeout(spawnStar,120)});starBox.appendChild(s);setTimeout(()=>{if(s.isConnected){s.remove();starCombo=0;document.getElementById('starStats').textContent='STARS '+starScore+' · COMBO 0';if(starRunning)spawnStar()}},1250)}
+ function startStars(){stopStars();starScore=0;starCombo=0;starEnd=Date.now()+30000;starRunning=true;document.getElementById('starStats').textContent='STARS 0 · COMBO 0';document.getElementById('starMsg').textContent='Go go go ✦';spawnStar();starTimer=setInterval(()=>{const s=Math.max(0,Math.ceil((starEnd-Date.now())/1000));document.getElementById('starTime').textContent=s+'s';if(s<=0){stopStars();document.getElementById('starTime').textContent='0s';document.getElementById('starMsg').textContent='Run complete — score '+starScore+' ✦'}},100)}
+ document.getElementById('starStart').addEventListener('click',startStars);
+ window.addEventListener('resize',()=>{if(rushRunning||starRunning){}});
+});
+})();
+</script>
+<style id="MAEVY_GAMES_V3_CSS">
+/* V3 game upgrades: replace the two weak arcade games while preserving Memory. */
+.g3-stage{position:relative;width:100%;height:min(46vh,330px);min-height:230px;border:1px solid rgba(232,193,139,.18);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(90,78,115,.22),transparent 52%),rgba(2,5,14,.72);touch-action:none;user-select:none}
+.g3-pads{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:360px;margin:auto;padding:26px}
+.g3-pad{aspect-ratio:1;border:1px solid rgba(232,193,139,.3);border-radius:22px;background:rgba(255,255,255,.045);color:#f6e4d5;font-size:34px;cursor:pointer;transition:transform .12s,filter .12s,background .12s;box-shadow:inset 0 0 30px rgba(255,255,255,.025)}
+.g3-pad:active,.g3-pad.lit{transform:scale(.94);filter:brightness(1.7);background:rgba(232,193,139,.2)}
+.g3-instruction{font:13px/1.4 Inter,system-ui,sans-serif;color:#aaa8b4;text-align:center;margin:4px 0 10px}
+.g3-hud{display:flex;justify-content:space-between;gap:8px;margin:9px 0;font:600 12px Inter;color:#ead8c6}
+.g3-star{position:absolute;width:30px;height:30px;border:0;background:transparent;color:#fff6bd;font-size:27px;cursor:pointer;filter:drop-shadow(0 0 7px rgba(255,224,110,.65));padding:0}
+@keyframes g3Twinkle{to{transform:scale(1.22) rotate(8deg);filter:drop-shadow(0 0 16px rgba(255,224,110,1))}}
+.g3-basket{position:absolute;bottom:10px;width:92px;height:28px;border:2px solid #d9b88f;border-radius:0 0 28px 28px;border-top:0;background:rgba(232,193,139,.14);box-shadow:0 0 20px rgba(232,193,139,.15);transform:translateX(-50%);pointer-events:none}
+.g3-falling{position:absolute;font-size:25px;pointer-events:none;filter:drop-shadow(0 0 7px rgba(255,235,145,.75))}
+.g3-toast{min-height:18px;text-align:center;font:600 12px Inter;color:#e9cdb1;margin-top:7px}
+@media(max-width:600px){.g3-stage{height:42vh;min-height:220px}.g3-pads{gap:8px;padding:18px}.g3-pad{border-radius:17px;font-size:28px}}
+</style>
+<script id="MAEVY_GAMES_V3_SCRIPT">
+(function(){
+'use strict';
+function ready(fn){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fn,{once:true});else fn()}
+ready(function(){
+ const panel=document.getElementById('maevyGamePanel2'); if(!panel)return;
+ const rush=panel.querySelector('[data-g2game="rush"]'), stars=panel.querySelector('[data-g2game="stars"]');
+ if(!rush||!stars)return;
+ const rt=rush.querySelector('.g2Intro'); rt.textContent='Watch the sequence. Then repeat it perfectly. Each round gets faster. 🔊';
+ const oldRushStage=document.getElementById('heartRush2'); oldRushStage.outerHTML='<div class="g3-hud"><span id="rhythmRound">ROUND 0</span><span id="rhythmBest">BEST 0</span></div><div class="g3-pads" id="rhythmPads"><button class="g3-pad" data-pad="0">♡</button><button class="g3-pad" data-pad="1">✦</button><button class="g3-pad" data-pad="2">☾</button><button class="g3-pad" data-pad="3">✧</button></div><div class="g3-toast" id="rhythmMsg">Press Start to begin.</div>';
+ const oldRushBar=rush.querySelector('.g2Bottom'); oldRushBar.innerHTML='<button class="g2Btn" id="rhythmStart">Start Rhythm Recall</button>';
+ ['rushStats','rushTime','rushMsg'].forEach(id=>{const x=rush.querySelector('#'+id);if(x)x.remove()});
+ const st=stars.querySelector('.g2Intro'); st.textContent='Move the little moon-basket and catch falling stars. Miss too many and the night ends. 🌙';
+ const oldStarStage=document.getElementById('starDash2'); oldStarStage.outerHTML='<div class="g3-hud"><span id="catchScore">SCORE 0</span><span id="catchCombo">COMBO 0</span><span id="catchTime">30s</span></div><div class="g3-stage" id="catchStage"><div class="g3-basket" id="catchBasket"></div></div><div class="g3-toast" id="catchMsg">Move the basket with mouse or finger.</div>';
+ const oldStarBar=stars.querySelector('.g2Bottom'); oldStarBar.innerHTML='<button class="g2Btn" id="catchStart">Start Moonlight Catch</button>';
+ ['starStats','starTime','starMsg'].forEach(id=>{const x=stars.querySelector('#'+id);if(x)x.remove()});
+ panel.querySelectorAll('.g2Tab').forEach(t=>{if(t.dataset.g2==='rush')t.textContent='♡ Rhythm Recall';if(t.dataset.g2==='stars')t.textContent='☾ Moonlight Catch'});
+
+ // Lightweight Rhythm Recall: no animation frame loops, only a few short timers.
+ let seq=[],input=[],round=0,playing=false,accept=false,best=Number(localStorage.getItem('maevyRhythmBest')||0),timers=[];
+ const pads=[...panel.querySelectorAll('.g3-pad')], msg=document.getElementById('rhythmMsg');
+ document.getElementById('rhythmBest').textContent='BEST '+best;
+ const later=(fn,ms)=>{const id=setTimeout(fn,ms);timers.push(id);return id};
+ function clearTimers(){timers.forEach(clearTimeout);timers=[]}
+ function flash(n){const p=pads[n];if(!p)return;p.classList.add('lit');later(()=>p.classList.remove('lit'),170)}
+ function showSeq(){if(!playing)return;accept=false;seq.forEach((n,i)=>later(()=>flash(n),220+i*Math.max(230,360-round*10)));later(()=>{if(playing){input=[];accept=true;msg.textContent='Your turn — repeat it.'}},220+seq.length*Math.max(230,360-round*10))}
+ function nextRound(){if(!playing)return;round++;document.getElementById('rhythmRound').textContent='ROUND '+round;seq.push(Math.floor(Math.random()*4));msg.textContent='Watch carefully…';later(showSeq,320)}
+ function rhythmStop(){playing=false;accept=false;clearTimers();pads.forEach(p=>p.classList.remove('lit'))}
+ function rhythmStart(){rhythmStop();seq=[];input=[];round=0;playing=true;msg.textContent='Get ready…';later(nextRound,300)}
+ pads.forEach(p=>p.addEventListener('pointerdown',e=>{e.preventDefault();if(!playing||!accept)return;const n=+p.dataset.pad;flash(n);input.push(n);const i=input.length-1;if(input[i]!==seq[i]){playing=false;accept=false;msg.textContent='Missed it 😭 — reached round '+round+'.';if(round>best){best=round;localStorage.setItem('maevyRhythmBest',best);document.getElementById('rhythmBest').textContent='BEST '+best}return}if(input.length===seq.length){accept=false;msg.textContent='Perfect ✦';later(nextRound,300)}}));
+ document.getElementById('rhythmStart').addEventListener('click',rhythmStart);
+
+ // Lightweight Moonlight Catch: ONE RAF controls every falling star.
+ const stage=document.getElementById('catchStage'),basket=document.getElementById('catchBasket');
+ let catchRun=false,score=0,combo=0,miss=0,catchEnd=0,catchRaf=0,bx=0,starsArr=[],lastSpawn=0,lastTime=0,stageW=0,stageH=0;
+ function resizeCatch(){const r=stage.getBoundingClientRect();stageW=r.width;stageH=r.height;if(!bx)bx=stageW/2;bx=Math.max(46,Math.min(stageW-46,bx));basket.style.left=bx+'px'}
+ function moveBasket(clientX){const r=stage.getBoundingClientRect();stageW=r.width;stageH=r.height;bx=Math.max(46,Math.min(stageW-46,clientX-r.left));basket.style.left=bx+'px'}
+ stage.addEventListener('pointermove',e=>{if(catchRun)moveBasket(e.clientX)},{passive:true});
+ stage.addEventListener('pointerdown',e=>{if(catchRun)moveBasket(e.clientX)});
+ function spawnStar(now){const el=document.createElement('span');el.className='g3-star';el.textContent=Math.random()<.25?'✦':'★';el.setAttribute('aria-hidden','true');const x=12+Math.random()*(Math.max(20,stageW-36));el.style.left=x+'px';el.style.top='-32px';stage.appendChild(el);starsArr.push({el,x,y:-32,v:95+Math.random()*55});}
+ function endCatch(text){catchRun=false;if(catchRaf)cancelAnimationFrame(catchRaf);catchRaf=0;starsArr.forEach(o=>o.el.remove());starsArr=[];document.getElementById('catchMsg').textContent=text+' Final score: '+score+'.';document.getElementById('catchStart').textContent='Play Again'}
+ function catchLoop(now){if(!catchRun)return;const dt=Math.min(.032,Math.max(.008,(now-lastTime)/1000||.016));lastTime=now;
+   if(now-lastSpawn>520){lastSpawn=now;spawnStar(now)}
+   const brLeft=bx-46,brRight=bx+46,brTop=stageH-38;
+   for(let i=starsArr.length-1;i>=0;i--){const o=starsArr[i];o.y+=o.v*dt;o.el.style.transform='translate3d(0,'+o.y+'px,0)';
+     if(o.y+24>=brTop && o.y<=brTop+30 && o.x+24>=brLeft && o.x<=brRight){score+=10+Math.min(combo,10)*2;combo++;o.el.remove();starsArr.splice(i,1);continue}
+     if(o.y>stageH+10){miss++;combo=0;o.el.remove();starsArr.splice(i,1)}
+   }
+   document.getElementById('catchScore').textContent='SCORE '+score;document.getElementById('catchCombo').textContent='COMBO '+combo;
+   const left=Math.max(0,Math.ceil((catchEnd-now)/1000));document.getElementById('catchTime').textContent=left+'s';
+   if(left<=0){endCatch('Time! 🌙');return} if(miss>=8){endCatch('The night got away 🌙');return}
+   catchRaf=requestAnimationFrame(catchLoop);
+ }
+ function catchStart(){endCatch('');resizeCatch();score=0;combo=0;miss=0;catchRun=true;catchEnd=performance.now()+30000;lastTime=performance.now();lastSpawn=lastTime;document.getElementById('catchScore').textContent='SCORE 0';document.getElementById('catchCombo').textContent='COMBO 0';document.getElementById('catchTime').textContent='30s';document.getElementById('catchMsg').textContent='Catch!';catchRaf=requestAnimationFrame(catchLoop)}
+ document.getElementById('catchStart').addEventListener('click',catchStart);
+ window.addEventListener('resize',()=>{if(catchRun)resizeCatch()},{passive:true});
+
+ // Hard-stop games when changing tabs or closing the panel.
+ panel.querySelectorAll('.g2Tab').forEach(t=>t.addEventListener('click',()=>{if(t.dataset.g2!=='rush')rhythmStop();if(t.dataset.g2!=='stars')endCatch('Paused')}));
+ document.getElementById('g2Close')?.addEventListener('click',()=>{rhythmStop();endCatch('Paused')});
+});
+})();
+</script>
+\n<style id="MAEVY_FIREfly_RESTORE_FINAL">\n#maevyFireflyFinal{position:fixed;left:0;top:0;width:20px;height:20px;border-radius:50%;z-index:2147483647;pointer-events:none;opacity:0;visibility:hidden;background:radial-gradient(circle,#fff 0 12%,#fff6a5 28%,#ffd95a 58%,transparent 76%);box-shadow:0 0 10px 4px #fff0a0,0 0 26px 9px rgba(255,210,80,.72),0 0 48px 18px rgba(255,190,50,.35);will-change:transform,opacity}\n#maevyFireflyFinal::before,#maevyFireflyFinal::after{content:"";position:absolute;width:13px;height:7px;top:6px;background:rgba(255,255,230,.78);filter:blur(.3px);}\n#maevyFireflyFinal::before{right:11px;transform:rotate(28deg);border-radius:90% 20% 80% 20%}\n#maevyFireflyFinal::after{left:11px;transform:rotate(-28deg) scaleX(-1);border-radius:90% 20% 80% 20%}\n#dateMailbox.maevyFinalMailboxLocked{opacity:0!important;visibility:hidden!important;pointer-events:none!important}\n#dateMailbox.maevyFinalMailboxOpen{opacity:1!important;visibility:visible!important;pointer-events:auto!important}\n</style>\n<script id="MAEVY_FIREfly_RESTORE_FINAL_SCRIPT">\n(function(){\n'use strict';\nvar running=false,done=false,raf=0;\nfunction qs(x){return document.querySelector(x)}\nfunction page21(){var s=document.querySelectorAll('.screen');return s.length>=21&&s[20].classList.contains('active')}\nfunction ready(){var d=qs('#hangoutDate'),t=qs('#hangoutTime'),a=qs('#activityChoices .activity-btn.selected');return page21()&&d&&d.value&&t&&t.value&&a}\nfunction mailbox(){return qs('#dateMailbox')}\nfunction hide(){var m=mailbox();if(m){m.classList.add('maevyFinalMailboxLocked');m.classList.remove('maevyFinalMailboxOpen')}var f=qs('#maevyFireflyFinal');if(f){f.style.opacity='0';f.style.visibility='hidden'}}\nfunction burst(x,y){for(var i=0;i<20;i++){var q=document.createElement('i');var a=i*Math.PI*2/20,d=25+Math.random()*45;q.style.cssText='position:fixed;left:'+x+'px;top:'+y+'px;width:5px;height:5px;border-radius:50%;background:#fff6a5;box-shadow:0 0 10px 3px #ffd85c;pointer-events:none;z-index:2147483647';q.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+(Math.cos(a)*d)+'px,'+(Math.sin(a)*d)+'px) scale(.1)',opacity:0}],{duration:650,easing:'ease-out',fill:'forwards'});document.body.appendChild(q);setTimeout(function(x){return function(){x.remove()}}(q),700)}}\nfunction start(){if(running||done||!ready())return;var m=mailbox();if(!m)return;running=true;hide();var f=qs('#maevyFireflyFinal')||document.body.appendChild(Object.assign(document.createElement('div'),{id:'maevyFireflyFinal'}));var r=m.getBoundingClientRect();var tx=r.left+r.width*.5,ty=r.top+r.height*.45;var sx=Math.max(28,Math.min(innerWidth*.28,tx-300));var sy=Math.min(innerHeight-80,Math.max(innerHeight*.68,ty+220));var st=performance.now(),dur=3200;f.style.opacity='1';f.style.visibility='visible';function frame(now){if(!ready()){running=false;cancelAnimationFrame(raf);hide();return}var p=Math.min(1,(now-st)/dur),e=p*p*(3-2*p);var x=sx+(tx-sx)*e,y=sy+(ty-sy)*e-Math.sin(Math.PI*p)*125;f.style.transform='translate3d('+(x-10)+'px,'+(y-10)+'px,0)';if(p<1){raf=requestAnimationFrame(frame);return}burst(tx,ty);f.style.opacity='0';f.style.visibility='hidden';m.classList.remove('maevyFinalMailboxLocked');m.classList.add('maevyFinalMailboxOpen');running=false;done=true}raf=requestAnimationFrame(frame)}\nfunction check(){if(!page21()){done=false;running=false;cancelAnimationFrame(raf);hide();return}if(!ready()){done=false;running=false;cancelAnimationFrame(raf);hide();return}if(!done&&!running)start()}\nfunction init(){hide();document.addEventListener('change',function(e){if(e.target.closest&&e.target.closest('#hangoutPlanner'))setTimeout(check,80)},true);document.addEventListener('input',function(e){if(e.target.closest&&e.target.closest('#hangoutPlanner'))setTimeout(check,80)},true);document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#activityChoices'))setTimeout(check,80)},true);document.querySelectorAll('.screen').forEach(function(s){new MutationObserver(function(){setTimeout(check,0)}).observe(s,{attributes:true,attributeFilter:['class']})});setInterval(check,300)}\nif(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();\n})();\n</script>\n<style id="FIREFLY_FINAL_FIX">
+#maevyFireflyFinal{position:fixed;left:0;top:0;width:22px;height:22px;z-index:2147483646;pointer-events:none;opacity:0;visibility:hidden;border-radius:50%;background:radial-gradient(circle,#fff 0 16%,#ffe77b 32%,#f5c84b 58%,transparent 78%);box-shadow:0 0 9px 4px #ffe98a,0 0 26px 10px rgba(255,215,90,.55);}
+#maevyFireflyFinal::before,#maevyFireflyFinal::after{content:"";position:absolute;top:6px;width:13px;height:8px;background:rgba(255,255,235,.8);border-radius:90% 20% 80% 20%;}
+#maevyFireflyFinal::before{right:12px;transform:rotate(25deg)}#maevyFireflyFinal::after{left:12px;transform:scaleX(-1) rotate(25deg)}
+</style>
+<script id="FIREFLY_FINAL_FIX_SCRIPT">(()=>{
+let f,started=false,done=false,raf=0;
+const page=()=>document.getElementById('datePlanPage');
+const active=()=>{const p=page();return p&&p.classList.contains('active')};
+const ready=()=>{if(!active())return false;const d=document.getElementById('hangoutDate');const t=document.getElementById('hangoutTime');const a=document.querySelector('#activityChoices .activity-btn.selected');return !!(d?.value&&t?.value&&a)};
+function hide(){if(f){f.style.opacity='0';f.style.visibility='hidden'};document.body.classList.remove('maevy-firefly-running')}
+function make(){if(f)return;f=document.createElement('div');f.id='maevyFireflyFinal';document.body.appendChild(f)}
+function pop(x,y){for(let i=0;i<18;i++){const p=document.createElement('i');p.style.cssText=`position:fixed;left:${x}px;top:${y}px;width:6px;height:6px;border-radius:50%;background:#fff3a6;box-shadow:0 0 10px #ffe66d;pointer-events:none;z-index:2147483647`;const a=i*Math.PI*2/18,d=25+Math.random()*35;p.animate([{transform:'translate(-3px,-3px)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px)`,opacity:0}],{duration:550,fill:'forwards'});document.body.appendChild(p);setTimeout(()=>p.remove(),600)}}
+function reveal(){const m=document.getElementById('dateMailbox');if(m){m.classList.add('show');m.style.display='block';m.style.opacity='1';m.style.visibility='visible';m.style.pointerEvents='auto'} }
+function run(){if(started||done||!ready())return;started=true;make();document.body.classList.add('maevy-firefly-running');f.style.opacity='1';f.style.visibility='visible';const m=document.getElementById('dateMailboxBtn'),r=m?.getBoundingClientRect(),tx=r?.left+r.width/2||innerWidth-45,ty=r?.top+r.height/2||50,sx=innerWidth*.12,sy=innerHeight*.72,t0=performance.now(),dur=3200;function loop(now){if(!active()){hide();started=false;return}let q=Math.min(1,(now-t0)/dur),e=q*q*(3-2*q),x=sx+(tx-sx)*e,y=sy+(ty-sy)*e-Math.sin(Math.PI*q)*130;f.style.transform=`translate(${x-11}px,${y-11}px)`;if(q<1){raf=requestAnimationFrame(loop);return}pop(tx,ty);hide();reveal();done=true;started=false}raf=requestAnimationFrame(loop)}
+function sync(){if(!active()||!ready()){if(!active()||!done) {done=false;started=false;cancelAnimationFrame(raf);hide();const m=document.getElementById('dateMailbox');if(m){m.classList.remove('show');m.style.display='none'}}return}run()}
+function init(){make();hide();document.addEventListener('change',e=>{if(e.target.matches('#hangoutDate,#hangoutTime')||e.target.closest('#activityChoices'))setTimeout(sync,80)},true);document.addEventListener('click',e=>{if(e.target.closest('#activityChoices'))setTimeout(sync,100)},true);new MutationObserver(()=>setTimeout(sync,30)).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});setInterval(sync,250)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>
