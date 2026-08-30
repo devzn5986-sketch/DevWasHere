@@ -348,6 +348,43 @@ html,body{background:#01040a!important}
 .bg18{--dark-bg:radial-gradient(ellipse at 56% 52%,#21162a 0%,transparent 58%),linear-gradient(135deg,#0c0a14 0%,#0b0b12 100%)!important}
 .bg19{--dark-bg:radial-gradient(ellipse at 73% 65%,#12242c 0%,transparent 58%),linear-gradient(135deg,#071017 0%,#080c13 100%)!important}
 .bg20{--dark-bg:radial-gradient(ellipse at 35% 36%,#241822 0%,transparent 58%),linear-gradient(135deg,#0b0a12 0%,#090a10 100%)!important}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -367,6 +404,43 @@ html,body{background:#01040a!important}
 #plannerConfirmation.show{display:block}
 @media(max-width:600px){#hangoutPlanner{margin-top:15px;padding:15px 12px}#activityChoices{grid-template-columns:1fr 1fr}.activity-btn{font-size:13px}}
 @media(max-width:380px){#activityChoices{grid-template-columns:1fr}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -382,6 +456,43 @@ body.date-planner-active #dateMailbox{top:72px;}
   #datePlanPage .date-plan-card{width:min(680px,94vw);padding-top:20px!important;padding-bottom:18px!important;}
   body.date-planner-active #dateMailbox{top:62px;right:12px;}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -453,6 +564,43 @@ body.date-planner-active #dateMailbox{top:72px;}
     grid-template-columns:1fr!important;
   }
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -484,6 +632,43 @@ body.date-planner-active #dateMailbox{top:72px;}
 @media(max-width:600px){
   #datePlanPage .tiny-love-note{font-size:11px;padding:0 8px}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -509,6 +694,43 @@ body.date-planner-active #dateMailbox{top:72px;}
   filter:none!important;
   opacity:1!important;
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 <style id="REALISTIC_FIREFLY_POLISH">
@@ -543,6 +765,43 @@ body.date-planner-active #dateMailbox{top:72px;}
   76%{margin-left:185px;margin-top:-42px}
   100%{margin-left:255px;margin-top:-5px}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -553,6 +812,43 @@ body.date-planner-active #dateMailbox{top:72px;}
 #plannerHint{color:#e8d9ca!important}
 .celebration-message{color:#f4e8dc!important}
 .date-plan-card h2{color:#f0dfcf!important}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 
@@ -642,6 +938,43 @@ body.date-planner-active #dateMailbox{top:72px;}
   from{transform:scale(.78);opacity:.45}
   to{transform:scale(1.12);opacity:.9}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 <script id="REAL_BUTTERFLIES_FIREFLY_ONLY_SCRIPT">
@@ -750,6 +1083,43 @@ body.date-planner-active #dateMailbox{top:72px;}
   width:100%!important;
   height:100%!important;
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 <script id="DATE_PAGE_SHOOTING_STARS_ONLY_SCRIPT">
@@ -1085,6 +1455,43 @@ body::after{
   .brand{letter-spacing:0!important}
   .counter{letter-spacing:.18em!important}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 </head><body><div id="shootingStars" aria-hidden="true"></div>
@@ -1164,6 +1571,43 @@ body::after{
 #dateMailboxPanel h3{margin:0 0 8px;font-size:18px;font-weight:600}#dateMailboxPanel p{margin:6px 0;font:14px/1.5 Inter,Arial,sans-serif;color:rgba(246,233,220,.82)}
 #dateMailboxClose{float:right;border:0;background:none;color:#cdbda9;font-size:18px;cursor:pointer}
 @media(max-width:600px){#dateMailbox{top:12px;right:12px}#dateMailboxBtn{width:44px;height:44px}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <style id="DATE_PLAN_NEW_PAGE_STYLE">
 #datePlanPage .date-plan-card{max-width:680px;margin:0 auto}
@@ -1177,6 +1621,43 @@ body::after{
 #datePlanPage #plannerConfirmation{display:none;margin:14px auto;padding:12px 14px;border-radius:14px;background:rgba(232,193,139,.07);border:1px solid rgba(232,193,139,.2);color:#f6e9dc;font:14px/1.5 Inter,Arial,sans-serif}
 #datePlanPage #plannerConfirmation.show{display:block}
 @media(max-width:520px){#datePlanPage #activityChoices{grid-template-columns:1fr}.date-plan-card{padding-left:18px!important;padding-right:18px!important}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 <div id="dateMailbox" aria-live="polite">
@@ -1354,6 +1835,43 @@ show=function(n){
   .screen:nth-of-type(20) .final-card{max-height:calc(100vh - 185px)!important;padding:15px 14px!important;}
   .screen:nth-of-type(20) .final-card p{font-size:14px!important;line-height:1.18!important;margin:7px auto!important;}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <style id="authoritative-final-fix">
 /* ===== AUTHORITATIVE FINAL FIX ===== */
@@ -1414,6 +1932,43 @@ show=function(n){
   .screen:nth-of-type(20) .final-card{max-height:calc(100vh - 190px)!important;padding:17px 14px!important;}
   .screen:nth-of-type(20) .final-card p{font-size:14px!important;line-height:1.18!important;margin:7px auto!important;}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 <style id="final-fix-v3">
@@ -1636,6 +2191,43 @@ show=function(n){
 @media(max-width:600px){
   #shootingStars{background-size:cover!important;}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script>
 /* ===== FINAL INTERACTION FIX V3 ===== */
@@ -1749,6 +2341,43 @@ show=function(n){
   right:auto!important;
   left:-3px!important;
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="final-star-video-only-script">
 (function(){
@@ -1861,6 +2490,43 @@ show=function(n){
   82%{opacity:1}
   100%{opacity:0;transform:translate3d(-82vw,82vh,0) rotate(-45deg) scale(1.06)}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="final-star-direction-fix-only-script">
 (function(){
@@ -1939,6 +2605,43 @@ show=function(n){
   72%{opacity:1}
   100%{opacity:0;transform:translate3d(-115vw,115vh,0) rotate(-45deg)}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="FINAL_STAR_WORKING_FIX_SCRIPT">
 (function(){
@@ -2090,6 +2793,43 @@ show=function(n){
 #datePlanPage #instagramSendNote{display:none;margin:7px auto 0;max-width:430px;color:rgba(246,233,220,.56);font:11px/1.45 Inter,Arial,sans-serif}
 #datePlanPage #instagramSendNote.show{display:block}
 @media(max-width:600px){#datePlanPage #instagramSendBtn{width:100%;max-width:360px}.date-plan-card{padding-bottom:30px!important}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="INSTAGRAM_DATE_TIME_ADDON_SCRIPT">
 (function(){
@@ -2197,6 +2937,43 @@ show=function(n){
 @media(max-width:600px){
   #dateFirefly{width:10px;height:10px}
 }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="DATE_FIREFLY_REVEAL_SCRIPT">
 (function(){
@@ -2245,6 +3022,391 @@ show=function(n){
 })();
 </script>
 
+<script>
+// Interactive Mailbox Burst & Sound Effect
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const envelopes = document.querySelectorAll('.envelope');
+    envelopes.forEach(env => {
+      env.addEventListener('click', function(e) {
+        // Spawn heart/sparkle burst around the mailbox
+        const rect = env.getBoundingClientRect();
+        const symbols = ['💖', '✨', '💌', '🌸', '✦', '💕'];
+        for (let i = 0; i < 16; i++) {
+          const p = document.createElement('span');
+          p.className = 'mailbox-particle';
+          p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+          p.style.left = (e.clientX || rect.left + rect.width / 2) + 'px';
+          p.style.top = (e.clientY || rect.top + rect.height / 2) + 'px';
+          
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 60 + Math.random() * 90;
+          p.style.setProperty('--dx', (Math.cos(angle) * dist) + 'px');
+          p.style.setProperty('--dy', (Math.sin(angle) * dist - 40) + 'px');
+          p.style.setProperty('--dr', (Math.random() * 360 - 180) + 'deg');
+          
+          document.body.appendChild(p);
+          setTimeout(() => p.remove(), 1200);
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<!-- MAEVY PREMIUM INTERACTION LAYER — additive only; original pages/content preserved -->
+<style id="maevy-premium-interactions">
+  :root{
+    --mx-gold:#e8c18b;--mx-rose:#e99a9a;--mx-cream:#f6e9dc;
+    --mx-panel:rgba(5,9,20,.82);--mx-line:rgba(232,193,139,.38);
+  }
+
+  /* Keep the original visual language, but make every interaction feel tactile. */
+  .btn,.envelope,.reason,.promise,.date-choice,[role="button"]{
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn{
+    position:relative;overflow:hidden;isolation:isolate;
+    transform:translateZ(0);
+    transition:transform .28s cubic-bezier(.2,.8,.2,1),background .28s,border-color .28s,box-shadow .28s,letter-spacing .28s;
+  }
+  .btn::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.14) 48%,transparent 72%);
+    transform:translateX(-130%);transition:transform .65s ease;z-index:-1;
+  }
+  .btn:hover::after,.btn:focus-visible::after{transform:translateX(130%)}
+  .btn:active{transform:translateY(1px) scale(.97)}
+  .btn:focus-visible,.mx-arrow:focus-visible,.mx-bow:focus-visible,.mx-dot:focus-visible{
+    outline:2px solid var(--mx-gold);outline-offset:3px;
+  }
+
+  /* Soft pointer halo — decorative, never blocks taps. */
+  #mxCursor{
+    position:fixed;z-index:9998;width:22px;height:22px;border:1px solid rgba(232,193,139,.48);
+    border-radius:50%;pointer-events:none;opacity:0;mix-blend-mode:screen;
+    transform:translate(-50%,-50%) scale(.7);transition:opacity .2s,transform .18s;
+  }
+  body.mx-pointer #mxCursor{opacity:.75}
+  body.mx-pointer.mx-click #mxCursor{transform:translate(-50%,-50%) scale(1.55);opacity:0}
+
+  /* Side bow-and-arrow navigation. */
+  #mxNav{
+    position:fixed;z-index:85;inset:0;pointer-events:none;
+    display:flex;align-items:center;justify-content:space-between;padding:0 10px;
+  }
+  .mx-arrow{
+    pointer-events:auto;width:50px;height:86px;border:1px solid rgba(232,193,139,.30);
+    border-radius:30px;background:rgba(3,7,17,.40);backdrop-filter:blur(8px);
+    color:#f2d8b5;cursor:pointer;display:grid;place-items:center;
+    transition:transform .28s,background .28s,border-color .28s,opacity .28s;
+    box-shadow:0 8px 28px rgba(0,0,0,.20);
+  }
+  .mx-arrow span{font:300 32px Georgia,serif;line-height:1}
+  .mx-arrow:hover{background:rgba(232,193,139,.12);border-color:rgba(232,193,139,.72)}
+  .mx-arrow.left:hover{transform:translateX(-3px)}
+  .mx-arrow.right:hover{transform:translateX(3px)}
+  .mx-arrow.is-hidden{opacity:.18;pointer-events:none}
+
+  /* Small bow in the upper-right corner. */
+  .mx-bow{
+    position:fixed;z-index:90;right:17px;top:48px;width:48px;height:48px;border:1px solid var(--mx-line);
+    border-radius:50%;background:rgba(3,7,17,.56);backdrop-filter:blur(9px);
+    color:var(--mx-gold);cursor:pointer;display:grid;place-items:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);transition:transform .3s,background .3s;
+  }
+  .mx-bow:hover{transform:rotate(-7deg) scale(1.06);background:rgba(232,193,139,.12)}
+  .mx-bow .bow-art{position:relative;width:25px;height:22px}
+  .mx-bow .bow-art:before,.mx-bow .bow-art:after{
+    content:"";position:absolute;top:3px;width:14px;height:17px;border:1.5px solid currentColor;
+    border-radius:75% 15% 75% 15%;
+  }
+  .mx-bow .bow-art:before{left:0;transform:rotate(27deg)}
+  .mx-bow .bow-art:after{right:0;transform:scaleX(-1) rotate(27deg)}
+  .mx-bow .knot{position:absolute;left:50%;top:8px;width:6px;height:6px;border:1px solid currentColor;
+    border-radius:50%;transform:translateX(-50%);background:#070b15}
+
+  /* Customization drawer. Default state is intentionally subtle. */
+  #mxPanel{
+    position:fixed;z-index:95;right:17px;top:104px;width:min(300px,calc(100vw - 34px));
+    padding:15px;border:1px solid var(--mx-line);border-radius:20px;background:rgba(5,9,20,.92);
+    backdrop-filter:blur(16px);box-shadow:0 25px 70px rgba(0,0,0,.48);
+    opacity:0;visibility:hidden;transform:translateY(-8px) scale(.97);transition:.28s ease;
+  }
+  #mxPanel.show{opacity:1;visibility:visible;transform:none}
+  #mxPanel h3{font-size:25px;margin:0 0 2px;color:var(--mx-cream)}
+  #mxPanel .mx-sub{font:10px Inter;letter-spacing:.15em;text-transform:uppercase;color:var(--mx-gold);opacity:.8;margin-bottom:12px}
+  .mx-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(232,193,139,.12)}
+  .mx-setting label{font:13px Inter;color:#e6d9ce}
+  .mx-toggle{width:45px;height:25px;border-radius:20px;border:1px solid var(--mx-line);background:rgba(255,255,255,.05);position:relative;cursor:pointer}
+  .mx-toggle i{position:absolute;top:4px;left:4px;width:15px;height:15px;border-radius:50%;background:#cfc1b1;transition:.25s}
+  .mx-toggle.on{background:rgba(232,193,139,.18);border-color:var(--mx-gold)}
+  .mx-toggle.on i{left:24px;background:var(--mx-gold)}
+  .mx-style-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .mx-style{
+    border:1px solid rgba(232,193,139,.24);border-radius:11px;background:rgba(255,255,255,.035);
+    color:#d9cbbd;padding:8px 4px;font:10px Inter;cursor:pointer;min-height:38px;
+  }
+  .mx-style.active{border-color:var(--mx-gold);color:var(--mx-gold);background:rgba(232,193,139,.10)}
+  body.mx-soft-buttons .btn{border-radius:14px}
+  body.mx-arrow-buttons .btn{border-radius:8px;clip-path:polygon(0 0,94% 0,100% 50%,94% 100%,0 100%,5% 50%)}
+  body.mx-glow .btn{box-shadow:0 0 22px rgba(232,193,139,.12),0 8px 25px rgba(0,0,0,.22)}
+  body.mx-no-motion *,body.mx-no-motion *::before,body.mx-no-motion *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;
+    transition-duration:.001ms!important;
+  }
+
+  /* Progress dots: jump to any existing page without changing its contents. */
+  #mxDots{
+    position:fixed;z-index:72;left:50%;bottom:111px;transform:translateX(-50%);
+    display:flex;align-items:center;justify-content:center;gap:5px;max-width:min(72vw,600px);
+    pointer-events:auto;padding:6px 10px;border:1px solid rgba(232,193,139,.15);border-radius:18px;
+    background:rgba(3,7,17,.28);backdrop-filter:blur(5px);
+  }
+  .mx-dot{width:5px;height:5px;padding:0;border:0;border-radius:50%;background:rgba(232,193,139,.25);cursor:pointer;transition:.25s}
+  .mx-dot.active{width:17px;border-radius:8px;background:var(--mx-gold);box-shadow:0 0 10px rgba(232,193,139,.4)}
+
+  /* Interaction particles. */
+  .mx-particle{
+    position:fixed;z-index:9990;pointer-events:none;font-family:Georgia,serif;
+    color:var(--mx-rose);text-shadow:0 0 9px rgba(233,154,154,.7);
+    animation:mxParticle 1.15s cubic-bezier(.16,.75,.24,1) forwards;
+  }
+  @keyframes mxParticle{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(.35) rotate(0)}
+    12%{opacity:1}
+    100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.25) rotate(var(--r))}
+  }
+
+  /* Make cards feel alive when touched, while preserving their layout. */
+  .screen.active .card{animation:mxCardIn .65s cubic-bezier(.2,.75,.25,1) both}
+  @keyframes mxCardIn{from{opacity:.72;transform:translateY(7px) scale(.992)}to{opacity:1;transform:none}}
+  .screen.active .reason,.screen.active .promise{transition:transform .25s,border-color .25s,background .25s}
+  .screen.active .reason:hover,.screen.active .promise:hover{
+    transform:translateY(-2px);border-color:rgba(232,193,139,.7);background:rgba(232,193,139,.055)
+  }
+
+  /* Touch-friendly compact mode. */
+  @media(max-width:700px){
+    #mxNav{padding:0 4px}
+    .mx-arrow{width:42px;height:72px;background:rgba(3,7,17,.28)}
+    .mx-arrow span{font-size:27px}
+    .mx-bow{right:11px;top:42px;width:43px;height:43px}
+    #mxPanel{right:11px;top:94px}
+    #mxDots{bottom:107px;max-width:78vw;gap:4px;padding:5px 8px}
+    .mx-dot{width:4px;height:4px}.mx-dot.active{width:14px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .screen.active .card{animation:none}
+    #mxCursor{display:none}
+  }
+</style>
+
+<div id="mxCursor" aria-hidden="true"></div>
+
+<div id="mxNav" aria-label="Page navigation">
+  <button type="button" class="mx-arrow left" id="mxPrev" aria-label="Previous page"><span>‹</span></button>
+  <button type="button" class="mx-arrow right" id="mxNext" aria-label="Next page"><span>›</span></button>
+</div>
+
+<button type="button" class="mx-bow" id="mxBow" aria-label="Open little extras" aria-expanded="false">
+  <span class="bow-art" aria-hidden="true"><i class="knot"></i></span>
+</button>
+
+<div id="mxPanel" aria-hidden="true">
+  <h3>Little extras ♡</h3>
+  <div class="mx-sub">make the experience yours</div>
+  <div class="mx-setting"><label for="mxGlow">Button glow</label><button type="button" class="mx-toggle on" id="mxGlow" aria-pressed="true"><i></i></button></div>
+  <div class="mx-setting"><label for="mxSpark">Tap sparkles</label><button type="button" class="mx-toggle on" id="mxSpark" aria-pressed="true"><i></i></button></div>
+  <div class="mx-setting"><label for="mxSnow">Snowfall</label><button type="button" class="mx-toggle on" id="mxSnow" aria-pressed="true"><i></i></button></div>
+  <div class="mx-setting"><label for="mxStars">Final-page stars</label><button type="button" class="mx-toggle on" id="mxStars" aria-pressed="true"><i></i></button></div>
+  <div class="mx-setting" style="display:block">
+    <label style="display:block;margin-bottom:8px">Button shape</label>
+    <div class="mx-style-row">
+      <button type="button" class="mx-style active" data-style="classic">Classic</button>
+      <button type="button" class="mx-style" data-style="soft">Soft</button>
+      <button type="button" class="mx-style" data-style="arrow">Arrow</button>
+    </div>
+  </div>
+  <div class="mx-sub" style="margin:12px 0 0">Tip · swipe left/right or use ← →</div>
+</div>
+
+<div id="mxDots" aria-label="Story pages"></div>
+
+<script id="maevy-premium-interactions-script">
+(function(){
+  'use strict';
+  var rootReady=false, dots=[], touchX=0,touchY=0;
+  function qs(s){return document.querySelector(s)}
+  function screens(){return Array.prototype.slice.call(document.querySelectorAll('.screen'))}
+  function current(){var ss=screens();var active=ss.findIndex(function(x){return x.classList.contains('active')});return active<0?0:active}
+  function safeShow(n){
+    if(typeof window.show==='function'){window.show(n)}
+    else{
+      var ss=screens(); if(!ss.length)return;
+      n=(n+ss.length)%ss.length;
+      ss.forEach(function(s,k){s.classList.toggle('active',k===n)});
+    }
+    syncDots();
+    updateArrows();
+  }
+  function makeDots(){
+    var box=qs('#mxDots'); if(!box)return;
+    box.innerHTML='';
+    var ss=screens();
+    ss.forEach(function(_,idx){
+      var b=document.createElement('button');
+      b.type='button';b.className='mx-dot';b.setAttribute('aria-label','Go to page '+(idx+1));
+      b.addEventListener('click',function(){safeShow(idx);spark(window.innerWidth/2,window.innerHeight*.5,3)});
+      box.appendChild(b);dots.push(b);
+    });
+  }
+  function syncDots(){
+    var n=current();
+    dots.forEach(function(d,k){d.classList.toggle('active',k===n)});
+  }
+  function updateArrows(){
+    var n=current(),total=screens().length;
+    var a=qs('#mxPrev'),b=qs('#mxNext');
+    if(a)a.classList.toggle('is-hidden',n<=0);
+    if(b)b.classList.toggle('is-hidden',n>=total-1);
+  }
+  function spark(x,y,count){
+    var enabled=qs('#mxSpark') && qs('#mxSpark').classList.contains('on');
+    if(!enabled)return;
+    var symbols=['♡','✦','✧','·','❤'];
+    for(var k=0;k<(count||7);k++){
+      var p=document.createElement('span');p.className='mx-particle';
+      p.textContent=symbols[k%symbols.length];
+      p.style.left=x+'px';p.style.top=y+'px';
+      var ang=Math.random()*Math.PI*2,dist=35+Math.random()*75;
+      p.style.setProperty('--x',Math.cos(ang)*dist+'px');
+      p.style.setProperty('--y',Math.sin(ang)*dist+'px');
+      p.style.setProperty('--r',((Math.random()*100)-50)+'deg');
+      document.body.appendChild(p);
+      setTimeout(function(el){return function(){if(el.parentNode)el.parentNode.removeChild(el)}}(p),1200);
+    }
+  }
+  function toggle(id,fn){
+    var el=qs('#'+id); if(!el)return;
+    el.addEventListener('click',function(){
+      var on=!el.classList.contains('on');
+      el.classList.toggle('on',on);el.setAttribute('aria-pressed',String(on));
+      if(fn)fn(on);
+    });
+  }
+  function init(){
+    if(rootReady)return;rootReady=true;
+    makeDots();syncDots();updateArrows();
+
+    qs('#mxPrev').addEventListener('click',function(){safeShow(current()-1);spark(45,window.innerHeight/2,5)});
+    qs('#mxNext').addEventListener('click',function(){safeShow(current()+1);spark(window.innerWidth-45,window.innerHeight/2,5)});
+
+    var bow=qs('#mxBow'),panel=qs('#mxPanel');
+    bow.addEventListener('click',function(e){
+      e.stopPropagation();var on=!panel.classList.contains('show');
+      panel.classList.toggle('show',on);panel.setAttribute('aria-hidden',String(!on));bow.setAttribute('aria-expanded',String(on));
+    });
+    document.addEventListener('pointerdown',function(e){
+      if(panel.classList.contains('show') && !panel.contains(e.target) && e.target!==bow && !bow.contains(e.target)){
+        panel.classList.remove('show');panel.setAttribute('aria-hidden','true');bow.setAttribute('aria-expanded','false');
+      }
+    });
+
+    toggle('mxGlow',function(on){document.body.classList.toggle('mx-glow',on)});
+    toggle('mxSpark',function(){});
+    toggle('mxSnow',function(on){
+      var layer=qs('#snow');if(layer)layer.style.opacity=on?'1':'0';
+    });
+    toggle('mxStars',function(on){
+      var layer=qs('#shootingStars');if(layer)layer.style.opacity=on?'':'0';
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.mx-style'),function(btn){
+      btn.addEventListener('click',function(){
+        document.body.classList.remove('mx-soft-buttons','mx-arrow-buttons');
+        var s=btn.getAttribute('data-style');
+        if(s==='soft')document.body.classList.add('mx-soft-buttons');
+        if(s==='arrow')document.body.classList.add('mx-arrow-buttons');
+        Array.prototype.forEach.call(document.querySelectorAll('.mx-style'),function(x){x.classList.toggle('active',x===btn)});
+      });
+    });
+
+    /* Ripple + sparkle on every existing button, including the original buttons. */
+    document.addEventListener('pointerdown',function(e){
+      var b=e.target.closest && e.target.closest('button,.btn');
+      if(!b)return;
+      var r=b.getBoundingClientRect();
+      spark(e.clientX,e.clientY,4);
+      b.classList.add('mx-pressed');
+      setTimeout(function(){b.classList.remove('mx-pressed')},180);
+    },{passive:true});
+
+    /* Envelope opening gets a little burst without touching its message/content. */
+    document.addEventListener('click',function(e){
+      var env=e.target.closest && e.target.closest('.envelope');
+      if(env){
+        setTimeout(function(){
+          var r=env.getBoundingClientRect();spark(r.left+r.width/2,r.top+r.height*.45,10);
+        },20);
+      }
+    });
+
+    /* Swipe navigation on phones/tablets. Ignore swipes that start on controls. */
+    document.addEventListener('touchstart',function(e){
+      if(!e.touches.length)return;
+      var t=e.touches[0];touchX=t.clientX;touchY=t.clientY;
+    },{passive:true});
+    document.addEventListener('touchend',function(e){
+      if(!e.changedTouches.length)return;
+      var t=e.changedTouches[0],dx=t.clientX-touchX,dy=t.clientY-touchY;
+      var target=e.target;
+      if(target && target.closest && target.closest('button,input,a,.envelope'))return;
+      if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.25){
+        safeShow(current()+(dx<0?1:-1));spark(t.clientX,t.clientY,6);
+      }
+    },{passive:true});
+
+    /* Keyboard story controls. */
+    document.addEventListener('keydown',function(e){
+      var tag=(e.target.tagName||'').toLowerCase();
+      if(tag==='input'||tag==='textarea'||tag==='select'||e.target.isContentEditable)return;
+      if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();safeShow(current()+1)}
+      if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();safeShow(current()-1)}
+      if(e.key==='Escape'){panel.classList.remove('show');panel.setAttribute('aria-hidden','true');bow.setAttribute('aria-expanded','false')}
+    });
+
+    /* Pointer halo on desktop. */
+    var cur=qs('#mxCursor');
+    window.addEventListener('pointermove',function(e){
+      if(e.pointerType==='mouse'){
+        document.body.classList.add('mx-pointer');
+        cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+      }
+    },{passive:true});
+    window.addEventListener('pointerleave',function(){document.body.classList.remove('mx-pointer')});
+    window.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='mouse'){
+        cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+        document.body.classList.add('mx-click');
+        setTimeout(function(){document.body.classList.remove('mx-click')},220);
+      }
+    },{passive:true});
+
+    /* Keep dots/arrows synchronized even with the original navigation scripts. */
+    var obs=new MutationObserver(function(){syncDots();updateArrows()});
+    obs.observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+
+    /* The original file contains 21 story screens; the UI reads the real count automatically. */
+    window.addEventListener('resize',function(){updateArrows()},{passive:true});
+    document.body.classList.add('mx-glow');
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
+</script>
+<!-- END MAEVY PREMIUM INTERACTION LAYER -->
+
 </body>
 
 <!-- PREMIUM INTERACTION LAYER: visual/interaction enhancements only; existing content is untouched. -->
@@ -2281,6 +3443,43 @@ show=function(n){
     .screen.active .content{animation:none!important}
     .screen .card{transition:none!important}
   }
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <div id="premiumFX" aria-hidden="true"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div></div>
 <div id="premiumCursor" aria-hidden="true"></div><div class="premium-sheen" aria-hidden="true"></div>
@@ -2357,6 +3556,43 @@ show=function(n){
 @keyframes yesParticle{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0)}10%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.05) rotate(var(--rot))}}
 @keyframes yesMessage{0%{opacity:0;transform:translateX(-50%) translateY(18px) scale(.98)}18%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}75%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-10px) scale(1)}}
 @media (prefers-reduced-motion:reduce){#yesCelebration .flash,#yesCelebration .ring,.yesParticle,#yesCelebration .message{animation-duration:.01ms!important}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="YES_CELEBRATION_ONLY_SCRIPT">
 (function(){
@@ -2387,6 +3623,43 @@ show=function(n){
 #shootingStars{z-index:4!important;pointer-events:none!important;overflow:hidden!important;opacity:0!important;visibility:hidden!important;background:transparent!important;}
 #shootingStars.final-stars-active{opacity:1!important;visibility:visible!important;}
 #shootingStars #reliableMeteorCanvas{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;pointer-events:none!important;}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="FINAL_STAR_CANVAS_RELIABLE_SCRIPT">
 (function(){
@@ -2494,6 +3767,43 @@ show=function(n){
 #shootingStars .meteor,
 #shootingStars .falling-meteor{display:none!important;}
 #shootingStars #reliableMeteorCanvas{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:999!important;}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="ABSOLUTE_FINAL_STAR_ONLY_FIX_SCRIPT">
 (function(){
@@ -2575,6 +3885,43 @@ body.final-forward-stars #stars{opacity:0!important;visibility:hidden!important;
 body.final-forward-stars #shootingStars .meteor,
 body.final-forward-stars #shootingStars .falling-meteor{display:none!important;}
 body.final-forward-stars #shootingStars #reliableMeteorCanvas{display:block!important;visibility:visible!important;opacity:1!important;z-index:999!important;}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="FINAL_METEOR_DIRECTION_SINGLE_SOURCE_SCRIPT">
 (function(){
@@ -2695,6 +4042,43 @@ body.final-forward-stars #shootingStars #reliableMeteorCanvas{display:block!impo
   100%{opacity:0;transform:translate3d(108vw,4vh,0) rotate(-10deg) scale(.6)}
 }
 @media (max-width:600px){#yesFinale .flying-butterfly{font-size:16px}#yesFinale .words{width:86vw}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 
 <style id="YES_FINAL_CELEBRATION_OVERRIDE">
@@ -2713,6 +4097,43 @@ body.final-forward-stars #shootingStars #reliableMeteorCanvas{display:block!impo
 @keyframes finaleRing{0%{opacity:0;transform:translate(-50%,-50%) scale(.05)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(7)}}
 @keyframes finaleWords{0%{opacity:0;transform:translate(-50%,-50%) translateY(28px) scale(.96)}18%{opacity:1}72%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) translateY(-18px) scale(1)}}
 @keyframes yfFly{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}12%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r)) scale(1)}}
+
+/* Interactive Mailbox Enhancements */
+.envelope {
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  filter: drop-shadow(0 15px 25px rgba(232, 193, 139, 0.4)) !important;
+}
+.envelope.open .flap {
+  transform: rotateX(180deg) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.envelope .note {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.envelope.open .note {
+  transform: translateY(-45px) scale(1.05) !important;
+  opacity: 1 !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(232, 193, 139, 0.3) !important;
+}
+
+/* Mailbox Heart Burst Particles */
+.mailbox-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: floatUpBurst 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 999;
+}
+@keyframes floatUpBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--dr)); }
+}
+
 </style>
 <script id="YES_FINAL_CELEBRATION_OVERRIDE_SCRIPT">
 (function(){
