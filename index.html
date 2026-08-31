@@ -2920,8 +2920,7 @@ show=function(n){
     wrap.innerHTML='<label for="hangoutTime">What time would feel nice? ♡</label><input id="hangoutTime" type="time" aria-label="Choose a time for our hangout">';
     choices.parentNode.insertBefore(wrap, choices.nextSibling);
     var send=document.createElement('button'); send.type='button'; send.id='instagramSendBtn'; send.textContent='♡ Send our little plan on Instagram';
-    var note=document.createElement('div'); note.id='instagramSendNote'; note.textContent='Instagram will open, and the message will be copied for her to send to you.';
-    wrap.parentNode.insertBefore(send, wrap.nextSibling); send.parentNode.insertBefore(note, send.nextSibling);
+    wrap.parentNode.insertBefore(send, wrap.nextSibling);
     var time=document.getElementById('hangoutTime'), selected='';
     function prettyDate(v){var p=v.split('-');var d=new Date(Date.UTC(+p[0],+p[1]-1,+p[2]));return d.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'})}
     function prettyTime(v){if(!v)return '';var p=v.split(':');var h=+p[0],m=p[1], ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+m+' '+ap}
