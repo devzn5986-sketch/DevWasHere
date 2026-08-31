@@ -3751,6 +3751,9 @@ body.final-page-mailbox #dateMailbox{
   else enforceLetterPositions();
 })();
 </script>
+<script id="REMOVE_MEMORY_GAME_TIMER">
+(function(){function remove(){var el=document.getElementById('memTime');if(el)el.remove();}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',remove,{once:true});else remove();})();
+</script>
 </body>
 <!-- PREMIUM INTERACTION LAYER: visual/interaction enhancements only; existing content is untouched. -->
 <style id="PREMIUM_INTERACTIVE_ENHANCEMENTS">
@@ -4089,106 +4092,6 @@ body.final-page-mailbox #dateMailbox{
 }
 
 </style>
-<script id="FINAL_STAR_CANVAS_RELIABLE_SCRIPT">
-(function(){
-  var layer=document.getElementById('shootingStars');
-  if(!layer || layer.__reliableMeteorInit) return;
-  layer.__reliableMeteorInit=true;
-  var canvas=document.createElement('canvas');
-  canvas.id='reliableMeteorCanvas';
-  layer.appendChild(canvas);
-  var ctx=canvas.getContext('2d');
-  var stars=[];
-  var raf=0, last=0, active=false, dpr=1, w=0, h=0;
-  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var seed=17;
-  function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
-  function resize(){
-    w=window.innerWidth; h=window.innerHeight; dpr=Math.min(window.devicePixelRatio||1,2);
-    canvas.width=Math.max(1,Math.floor(w*dpr)); canvas.height=Math.max(1,Math.floor(h*dpr));
-    canvas.style.width=w+'px'; canvas.style.height=h+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  function makeStar(i){
-    var x=w*(0.12+rnd()*1.12);
-    var y=h*(-0.18+rnd()*1.05);
-    return {
-      x:x,y:y,
-      vx:(150+rnd()*250), vy:(180+rnd()*280),
-      len:65+rnd()*115, width:1.2+rnd()*1.8,
-      glow:5+rnd()*8, alpha:.65+rnd()*.35,
-      delay:-(i*.23+rnd()*1.8)
-    };
-  }
-  function seedStars(){
-    stars=[]; for(var i=0;i<22;i++) stars.push(makeStar(i));
-  }
-  function drawStar(s){
-    /* Motion is DOWN-LEFT, matching the uploaded video. The bright head leads the falling direction. */
-    var speed=Math.hypot(s.vx,s.vy)||1;
-    var ux=s.vx/speed, uy=s.vy/speed;
-    var tx=s.x-ux*s.len, ty=s.y-uy*s.len;
-    ctx.save();
-    ctx.globalAlpha=s.alpha;
-    ctx.lineCap='round';
-    var g=ctx.createLinearGradient(tx,ty,s.x,s.y);
-    g.addColorStop(0,'rgba(255,255,255,0)');
-    g.addColorStop(.55,'rgba(220,235,255,.28)');
-    g.addColorStop(1,'rgba(255,255,255,.98)');
-    ctx.strokeStyle=g; ctx.lineWidth=s.width;
-    ctx.shadowColor='rgba(210,235,255,.9)'; ctx.shadowBlur=s.glow;
-    ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(s.x,s.y); ctx.stroke();
-    ctx.shadowBlur=s.glow*1.8; ctx.fillStyle='rgba(255,255,255,.98)';
-    ctx.beginPath(); ctx.arc(s.x,s.y,s.width*1.25,0,Math.PI*2); ctx.fill();
-    ctx.restore();
-  }
-  function frame(t){
-    if(!active) return;
-    if(!last) last=t;
-    var dt=Math.min(.033,(t-last)/1000); last=t;
-    ctx.clearRect(0,0,w,h);
-    for(var i=0;i<stars.length;i++){
-      var s=stars[i];
-      s.x+=s.vx*dt; s.y+=s.vy*dt;
-      if(s.x < -s.len-20 || s.y > h+s.len+20){
-        s.x=w*(.25+rnd()*.95); s.y=-s.len-rnd()*h*.45;
-      }
-      drawStar(s);
-    }
-    raf=requestAnimationFrame(frame);
-  }
-  function setActive(on){
-    active=!!on;
-    layer.classList.toggle('final-stars-active',active);
-    if(active){
-      resize();
-      if(!stars.length) seedStars();
-      if(reduce){
-        ctx.clearRect(0,0,w,h); stars.forEach(drawStar); return;
-      }
-      cancelAnimationFrame(raf); last=0; raf=requestAnimationFrame(frame);
-    }else{
-      cancelAnimationFrame(raf); ctx.clearRect(0,0,w,h);
-    }
-  }
-  function isFinalPage(){
-    var screens=document.querySelectorAll('.screen');
-    for(var i=0;i<screens.length;i++) if(screens[i].classList.contains('active')) return i===screens.length-2;
-    return false;
-  }
-  function sync(){setActive(isFinalPage());}
-  window.addEventListener('resize',resize,{passive:true});
-  if(typeof window.show==='function' && !window.show.__reliableWrapped){
-    var oldShow=window.show;
-    function wrappedShow(){var r=oldShow.apply(this,arguments); setTimeout(sync,0); return r;}
-    wrappedShow.__reliableWrapped=true;
-    window.show=wrappedShow;
-  }
-  var mo=new MutationObserver(function(){sync();});
-  mo.observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
-  resize(); seedStars(); sync();
-})();
-</script>
 <style id="ABSOLUTE_FINAL_STAR_ONLY_FIX">
 /* ONLY the final-page shooting stars. Disable every older star implementation. */
 #shootingStars .meteor,
@@ -4232,78 +4135,6 @@ body.final-page-mailbox #dateMailbox{
 }
 
 </style>
-<script id="ABSOLUTE_FINAL_STAR_ONLY_FIX_SCRIPT">
-(function(){
-  var layer=document.getElementById('shootingStars');
-  if(!layer) return;
-  var canvas=layer.querySelector('#reliableMeteorCanvas');
-  if(!canvas){ canvas=document.createElement('canvas'); canvas.id='reliableMeteorCanvas'; layer.appendChild(canvas); }
-  var ctx=canvas.getContext('2d');
-  var W=0,H=0,dpr=1,stars=[],running=false,last=0,raf=0;
-  function resize(){
-    W=window.innerWidth; H=window.innerHeight; dpr=Math.min(window.devicePixelRatio||1,2);
-    canvas.width=Math.floor(W*dpr); canvas.height=Math.floor(H*dpr);
-    canvas.style.width=W+'px'; canvas.style.height=H+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  function resetStar(s,initial){
-    /* Forward fall: upper-left -> lower-right. Bright head is the leading end. */
-    s.x=initial ? Math.random()*W*.9-W*.15 : -40-Math.random()*180;
-    s.y=initial ? Math.random()*H*.35-H*.2 : -30-Math.random()*180;
-    s.vx=150+Math.random()*170;
-    s.vy=150+Math.random()*170;
-    s.len=70+Math.random()*95;
-    s.r=1.4+Math.random()*1.5;
-    s.a=.65+Math.random()*.35;
-  }
-  function seed(){ stars=[]; for(var i=0;i<18;i++){var s={}; resetStar(s,true); stars.push(s);} }
-  function draw(s){
-    var sp=Math.hypot(s.vx,s.vy),ux=s.vx/sp,uy=s.vy/sp;
-    /* Tail is behind the head; head is always at (s.x,s.y). */
-    var tx=s.x-ux*s.len,ty=s.y-uy*s.len;
-    ctx.save(); ctx.globalAlpha=s.a; ctx.lineCap='round';
-    var g=ctx.createLinearGradient(tx,ty,s.x,s.y);
-    g.addColorStop(0,'rgba(255,255,255,0)');
-    g.addColorStop(.55,'rgba(225,238,255,.28)');
-    g.addColorStop(1,'rgba(255,255,255,.98)');
-    ctx.strokeStyle=g; ctx.lineWidth=1.5+Math.random()*.8;
-    ctx.shadowColor='rgba(220,238,255,.95)'; ctx.shadowBlur=8;
-    ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(s.x,s.y);ctx.stroke();
-    ctx.shadowBlur=18;ctx.fillStyle='#fff';
-    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
-    ctx.restore();
-  }
-  function active(){
-    var ss=document.querySelectorAll('.screen');
-    return !!(ss.length && ss[ss.length-1].classList.contains('active'));
-  }
-  function frame(t){
-    if(!running)return;
-    if(!last)last=t; var dt=Math.min(.04,(t-last)/1000);last=t;
-    ctx.clearRect(0,0,W,H);
-    for(var i=0;i<stars.length;i++){
-      var s=stars[i]; s.x+=s.vx*dt; s.y+=s.vy*dt;
-      if(s.x>W+s.len || s.y>H+s.len) resetStar(s,false);
-      draw(s);
-    }
-    raf=requestAnimationFrame(frame);
-  }
-  function sync(){
-    var on=active();
-    if(on){
-      resize();
-      if(!stars.length)seed();
-      layer.classList.add('final-stars-active','on');
-      if(!running){running=true;last=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}
-    }else{
-      running=false;cancelAnimationFrame(raf);ctx.clearRect(0,0,W,H);
-      layer.classList.remove('final-stars-active','on');
-    }
-  }
-  window.addEventListener('resize',resize,{passive:true});
-  sync(); setInterval(sync,1000);
-})();
-</script>
 <style id="FINAL_METEOR_DIRECTION_SINGLE_SOURCE">
 /* Final-page stars ONLY: disable the older DOM star trails that were moving the opposite way. */
 body.final-forward-stars #stars{opacity:0!important;visibility:hidden!important;}
